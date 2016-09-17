@@ -72,7 +72,7 @@ namespace Belegleser
             this.properties.Size = this.rect.Size;
         }
 
-        private void Grid_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
+        public void Grid_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
         {
             this.rect.Size = this.properties.Size;
             this.rect.Location = this.properties.Location;
