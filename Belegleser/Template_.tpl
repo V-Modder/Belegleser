@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Reactangles>
+    <Area>
+      <X>1496</X>
+      <Y>67</Y>
+      <Width>328</Width>
+      <Height>66</Height>
+      <Name>rechteck_1</Name>
+      <Color>-8616477</Color>
+      <IsIdentifying>true</IsIdentifying>
+      <IdentifyingWord>Rechnungsnr</IdentifyingWord>
+    </Area>
+    <Area>
+      <X>1503</X>
+      <Y>67</Y>
+      <Width>498</Width>
+      <Height>68</Height>
+      <Name>rechteck_2</Name>
+      <Color>-14023125</Color>
+      <IsIdentifying>false</IsIdentifying>
+    </Area>
+  </Reactangles>
+  <Index>
+    <Index>
+      <Name>BelArt</Name>
+      <Source>Statisch</Source>
+      <Value>15</Value>
+    </Index>
+    <Index>
+      <Name>KuLiLKZ</Name>
+      <Source>Statisch</Source>
+      <Value>BLaBla</Value>
+    </Index>
+    <Index>
+      <Name>KuliNam</Name>
+      <Source>rechteck_2</Source>
+      <Value>(.*)</Value>
+    </Index>
+  </Index>
+</Template>

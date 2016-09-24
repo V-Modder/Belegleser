@@ -37,5 +37,15 @@ namespace Belegleser
         {
             get; set;
         }
+
+        public bool IsIdentifying
+        {
+            get; set;
+        }
+
+        public string IdentifyingWord
+        {
+            get; set;
+        }
     }
 }

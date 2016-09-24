@@ -45,6 +45,8 @@ namespace Belegleser
                 rect.Height = set.Properties.Size.Height;
                 rect.Name = set.Properties.Name;
                 rect.Color = set.Properties.Color.ToArgb();
+                rect.IsIdentifying = set.Properties.IsIdentifiying;
+                rect.IdentifyingWord = set.Properties.IdentifiyingWord;
                 tmpl.Reactangles.Add(rect);
             }
             tmpl.Index = new List<Index>();
@@ -55,7 +57,14 @@ namespace Belegleser
                     Index idx = new Index();
                     idx.Name = row.Cells["col_name"].Value.ToString();
                     idx.Source = row.Cells["col_source"].Value.ToString();
-                    idx.Value = row.Cells["col_value"].Value.ToString();
+                    if (row.Cells["col_value"].Value != null)
+                    {
+                        idx.Value = row.Cells["col_value"].Value.ToString();
+                    }
+                    else
+                    {
+                        idx.Value = "";
+                    }
                     tmpl.Index.Add(idx);
                 }
             }
@@ -178,6 +187,8 @@ namespace Belegleser
                 rec.Properties.Location = new Point(a.X, a.Y);
                 rec.Properties.Size = new Size(a.Width, a.Height);
                 rec.Grid_PropertyValueChanged(this.propertyGrid1, new PropertyValueChangedEventArgs(null, null));
+                rec.Properties.IsIdentifiying = a.IsIdentifying;
+                rec.Properties.IdentifiyingWord = a.IdentifyingWord;
                 this.rects.Add(rec);
             }
 

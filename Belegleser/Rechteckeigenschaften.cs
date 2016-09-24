@@ -52,5 +52,29 @@ namespace Belegleser
             get { return this.name; }
             set { this.name = value; }
         }
+
+        bool isIdentifiying;
+        [Browsable(true)]
+        [ReadOnly(false)]                          // but just read only
+        [Description("Identifizieren")]             // sample hint1
+        [Category("Rechteck")]                   // Category that I want
+        [DisplayName("Identifizieren")]
+        public bool IsIdentifiying
+        {
+            get { return this.isIdentifiying; }
+            set { this.isIdentifiying = value; }
+        }
+
+        string identifiyingWord;
+        [Browsable(true)]
+        [ReadOnly(false)]                          // but just read only
+        [Description("Identifizierungs Wort")]             // sample hint1
+        [Category("Rechteck")]                   // Category that I want
+        [DisplayName("Identifizieren")]
+        public string IdentifiyingWord
+        {
+            get { return this.identifiyingWord; }
+            set { this.identifiyingWord = value; }
+        }
     }
 }

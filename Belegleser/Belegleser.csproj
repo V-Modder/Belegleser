@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="ControlMoverOrResizer.cs" />
     <Compile Include="Index.cs" />
+    <Compile Include="IndexCreator.cs" />
     <Compile Include="ListBoxItem.cs" />
     <Compile Include="Rechteckeigenschaften.cs" />
     <Compile Include="Area.cs" />
