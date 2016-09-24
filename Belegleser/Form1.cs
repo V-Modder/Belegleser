@@ -125,6 +125,7 @@ namespace Belegleser
                 //}
 
                 idxCreator.write(Directory.GetCurrentDirectory());
+                TiffEncoder.convert(image, idxCreator.getFileName() + ".tiff");
             }
         }
 
