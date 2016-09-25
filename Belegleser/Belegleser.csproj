@@ -61,6 +61,9 @@
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.Ribbon35">
+      <HintPath>.\System.Windows.Forms.Ribbon35.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -132,6 +135,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\hardware-scanner.ico" />
+    <Content Include="Resources\hardware-scanner.png" />
+    <Content Include="Resources\play.png" />
+    <Content Include="Resources\save.png" />
+    <Content Include="Resources\stop.png" />
+    <Content Include="Resources\template.ico" />
+    <Content Include="Resources\template.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

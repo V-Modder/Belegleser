@@ -14,9 +14,15 @@ using tessnet2;
 
 namespace Belegleser
 {
-    public partial class Form1 : Form
+    public partial class Form1 : RibbonForm
     {
         Template tmpl;
+        public string scan_directory;
+        public string sql_host;
+        public string sql_instanz;
+        public string sql_user;
+        public string sql_password;
+        public string intervall;
 
         public Form1()
         {
@@ -25,9 +31,9 @@ namespace Belegleser
 
         private void button1_Click(object sender, EventArgs e)
         {
-            textBox1.Clear();
+            txt_directory.Clear();
             this.result = null;
-            this.progressBar1.Value = 0;
+            //this.progressBar1.Value = 0;
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.DefaultExt = "tpl";
             ofd.FileName = "Template_";
@@ -180,15 +186,103 @@ namespace Belegleser
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            this.progressBar1.Value = e.ProgressPercentage;
+            //this.progressBar1.Value = e.ProgressPercentage;
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.progressBar1.Value = 100;
+            //this.progressBar1.Value = 100;
             foreach (tessnet2.Word word in (List <tessnet2.Word> )this.result)
             {
-                this.textBox1.Text += string.Format("{0} : {1}", word.LineIndex, word.Text) + Environment.NewLine;
+                this.txt_directory.Text += string.Format("{0} : {1}", word.LineIndex, word.Text) + Environment.NewLine;
+            }
+        }
+
+        private void ribbonTab_general_ActiveChanged(object sender, EventArgs e)
+        {
+            this.tabControl.SelectedIndex = 0;
+        }
+
+        private void ribbonTab_properties_ActiveChanged(object sender, EventArgs e)
+        {
+            this.tabControl.SelectedIndex = 1;
+        }
+
+        private void ribbonButton_template_Click(object sender, EventArgs e)
+        {
+            Form frm_template = new TemplateEditor();
+            frm_template.ShowDialog();
+        }
+
+        private void btn_directory_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog op = new FolderBrowserDialog();
+            op.Description = "Scan ordner";
+            DialogResult opresult = op.ShowDialog(this);
+            if (opresult == DialogResult.OK)
+            {
+                this.txt_directory.Text = op.SelectedPath;
+            }
+
+        }
+
+        private void ribbonButton_save_Click(object sender, EventArgs e)
+        {
+            using (System.IO.StreamWriter file = new StreamWriter("settings.ini"))
+            {
+                file.WriteLine(txt_directory.Text);
+                file.WriteLine(txt_sql_host.Text);
+                file.WriteLine(txt_sql_instanz.Text);
+                file.WriteLine(txt_sql_user.Text);
+                file.WriteLine(Encode(txt_sql_password.Text));
+                file.WriteLine(mtxt_intervall.Text);
+            }
+            MessageBox.Show("Einstellungen wurden erfolgreich gespeichert!", "Erfolgreich", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>
+        /// Verschlüsselt das Mail-Passwort
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public string Encode(string password)
+        {
+            byte[] encbuff = System.Text.Encoding.UTF8.GetBytes(password);
+            return Convert.ToBase64String(encbuff);
+        }
+
+        /// <summary>
+        /// Entschlüsselt das Mail-Passwort
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public string Decode(string password)
+        {
+            byte[] decbuff = Convert.FromBase64String(password);
+            return System.Text.Encoding.UTF8.GetString(decbuff);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                string[] lines = File.ReadAllLines("settings.ini");
+                txt_directory.Text = lines[0];
+                scan_directory = lines[0];
+                txt_sql_host.Text = lines[1];
+                sql_host = lines[1];
+                txt_sql_instanz.Text = lines[2];
+                sql_instanz = lines[2];
+                txt_sql_user.Text = lines[3];
+                sql_user = lines[3];
+                txt_sql_password.Text = Decode(lines[4]); //Verschlüsseln nur mit Base64
+                sql_password = Decode(lines[4]);
+                mtxt_intervall.Text = lines[5];
+                intervall = lines[5];
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("Keine Einstellungen gefunden, bitte prüfen und einstellen.", "Achtung", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplateEditor));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btn_load = new System.Windows.Forms.ToolStripButton();
             this.btn_load_picture = new System.Windows.Forms.ToolStripButton();
             this.btn_Save = new System.Windows.Forms.ToolStripButton();
             this.btn_plus_rectangle = new System.Windows.Forms.ToolStripButton();
@@ -40,14 +41,13 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.grp_list = new System.Windows.Forms.GroupBox();
+            this.grp_prop = new System.Windows.Forms.GroupBox();
+            this.grp_dagv = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.col_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_source = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.col_value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grp_list = new System.Windows.Forms.GroupBox();
-            this.grp_prop = new System.Windows.Forms.GroupBox();
-            this.grp_dagv = new System.Windows.Forms.GroupBox();
-            this.btn_load = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
@@ -55,10 +55,10 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grp_list.SuspendLayout();
             this.grp_prop.SuspendLayout();
             this.grp_dagv.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -74,6 +74,16 @@
             this.toolStrip1.Size = new System.Drawing.Size(1207, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btn_load
+            // 
+            this.btn_load.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_load.Image = ((System.Drawing.Image)(resources.GetObject("btn_load.Image")));
+            this.btn_load.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_load.Name = "btn_load";
+            this.btn_load.Size = new System.Drawing.Size(23, 22);
+            this.btn_load.Text = "Laden";
+            this.btn_load.Click += new System.EventHandler(this.btn_load_Click);
             // 
             // btn_load_picture
             // 
@@ -182,6 +192,36 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(348, 863);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
+            // grp_list
+            // 
+            this.grp_list.Controls.Add(this.listBox1);
+            this.grp_list.Location = new System.Drawing.Point(3, 3);
+            this.grp_list.Name = "grp_list";
+            this.grp_list.Size = new System.Drawing.Size(316, 264);
+            this.grp_list.TabIndex = 0;
+            this.grp_list.TabStop = false;
+            this.grp_list.Text = "groupBox1";
+            // 
+            // grp_prop
+            // 
+            this.grp_prop.Controls.Add(this.propertyGrid1);
+            this.grp_prop.Location = new System.Drawing.Point(3, 273);
+            this.grp_prop.Name = "grp_prop";
+            this.grp_prop.Size = new System.Drawing.Size(342, 283);
+            this.grp_prop.TabIndex = 1;
+            this.grp_prop.TabStop = false;
+            this.grp_prop.Text = "groupBox2";
+            // 
+            // grp_dagv
+            // 
+            this.grp_dagv.Controls.Add(this.dataGridView1);
+            this.grp_dagv.Location = new System.Drawing.Point(3, 562);
+            this.grp_dagv.Name = "grp_dagv";
+            this.grp_dagv.Size = new System.Drawing.Size(342, 251);
+            this.grp_dagv.TabIndex = 2;
+            this.grp_dagv.TabStop = false;
+            this.grp_dagv.Text = "groupBox3";
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -214,46 +254,6 @@
             this.col_value.HeaderText = "Wert";
             this.col_value.Name = "col_value";
             // 
-            // grp_list
-            // 
-            this.grp_list.Controls.Add(this.listBox1);
-            this.grp_list.Location = new System.Drawing.Point(3, 3);
-            this.grp_list.Name = "grp_list";
-            this.grp_list.Size = new System.Drawing.Size(316, 264);
-            this.grp_list.TabIndex = 0;
-            this.grp_list.TabStop = false;
-            this.grp_list.Text = "groupBox1";
-            // 
-            // grp_prop
-            // 
-            this.grp_prop.Controls.Add(this.propertyGrid1);
-            this.grp_prop.Location = new System.Drawing.Point(3, 273);
-            this.grp_prop.Name = "grp_prop";
-            this.grp_prop.Size = new System.Drawing.Size(342, 283);
-            this.grp_prop.TabIndex = 1;
-            this.grp_prop.TabStop = false;
-            this.grp_prop.Text = "groupBox2";
-            // 
-            // grp_dagv
-            // 
-            this.grp_dagv.Controls.Add(this.dataGridView1);
-            this.grp_dagv.Location = new System.Drawing.Point(3, 562);
-            this.grp_dagv.Name = "grp_dagv";
-            this.grp_dagv.Size = new System.Drawing.Size(342, 251);
-            this.grp_dagv.TabIndex = 2;
-            this.grp_dagv.TabStop = false;
-            this.grp_dagv.Text = "groupBox3";
-            // 
-            // btn_load
-            // 
-            this.btn_load.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_load.Image = ((System.Drawing.Image)(resources.GetObject("btn_load.Image")));
-            this.btn_load.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_load.Name = "btn_load";
-            this.btn_load.Size = new System.Drawing.Size(23, 22);
-            this.btn_load.Text = "Laden";
-            this.btn_load.Click += new System.EventHandler(this.btn_load_Click);
-            // 
             // TemplateEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,6 +262,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TemplateEditor";
             this.Text = "TemplateEditor";
             this.Load += new System.EventHandler(this.TemplateEditor_Load);
@@ -274,10 +275,10 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.grp_list.ResumeLayout(false);
             this.grp_prop.ResumeLayout(false);
             this.grp_dagv.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
