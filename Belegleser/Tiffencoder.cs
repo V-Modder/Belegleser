@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
+using BitMiracle.LibTiff.Classic;
 
 namespace Belegleser
 {
@@ -19,35 +19,85 @@ namespace Belegleser
         /// <remarks>
         /// The original file is overwritten with the result.
         /// </remarks>
-        public static void Encode(string path, TiffCompressOption compression, PixelFormat format)
+        public static void Encode(string path, Bitmap bmp)
         {
-            BitmapDecoder decoder = TiffBitmapDecoder.Create(
-                new Uri(path),
-                BitmapCreateOptions.PreservePixelFormat,
-                BitmapCacheOption.OnLoad);
 
-            TiffBitmapEncoder encoder = new TiffBitmapEncoder();
-            encoder.Compression = compression;
-            encoder.Frames.Add(BitmapFrame.Create(SetPixelFormat(decoder.Frames[0], format)));
-            using (var stream = new FileStream(path, FileMode.Truncate, FileAccess.Write))
+            Bitmap tmp = new Bitmap(bmp, 795, 1124);
+            using (Tiff tif = Tiff.Open(path, "w"))
             {
-                encoder.Save(stream);
+                byte[] raster = getImageRasterBytes(tmp, PixelFormat.Format24bppRgb);
+                tif.SetField(TiffTag.IMAGEWIDTH, tmp.Width);
+                tif.SetField(TiffTag.IMAGELENGTH, tmp.Height);
+                tif.SetField(TiffTag.COMPRESSION, Compression.JPEG);
+                tif.SetField(TiffTag.PHOTOMETRIC, Photometric.RGB);
+
+                // Compression Level: 100 = No comression, 0 = Maximum 
+                tif.SetField(TiffTag.JPEGQUALITY, 30);
+                tif.SetField(TiffTag.ROWSPERSTRIP, bmp.Height);
+
+                tif.SetField(TiffTag.XRESOLUTION, 96);
+                tif.SetField(TiffTag.YRESOLUTION, 96);
+
+                tif.SetField(TiffTag.BITSPERSAMPLE, 8);
+                tif.SetField(TiffTag.SAMPLESPERPIXEL, 3);
+
+                tif.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG);
+
+                int stride = raster.Length / tmp.Height;
+                convertSamples(raster, tmp.Width, tmp.Height);
+
+                for (int i = 0, offset = 0; i < tmp.Height; i++)
+                {
+                    tif.WriteScanline(raster, offset, i, 0);
+                    offset += stride;
+                }
             }
         }
-        /// <summary>
-        /// Sets the pixel format for an image.
-        /// </summary>
-        /// <param name="image">The original image.</param>
-        /// <param name="pixelFormat">The desired pixel format.</param>
-        /// <returns>The image converted ot the desired pixel format.</returns>
-        private static BitmapSource SetPixelFormat(BitmapSource image, PixelFormat format)
+
+        private static byte[] getImageRasterBytes(Bitmap bmp, PixelFormat format)
         {
-            var formatted = new FormatConvertedBitmap();
-            formatted.BeginInit();
-            formatted.Source = image;
-            formatted.DestinationFormat = format;
-            formatted.EndInit();
-            return formatted;
+            Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+            byte[] bits = null;
+
+            try
+            {
+                // Lock the managed memory
+                BitmapData bmpdata = bmp.LockBits(rect, ImageLockMode.ReadWrite, format);
+
+                // Declare an array to hold the bytes of the bitmap.
+                bits = new byte[bmpdata.Stride * bmpdata.Height];
+
+                // Copy the values into the array.
+                System.Runtime.InteropServices.Marshal.Copy(bmpdata.Scan0, bits, 0, bits.Length);
+
+                // Release managed memory
+                bmp.UnlockBits(bmpdata);
+            }
+            catch
+            {
+                return null;
+            }
+
+            return bits;
+        }
+
+        private static void convertSamples(byte[] data, int width, int height)
+        {
+            int stride = data.Length / height;
+            const int samplesPerPixel = 3;
+
+            for (int y = 0; y < height; y++)
+            {
+                int offset = stride * y;
+                int strideEnd = offset + width * samplesPerPixel;
+
+                for (int i = offset; i < strideEnd; i += samplesPerPixel)
+                {
+                    byte temp = data[i + 2];
+                    data[i + 2] = data[i];
+                    data[i] = temp;
+                }
+            }
         }
     }
 }
