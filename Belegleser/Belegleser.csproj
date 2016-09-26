@@ -140,7 +140,11 @@
   <ItemGroup>
     <Content Include="Resources\hardware-scanner.ico" />
     <Content Include="Resources\hardware-scanner.png" />
+    <Content Include="Resources\load.png" />
+    <Content Include="Resources\load_graphic.png" />
+    <None Include="Resources\minus.png" />
     <Content Include="Resources\play.png" />
+    <None Include="Resources\plus.png" />
     <Content Include="Resources\save.png" />
     <Content Include="Resources\stop.png" />
     <Content Include="Resources\template.ico" />

@@ -71,58 +71,59 @@
             this.btn_minus_rectangle});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1207, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1207, 38);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // btn_load
             // 
-            this.btn_load.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_load.Image = ((System.Drawing.Image)(resources.GetObject("btn_load.Image")));
+            this.btn_load.Image = global::Belegleser.Properties.Resources.load;
             this.btn_load.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_load.Name = "btn_load";
-            this.btn_load.Size = new System.Drawing.Size(23, 22);
-            this.btn_load.Text = "Laden";
+            this.btn_load.Size = new System.Drawing.Size(92, 35);
+            this.btn_load.Text = "Template laden";
+            this.btn_load.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_load.Click += new System.EventHandler(this.btn_load_Click);
             // 
             // btn_load_picture
             // 
-            this.btn_load_picture.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_load_picture.Image = ((System.Drawing.Image)(resources.GetObject("btn_load_picture.Image")));
+            this.btn_load_picture.Image = global::Belegleser.Properties.Resources.load_graphic;
             this.btn_load_picture.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_load_picture.Name = "btn_load_picture";
-            this.btn_load_picture.Size = new System.Drawing.Size(23, 22);
-            this.btn_load_picture.Text = "Hintergrund Grafik";
+            this.btn_load_picture.Size = new System.Drawing.Size(74, 35);
+            this.btn_load_picture.Text = "Grafik laden";
+            this.btn_load_picture.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.btn_load_picture.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_load_picture.Click += new System.EventHandler(this.btn_load_picture_Click);
             // 
             // btn_Save
             // 
-            this.btn_Save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_Save.Image = ((System.Drawing.Image)(resources.GetObject("btn_Save.Image")));
+            this.btn_Save.Image = global::Belegleser.Properties.Resources.save;
             this.btn_Save.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(23, 22);
+            this.btn_Save.Size = new System.Drawing.Size(63, 35);
             this.btn_Save.Text = "Speichern";
+            this.btn_Save.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // btn_plus_rectangle
             // 
-            this.btn_plus_rectangle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_plus_rectangle.Image = ((System.Drawing.Image)(resources.GetObject("btn_plus_rectangle.Image")));
+            this.btn_plus_rectangle.Image = global::Belegleser.Properties.Resources.plus;
             this.btn_plus_rectangle.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_plus_rectangle.Name = "btn_plus_rectangle";
-            this.btn_plus_rectangle.Size = new System.Drawing.Size(23, 22);
+            this.btn_plus_rectangle.Size = new System.Drawing.Size(113, 35);
             this.btn_plus_rectangle.Text = "Bereich hinzufügen";
+            this.btn_plus_rectangle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_plus_rectangle.Click += new System.EventHandler(this.btn_plus_rectangle_Click);
             // 
             // btn_minus_rectangle
             // 
-            this.btn_minus_rectangle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_minus_rectangle.Image = ((System.Drawing.Image)(resources.GetObject("btn_minus_rectangle.Image")));
+            this.btn_minus_rectangle.Image = global::Belegleser.Properties.Resources.minus;
             this.btn_minus_rectangle.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_minus_rectangle.Name = "btn_minus_rectangle";
-            this.btn_minus_rectangle.Size = new System.Drawing.Size(23, 22);
+            this.btn_minus_rectangle.Size = new System.Drawing.Size(104, 35);
             this.btn_minus_rectangle.Text = "Bereich entfernen";
+            this.btn_minus_rectangle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_minus_rectangle.Click += new System.EventHandler(this.btn_minus_rectangle_Click);
             // 
             // panel1
@@ -133,7 +134,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(851, 863);
+            this.panel1.Size = new System.Drawing.Size(851, 850);
             this.panel1.TabIndex = 1;
             // 
             // pic_background
@@ -166,7 +167,7 @@
             // 
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 25);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 38);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -177,7 +178,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1207, 865);
+            this.splitContainer1.Size = new System.Drawing.Size(1207, 852);
             this.splitContainer1.SplitterDistance = 350;
             this.splitContainer1.TabIndex = 4;
             // 
@@ -189,7 +190,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(348, 863);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(348, 850);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
             // grp_list
@@ -200,7 +201,7 @@
             this.grp_list.Size = new System.Drawing.Size(316, 264);
             this.grp_list.TabIndex = 0;
             this.grp_list.TabStop = false;
-            this.grp_list.Text = "groupBox1";
+            this.grp_list.Text = "Bereiche";
             // 
             // grp_prop
             // 
@@ -210,7 +211,7 @@
             this.grp_prop.Size = new System.Drawing.Size(342, 283);
             this.grp_prop.TabIndex = 1;
             this.grp_prop.TabStop = false;
-            this.grp_prop.Text = "groupBox2";
+            this.grp_prop.Text = "Eigenschaften";
             // 
             // grp_dagv
             // 
@@ -220,7 +221,7 @@
             this.grp_dagv.Size = new System.Drawing.Size(342, 251);
             this.grp_dagv.TabIndex = 2;
             this.grp_dagv.TabStop = false;
-            this.grp_dagv.Text = "groupBox3";
+            this.grp_dagv.Text = "Index Datei";
             // 
             // dataGridView1
             // 
