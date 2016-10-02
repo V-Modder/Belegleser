@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace Belegleser
 {
@@ -15,6 +16,17 @@ namespace Belegleser
         public List<Index> Index
         {
             get; set;
+        }
+
+        public static Template getFromFile(string fileName)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Template));
+
+            using (StreamReader writer = new StreamReader(fileName))
+            {
+                return (Template)serializer.Deserialize(writer);
+            }
+
         }
     }
 }

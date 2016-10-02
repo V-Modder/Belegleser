@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -24,10 +24,13 @@ namespace Belegleser
         public string sql_password;
         public string intervall;
 
+        TemplateReader reader;
+
         public Form1()
         {
             InitializeComponent();
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -228,62 +231,48 @@ namespace Belegleser
 
         private void ribbonButton_save_Click(object sender, EventArgs e)
         {
-            using (System.IO.StreamWriter file = new StreamWriter("settings.ini"))
-            {
-                file.WriteLine(txt_directory.Text);
-                file.WriteLine(txt_sql_host.Text);
-                file.WriteLine(txt_sql_instanz.Text);
-                file.WriteLine(txt_sql_user.Text);
-                file.WriteLine(Encode(txt_sql_password.Text));
-                file.WriteLine(mtxt_intervall.Text);
-            }
-            MessageBox.Show("Einstellungen wurden erfolgreich gespeichert!", "Erfolgreich", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        /// <summary>
-        /// Verschlüsselt das Mail-Passwort
-        /// </summary>
-        /// <param name="password"></param>
-        /// <returns></returns>
-        public string Encode(string password)
-        {
-            byte[] encbuff = System.Text.Encoding.UTF8.GetBytes(password);
-            return Convert.ToBase64String(encbuff);
-        }
-
-        /// <summary>
-        /// Entschlüsselt das Mail-Passwort
-        /// </summary>
-        /// <param name="password"></param>
-        /// <returns></returns>
-        public string Decode(string password)
-        {
-            byte[] decbuff = Convert.FromBase64String(password);
-            return System.Text.Encoding.UTF8.GetString(decbuff);
+            Config.getInstance().ScanDirectory = txt_directory.Text;
+            Config.getInstance().SQLHost = txt_sql_host.Text;
+            Config.getInstance().SQLInstance = txt_sql_instanz.Text;
+            Config.getInstance().SQLUser = txt_sql_user.Text;
+            Config.getInstance().SQLPassword = txt_sql_password.Text;
+            Config.getInstance().Interval = mtxt_intervall.Text;
+            Config.getInstance().Save();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            try
+            txt_directory.Text = Config.getInstance().ScanDirectory;
+            txt_sql_host.Text = Config.getInstance().SQLHost;
+            txt_sql_instanz.Text = Config.getInstance().SQLInstance;
+            txt_sql_user.Text = Config.getInstance().SQLUser;
+            txt_sql_password.Text = Config.getInstance().SQLPassword; //Verschlüsseln nur mit Base64
+            mtxt_intervall.Text = Config.getInstance().Interval;
+        }
+
+        private void template_plus_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog op = new OpenFileDialog();
+            op.DefaultExt = "tpl";
+            if (op.ShowDialog() == DialogResult.OK)
             {
-                string[] lines = File.ReadAllLines("settings.ini");
-                txt_directory.Text = lines[0];
-                scan_directory = lines[0];
-                txt_sql_host.Text = lines[1];
-                sql_host = lines[1];
-                txt_sql_instanz.Text = lines[2];
-                sql_instanz = lines[2];
-                txt_sql_user.Text = lines[3];
-                sql_user = lines[3];
-                txt_sql_password.Text = Decode(lines[4]); //Verschlüsseln nur mit Base64
-                sql_password = Decode(lines[4]);
-                mtxt_intervall.Text = lines[5];
-                intervall = lines[5];
+                dtg_templates.Rows.Add(op.FileName, "", false);
             }
-            catch (Exception ee)
+        }
+
+        private void ribbonButton3_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow dt in dtg_templates.SelectedRows)
             {
-                MessageBox.Show("Keine Einstellungen gefunden, bitte prüfen und einstellen.", "Achtung", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if ((bool)dt.Cells[2].Value == false)
+                dtg_templates.Rows.Remove(dt);
             }
+        }
+
+        private void btn_play_Click(object sender, EventArgs e)
+        {
+            this.reader = new TemplateReader(this.dtg_templates);
+            this.reader.RunWorkerAsync();
         }
     }
 }
