@@ -15,7 +15,6 @@ namespace Belegleser
     class TemplateReader : BackgroundWorker
     {
         private string searchPattern = @"^.*\.(jpg|JPG|jpeg|JPEG)$";
-        //^.*\.(jpg|JPG|gif|GIF|doc|DOC|pdf|PDF)$
         private DataGridView templData;
 
         public TemplateReader(DataGridView data)
@@ -38,11 +37,13 @@ namespace Belegleser
                         IndexCreator idx = null;
                         for (int i = 0; i < this.templData.Rows.Count && idx == null; i++)
                         {
-                            Bitmap img = (Bitmap)Bitmap.FromFile(file);
-                            idx = this.readFile(img, i);
-
-                            idx.write(Directory.GetCurrentDirectory());
-                            TiffEncoder.Encode(idx.getFileName() + ".tiff", img);
+                            if ((bool)this.templData.Rows[i].Cells["active"].Value == true)
+                            {
+                                Bitmap img = (Bitmap)Bitmap.FromFile(file);
+                                idx = this.readFile(img, i);
+                                idx.write(this.templData.Rows[i].Cells["output_directory"].Value.ToString());
+                                TiffEncoder.Encode(idx.getFileName() + ".tiff", img);
+                            }
                         }
                     }
                 }
@@ -105,9 +106,16 @@ namespace Belegleser
                     }
                     result = null;
                     result = ocr.DoOCR(image, this.getRect(aa));
-                    this.addValues(tmpl, idxCreator, aa.Name, this.getValue(result));
+                    aa.Value = this.getValue(result);
                 }
-
+                foreach (Index idx in tmpl.Index)
+                {
+                    if (!idx.Source.Equals("Statisch") && !idx.Source.Equals("SQL"))
+                    {
+                        this.addValues(tmpl, idxCreator, idx);
+                    }
+                }
+               
                 //foreach (Index idx in this.tmpl.Index)
                 //{
                 //    if (idx.Source.Equals("SQL"))
@@ -140,32 +148,49 @@ namespace Belegleser
 
         private string getFileName(int index)
         {
-            return this.templData.Rows[index].Cells["output_directory"].Value.ToString();
+            return this.templData.Rows[index].Cells["Template"].Value.ToString();
         }
 
-        private void addValues(Template tmpl, IndexCreator idxc, string name, string input)
+        private void addValues(Template tmpl, IndexCreator idxc, Index idx)
         {
-            foreach (Index idx in tmpl.Index)
+            string input = "";
+            foreach (Area a in tmpl.Reactangles)
             {
-                if (idx.Source.Equals(name))
+                if (a.Name.Equals(idx.Source))
                 {
-                    string value = Regex.Match(input, idx.Value).Value;
-                    idxc.addValue(idx.Name, value);
-                    return;
+                    input = a.Value;
                 }
             }
+            string value = "";
+            Match mat = Regex.Match(input, idx.Value);
+            if (mat.Success)
+            {
+                value = mat.Groups[1].Value;
+            }
+            idxc.addValue(idx.Name, value);
+            return;
         }
 
         private string getValue(List<Word> words)
         {
             int lines = 0;
             StringBuilder sb = new StringBuilder();
+            bool isFirst = true;
             foreach (Word wrd in words)
             {
                 if (wrd.LineIndex > lines)
                 {
-                    sb.Append(Environment.NewLine);
+                    sb.Append("\n");
+                    isFirst = true;
                     lines++;
+                }
+                if(isFirst)
+                {
+                    isFirst = false;
+                }
+                else
+                {
+                    sb.Append(" ");
                 }
                 sb.Append(wrd.Text);
             }

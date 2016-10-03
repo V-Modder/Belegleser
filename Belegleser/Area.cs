@@ -46,5 +46,10 @@ namespace Belegleser
         {
             get; set;
         }
+
+        public string Value
+        {
+            get; set;
+        }
     }
 }

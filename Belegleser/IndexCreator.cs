@@ -57,25 +57,14 @@ namespace Belegleser
 
         public string getFileName()
         {
-            return Path.Combine(this.fileName, Enum.GetName(typeof(BelArts), this.belArt) + "_" + this.belNr);
+            return Path.Combine(this.fileName, Enum.GetName(typeof(BelArts), this.belArt) + "_" + this.belNr  + "_" +
+            DateTime.Now.Year +
+            DateTime.Now.Month +
+            DateTime.Now.Day +
+            DateTime.Now.Hour +
+            DateTime.Now.Minute +
+            DateTime.Now.Second +
+            DateTime.Now.Millisecond);
         }
-
-        //using (StreamWriter sw = new StreamWriter(Path.Combine(Auftrags_Pfad, "Auftrag_" + Belnr + ".idx")))
-        //    {
-        //        sw.WriteLine("Firma=01");
-        //        sw.WriteLine("BelArt=10");
-        //        sw.WriteLine("BelNr=" + Belnr);
-        //        sw.WriteLine("BelDat=" + Beldat);
-        //        sw.WriteLine("Betreff=Auftrag " + Belnr);
-        //        sw.WriteLine("KuLiNr=" + KuLiNr);
-        //        sw.WriteLine("KuLiNam=" + KuLiNam);
-        //        sw.WriteLine("KuLiPLZ=" + KuLiPLZ);
-        //        sw.WriteLine("KuLiOrt=" + KuliOrt);
-        //        sw.WriteLine("Email=" + email);
-        //        sw.WriteLine("KuLiLKZ=" + KuLiLKZ);
-        //        sw.WriteLine("Betrag=" + Betrag);
-        //        sw.WriteLine("Waehrung=" + Waehrung);
-        //        sw.WriteLine("Info=Storniert am " +Info);
-        //    }
     }
 }

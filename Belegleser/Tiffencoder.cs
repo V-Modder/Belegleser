@@ -31,7 +31,7 @@ namespace Belegleser
                 tif.SetField(TiffTag.PHOTOMETRIC, Photometric.RGB);
 
                 // Compression Level: 100 = No comression, 0 = Maximum 
-                tif.SetField(TiffTag.JPEGQUALITY, 30);
+                tif.SetField(TiffTag.JPEGQUALITY, 40);
                 tif.SetField(TiffTag.ROWSPERSTRIP, bmp.Height);
 
                 tif.SetField(TiffTag.XRESOLUTION, 96);

@@ -248,6 +248,10 @@ namespace Belegleser
             txt_sql_user.Text = Config.getInstance().SQLUser;
             txt_sql_password.Text = Config.getInstance().SQLPassword; //Verschlüsseln nur mit Base64
             mtxt_intervall.Text = Config.getInstance().Interval;
+            foreach(SaveTemplateWork tmp in Config.getInstance().Templates)
+            {
+                this.dtg_templates.Rows.Add(tmp.TemplatePath, tmp.OutputPath, tmp.Active);
+            }
         }
 
         private void template_plus_Click(object sender, EventArgs e)
@@ -273,6 +277,21 @@ namespace Belegleser
         {
             this.reader = new TemplateReader(this.dtg_templates);
             this.reader.RunWorkerAsync();
+        }
+
+        private void template_save_Click(object sender, EventArgs e)
+        {
+            Config cfg = Config.getInstance();
+            cfg.Templates = new List<SaveTemplateWork>();
+            foreach (DataGridViewRow row in this.dtg_templates.Rows)
+            {
+                SaveTemplateWork tmp = new SaveTemplateWork();
+                tmp.TemplatePath = row.Cells["Template"].Value.ToString();
+                tmp.OutputPath = row.Cells["output_directory"].Value.ToString();
+                tmp.Active = (bool)row.Cells["active"].Value;
+                cfg.Templates.Add(tmp);
+            }
+            cfg.Save();
         }
     }
 }

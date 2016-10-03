@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Belegleser</RootNamespace>
     <AssemblyName>Belegleser</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -90,6 +90,7 @@
     <Compile Include="Rechteckeigenschaften.cs" />
     <Compile Include="Area.cs" />
     <Compile Include="RectDataSet.cs" />
+    <Compile Include="SaveTemplateWork.cs" />
     <Compile Include="SizeablePictureBox.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace Belegleser
 {
-    class Config
+    public class Config
     {
         private static Config CONFIG;
 
@@ -16,21 +18,32 @@ namespace Belegleser
             {
                 //NEW 
                 CONFIG = new Config();
+                CONFIG.Load();
             }
             return CONFIG;
         }
 
         public Config()
         {
+           
+        }
+
+        public void Load()
+        {
             try
             {
-                string[] lines = File.ReadAllLines("settings.ini");
-                this.ScanDirectory = lines[0];
-                this.SQLHost = lines[1];
-                this.SQLInstance = lines[2];
-                this.SQLUser = lines[3];
-                this.password = lines[4];
-                this.Interval = lines[5];
+                XmlSerializer serializer = new XmlSerializer(typeof(Config));
+                using (StreamReader writer = new StreamReader("settings.ini"))
+                {
+                    Config cfg = (Config)serializer.Deserialize(writer);
+                    this.ScanDirectory = cfg.ScanDirectory;
+                    this.SQLHost = cfg.SQLHost;
+                    this.SQLInstance = cfg.SQLInstance;
+                    this.SQLUser = cfg.SQLUser;
+                    this.password = cfg.SQLPassword;
+                    this.Interval = cfg.Interval;
+                    this.Templates = cfg.Templates;
+                }
             }
             catch (Exception)
             {
@@ -62,12 +75,22 @@ namespace Belegleser
         {
             get
             {
-                return this.Decode(this.password);
+                return this.password;
             }
             set
             {
-                this.password = this.Encode(value);
+                this.password = value;
             }
+        }
+
+        public string getEncryptedPassword()
+        {
+            return this.Decode(this.password);
+        }
+
+        public void setEncryptedPassword(string pwd)
+        {
+            this.password = this.Encode(pwd);
         }
 
         public string Interval
@@ -77,14 +100,10 @@ namespace Belegleser
 
         public void Save()
         {
-            using (StreamWriter file = new StreamWriter("settings.ini"))
+            XmlSerializer serializer = new XmlSerializer(typeof(Config));
+            using (StreamWriter writer = new StreamWriter("settings.ini"))
             {
-                file.WriteLine(this.ScanDirectory);
-                file.WriteLine(this.SQLHost);
-                file.WriteLine(this.SQLInstance);
-                file.WriteLine(this.SQLUser);
-                file.WriteLine(this.password);
-                file.WriteLine(this.Interval);
+                serializer.Serialize(writer, this);
             }
             MessageBox.Show("Einstellungen wurden erfolgreich gespeichert!", "Erfolgreich", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -109,6 +128,11 @@ namespace Belegleser
         {
             byte[] decbuff = Convert.FromBase64String(password);
             return System.Text.Encoding.UTF8.GetString(decbuff);
+        }
+
+        public List<SaveTemplateWork> Templates
+        {
+            get; set;
         }
     }
 }

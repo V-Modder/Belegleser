@@ -52,9 +52,6 @@ namespace Belegleser
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtg_templates = new System.Windows.Forms.DataGridView();
-            this.Template = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.output_directory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.grp_box_sql = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -74,6 +71,9 @@ namespace Belegleser
             this.btn_directory = new System.Windows.Forms.Button();
             this.txt_directory = new System.Windows.Forms.TextBox();
             this.lbl_directory = new System.Windows.Forms.Label();
+            this.Template = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.output_directory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -167,6 +167,7 @@ namespace Belegleser
             this.template_save.Image = global::Belegleser.Properties.Resources.save;
             this.template_save.SmallImage = ((System.Drawing.Image)(resources.GetObject("template_save.SmallImage")));
             this.template_save.Text = "Speichern";
+            this.template_save.Click += new System.EventHandler(this.template_save_Click);
             // 
             // template_plus
             // 
@@ -240,18 +241,23 @@ namespace Belegleser
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dtg_templates);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(685, 301);
+            this.groupBox1.Size = new System.Drawing.Size(1031, 301);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Templates";
             // 
             // dtg_templates
             // 
             this.dtg_templates.AllowUserToAddRows = false;
             this.dtg_templates.AllowUserToDeleteRows = false;
+            this.dtg_templates.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtg_templates.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dtg_templates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_templates.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Template,
@@ -261,23 +267,8 @@ namespace Belegleser
             this.dtg_templates.Location = new System.Drawing.Point(6, 19);
             this.dtg_templates.Name = "dtg_templates";
             this.dtg_templates.RowHeadersVisible = false;
-            this.dtg_templates.Size = new System.Drawing.Size(367, 269);
+            this.dtg_templates.Size = new System.Drawing.Size(1019, 269);
             this.dtg_templates.TabIndex = 0;
-            // 
-            // Template
-            // 
-            this.Template.HeaderText = "Template";
-            this.Template.Name = "Template";
-            // 
-            // output_directory
-            // 
-            this.output_directory.HeaderText = "Ziel-Ordner";
-            this.output_directory.Name = "output_directory";
-            // 
-            // active
-            // 
-            this.active.HeaderText = "Aktiv";
-            this.active.Name = "active";
             // 
             // tabPage2
             // 
@@ -501,6 +492,24 @@ namespace Belegleser
             this.lbl_directory.Size = new System.Drawing.Size(86, 16);
             this.lbl_directory.TabIndex = 0;
             this.lbl_directory.Text = "Scan Ordner:";
+            // 
+            // Template
+            // 
+            this.Template.HeaderText = "Template";
+            this.Template.Name = "Template";
+            this.Template.Width = 76;
+            // 
+            // output_directory
+            // 
+            this.output_directory.HeaderText = "Ziel-Ordner";
+            this.output_directory.Name = "output_directory";
+            this.output_directory.Width = 84;
+            // 
+            // active
+            // 
+            this.active.HeaderText = "Aktiv";
+            this.active.Name = "active";
+            this.active.Width = 37;
             // 
             // Form1
             // 
