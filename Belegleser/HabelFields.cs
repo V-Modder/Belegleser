@@ -1,12 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Belegleser
@@ -18,12 +12,6 @@ namespace Belegleser
         {
             this.dtg = dtg;
             InitializeComponent();
-        }
-
-        public string value
-        {
-            get;
-            set;
         }
 
         private string myConnectionString = "SERVER="+Config.getInstance().MySQLHost + ";" +

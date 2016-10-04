@@ -31,11 +31,11 @@ namespace Belegleser
                 tif.SetField(TiffTag.PHOTOMETRIC, Photometric.RGB);
 
                 // Compression Level: 100 = No comression, 0 = Maximum 
-                tif.SetField(TiffTag.JPEGQUALITY, 40);
+                tif.SetField(TiffTag.JPEGQUALITY, 100);
                 tif.SetField(TiffTag.ROWSPERSTRIP, bmp.Height);
 
-                tif.SetField(TiffTag.XRESOLUTION, 96);
-                tif.SetField(TiffTag.YRESOLUTION, 96);
+                tif.SetField(TiffTag.XRESOLUTION, 300);
+                tif.SetField(TiffTag.YRESOLUTION, 300);
 
                 tif.SetField(TiffTag.BITSPERSAMPLE, 8);
                 tif.SetField(TiffTag.SAMPLESPERPIXEL, 3);
