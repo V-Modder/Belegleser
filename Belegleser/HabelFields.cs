@@ -38,7 +38,7 @@ namespace Belegleser
             this.dtg_habel_fields.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
             MySqlConnection connection = new MySqlConnection(myConnectionString);
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='hdhab070'";
+            command.CommandText = "select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='hdone030'";
             MySqlDataReader Reader;
             connection.Open();
             Reader = command.ExecuteReader();
