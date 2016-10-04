@@ -43,6 +43,11 @@ namespace Belegleser
                     this.password = cfg.SQLPassword;
                     this.Interval = cfg.Interval;
                     this.Templates = cfg.Templates;
+                    // MySQL
+                    this.MySQLHost = cfg.MySQLHost;
+                    this.MySQLDatabase = cfg.MySQLDatabase;
+                    this.MySQLUser = cfg.MySQLUser;
+                    this.MySQLPassword = cfg.MySQLPassword;
                 }
             }
             catch (Exception)
@@ -72,6 +77,37 @@ namespace Belegleser
         }
 
         public string SQLPassword
+        {
+            get
+            {
+                return this.password;
+            }
+            set
+            {
+                this.password = value;
+            }
+        }
+
+        //MySQL
+        public string MySQLHost
+        {
+            get;
+            set;
+        }
+
+        public string MySQLDatabase
+        {
+            get;
+            set;
+        }
+
+        public string MySQLUser
+        {
+            get;
+            set;
+        }
+
+        public string MySQLPassword
         {
             get
             {

@@ -60,6 +60,9 @@
       <HintPath>..\packages\BitMiracle.LibTiff.NET.2.4.560\lib\net20\BitMiracle.LibTiff.NET.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>.\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -84,6 +87,12 @@
   <ItemGroup>
     <Compile Include="Config.cs" />
     <Compile Include="ControlMoverOrResizer.cs" />
+    <Compile Include="HabelFields.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HabelFields.Designer.cs">
+      <DependentUpon>HabelFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Index.cs" />
     <Compile Include="IndexCreator.cs" />
     <Compile Include="ListBoxItem.cs" />
@@ -115,6 +124,9 @@
     <Compile Include="TiffEncoder.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HabelFields.resx">
+      <DependentUpon>HabelFields.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

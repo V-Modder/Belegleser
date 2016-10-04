@@ -39,10 +39,11 @@ namespace Belegleser
                         {
                             if ((bool)this.templData.Rows[i].Cells["active"].Value == true)
                             {
+                                int rnd = new Random().Next(000000001, 999999999);
                                 Bitmap img = (Bitmap)Bitmap.FromFile(file);
                                 idx = this.readFile(img, i);
-                                idx.write(this.templData.Rows[i].Cells["output_directory"].Value.ToString());
-                                TiffEncoder.Encode(idx.getFileName() + ".tiff", img);
+                                idx.write(this.templData.Rows[i].Cells["output_directory"].Value.ToString(), rnd);
+                                TiffEncoder.Encode(idx.getFileName(rnd) + ".tiff", img);
                             }
                         }
                     }
@@ -197,5 +198,6 @@ namespace Belegleser
 
             return sb.ToString();
         }
+
     }
 }

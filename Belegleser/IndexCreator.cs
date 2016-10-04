@@ -12,6 +12,8 @@ namespace Belegleser
         private BelArts belArt;
         private string belNr;
         private string fileName;
+        private int id;
+        private string id_filename;
 
         public IndexCreator()
         {
@@ -46,25 +48,34 @@ namespace Belegleser
             return str.ToString();
         }
 
-        public void write(string fileName)
+        public void write(string fileName, int id)
         {
             this.fileName = fileName;
-            using (StreamWriter sw = new StreamWriter(this.getFileName() + ".idx"))
+            using (StreamWriter sw = new StreamWriter(this.getFileName(id) + ".idx"))
             {
                 sw.Write(this.ToString());
             }
         }
 
-        public string getFileName()
+        public string getFileName(int id)
         {
-            return Path.Combine(this.fileName, Enum.GetName(typeof(BelArts), this.belArt) + "_" + this.belNr  + "_" +
-            DateTime.Now.Year +
-            DateTime.Now.Month +
-            DateTime.Now.Day +
-            DateTime.Now.Hour +
-            DateTime.Now.Minute +
-            DateTime.Now.Second +
-            DateTime.Now.Millisecond);
+            if (this.id == id)
+            {
+                return id_filename;
+            }
+            else
+            {
+                id_filename = Path.Combine(this.fileName, Enum.GetName(typeof(BelArts), this.belArt) + "_" + this.belNr + "_" +
+                DateTime.Now.Year +
+                DateTime.Now.Month +
+                DateTime.Now.Day +
+                DateTime.Now.Hour +
+                DateTime.Now.Minute +
+                DateTime.Now.Second +
+                DateTime.Now.Millisecond);
+                this.id = id;
+                return id_filename;
+            }
         }
     }
 }

@@ -68,9 +68,138 @@ namespace Belegleser
         {
             Form edit = new TemplateEditor();
             edit.ShowDialog();
+            //if (this.openFileDialog1.ShowDialog() == DialogResult.OK)
+            //{
+            //    this.pictureBox1.Image = Bitmap.FromFile(openFileDialog1.FileName);
+            //}
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+            Bitmap image = (Bitmap)Bitmap.FromFile("Scan1018.jpg");
+            tessnet2.Tesseract ocr = new tessnet2.Tesseract();
+            //ocr.SetVariable("tessedit_char_whitelist", "0123456789"); // If digit only
+           
+            try
+            {
+                ocr.Init(null, "deu", false); // To use correct tessdata
+            }
+            catch (Exception ee)
+            {
+                throw ee;
+            }
+            //ocr.ProgressEvent += Ocr_ProgressEvent;
+            //ocr.OcrDone += Ocr_Done;
+
+            IndexCreator idxCreator = new IndexCreator();
+            foreach (Index idx in this.tmpl.Index)
+            {
+                if (idx.Source.Equals("Statisch"))
+                {
+                    idxCreator.addValue(idx.Name, idx.Value);
+                }
+            }
+            Area a = this.getIdentifyingRect(this.tmpl);
+            Rectangle r = new Rectangle(a.X, a.Y, a.Width, a.Height);
+            this.result = ocr.DoOCR(image, r);
+            bool found = false;
+            foreach (Word word in (List<Word>)this.result)
+            {
+                if (word.Text.Contains(a.IdentifyingWord))
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if (found)
+            {
+                foreach (Area aa in this.tmpl.Reactangles)
+                {
+                    if (aa.IsIdentifying)
+                    {
+                        continue;
+                    }
+                    this.result = null;
+                    this.result = ocr.DoOCR(image, this.getRect(aa));
+                    this.addValues(idxCreator, aa.Name, this.getValue((List<Word>)this.result));
+                }
+
+                //foreach (Index idx in this.tmpl.Index)
+                //{
+                //    if (idx.Source.Equals("SQL"))
+                //    {
+                //        idxCreator.addValue(idx.Name, getSQLValue());
+                //    }
+                //}
+
+                idxCreator.write(Directory.GetCurrentDirectory());
+                TiffEncoder.Encode(idxCreator.getFileName() + ".tiff", image);
+            }
+        }
+
+        private string getValue(List<Word> words)
+        {
+            int lines = 0;
+            StringBuilder sb = new StringBuilder();
+            foreach (Word wrd in words)
+            {
+                if(wrd.LineIndex > lines)
+                {
+                    sb.Append(Environment.NewLine);
+                    lines++;
+                }
+                sb.Append(wrd.Text);
+            }
+
+            return sb.ToString();
+        } 
+
+        private void addValues(IndexCreator idxc, string name, string input)
+        {
+            foreach (Index idx in this.tmpl.Index)
+            {
+                if (idx.Source.Equals(name))
+                {
+                    string value = Regex.Match(input, idx.Value).Value;
+                    idxc.addValue(idx.Name, value);
+                    return;
+                }
+            }
+        }
+
+        private Area getIdentifyingRect(Template tmpl)
+        {
+            foreach (Area a in tmpl.Reactangles)
+            {
+                if (a.IsIdentifying)
+                {
+                    return a;
+                }
+            }
+            return null;
+        }
+
+        private Rectangle getRect(Area a)
+        {
+            return new Rectangle(a.X, a.Y, a.Width, a.Height);
         }
 
         object result;
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            //this.progressBar1.Value = e.ProgressPercentage;
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            //this.progressBar1.Value = 100;
+            foreach (tessnet2.Word word in (List <tessnet2.Word> )this.result)
+            {
+                this.txt_directory.Text += string.Format("{0} : {1}", word.LineIndex, word.Text) + Environment.NewLine;
+            }
+        }
 
         private void ribbonTab_general_ActiveChanged(object sender, EventArgs e)
         {
@@ -97,6 +226,7 @@ namespace Belegleser
             {
                 this.txt_directory.Text = op.SelectedPath;
             }
+
         }
 
         private void ribbonButton_save_Click(object sender, EventArgs e)
@@ -107,11 +237,6 @@ namespace Belegleser
             Config.getInstance().SQLUser = txt_sql_user.Text;
             Config.getInstance().SQLPassword = txt_sql_password.Text;
             Config.getInstance().Interval = mtxt_intervall.Text;
-            //MySQL
-            Config.getInstance().MySQLHost = txt_mysql_habel_host.Text;
-            Config.getInstance().MySQLDatabase = txt_mysql_habel_database.Text;
-            Config.getInstance().MySQLUser = txt_mysql_habel_user.Text;
-            Config.getInstance().MySQLPassword = txt_mysql_habel_pass.Text;
             Config.getInstance().Save();
         }
 
@@ -123,18 +248,9 @@ namespace Belegleser
             txt_sql_user.Text = Config.getInstance().SQLUser;
             txt_sql_password.Text = Config.getInstance().SQLPassword; //Verschlüsseln nur mit Base64
             mtxt_intervall.Text = Config.getInstance().Interval;
-            //MySQL
-            txt_mysql_habel_host.Text = Config.getInstance().MySQLHost;
-            txt_mysql_habel_database.Text = Config.getInstance().MySQLDatabase;
-            txt_mysql_habel_user.Text = Config.getInstance().MySQLUser;
-            txt_mysql_habel_pass.Text = Config.getInstance().MySQLPassword;
-            //
-            if (Config.getInstance().Templates != null)
+            foreach(SaveTemplateWork tmp in Config.getInstance().Templates)
             {
-                foreach (SaveTemplateWork tmp in Config.getInstance().Templates)
-                {
-                    this.dtg_templates.Rows.Add(tmp.TemplatePath, tmp.OutputPath, tmp.Active);
-                }
+                this.dtg_templates.Rows.Add(tmp.TemplatePath, tmp.OutputPath, tmp.Active);
             }
         }
 
@@ -142,7 +258,6 @@ namespace Belegleser
         {
             OpenFileDialog op = new OpenFileDialog();
             op.DefaultExt = "tpl";
-            op.Title = "Bitte ein Template auswählen";
             if (op.ShowDialog() == DialogResult.OK)
             {
                 dtg_templates.Rows.Add(op.FileName, "", false);
@@ -151,7 +266,11 @@ namespace Belegleser
 
         private void ribbonButton3_Click(object sender, EventArgs e)
         {
-            dtg_templates.Rows.Remove(dtg_templates.CurrentRow);
+            foreach (DataGridViewRow dt in dtg_templates.SelectedRows)
+            {
+                if ((bool)dt.Cells[2].Value == false)
+                dtg_templates.Rows.Remove(dt);
+            }
         }
 
         private void btn_play_Click(object sender, EventArgs e)

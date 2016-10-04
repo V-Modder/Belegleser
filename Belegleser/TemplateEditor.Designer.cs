@@ -44,6 +44,7 @@
             this.grp_list = new System.Windows.Forms.GroupBox();
             this.grp_prop = new System.Windows.Forms.GroupBox();
             this.grp_dagv = new System.Windows.Forms.GroupBox();
+            this.btn_habel_fields = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.col_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_source = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -51,6 +52,7 @@
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -151,7 +153,7 @@
             this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propertyGrid1.Location = new System.Drawing.Point(3, 16);
             this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(336, 264);
+            this.propertyGrid1.Size = new System.Drawing.Size(336, 210);
             this.propertyGrid1.TabIndex = 2;
             // 
             // listBox1
@@ -160,7 +162,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(3, 16);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(310, 245);
+            this.listBox1.Size = new System.Drawing.Size(310, 209);
             this.listBox1.TabIndex = 3;
             // 
             // splitContainer1
@@ -198,7 +200,7 @@
             this.grp_list.Controls.Add(this.listBox1);
             this.grp_list.Location = new System.Drawing.Point(3, 3);
             this.grp_list.Name = "grp_list";
-            this.grp_list.Size = new System.Drawing.Size(316, 264);
+            this.grp_list.Size = new System.Drawing.Size(316, 228);
             this.grp_list.TabIndex = 0;
             this.grp_list.TabStop = false;
             this.grp_list.Text = "Bereiche";
@@ -206,22 +208,34 @@
             // grp_prop
             // 
             this.grp_prop.Controls.Add(this.propertyGrid1);
-            this.grp_prop.Location = new System.Drawing.Point(3, 273);
+            this.grp_prop.Location = new System.Drawing.Point(3, 237);
             this.grp_prop.Name = "grp_prop";
-            this.grp_prop.Size = new System.Drawing.Size(342, 283);
+            this.grp_prop.Size = new System.Drawing.Size(342, 229);
             this.grp_prop.TabIndex = 1;
             this.grp_prop.TabStop = false;
             this.grp_prop.Text = "Eigenschaften";
             // 
             // grp_dagv
             // 
+            this.grp_dagv.Controls.Add(this.btn_habel_fields);
             this.grp_dagv.Controls.Add(this.dataGridView1);
-            this.grp_dagv.Location = new System.Drawing.Point(3, 562);
+            this.grp_dagv.Location = new System.Drawing.Point(3, 472);
             this.grp_dagv.Name = "grp_dagv";
-            this.grp_dagv.Size = new System.Drawing.Size(342, 251);
+            this.grp_dagv.Size = new System.Drawing.Size(342, 349);
             this.grp_dagv.TabIndex = 2;
             this.grp_dagv.TabStop = false;
             this.grp_dagv.Text = "Index Datei";
+            // 
+            // btn_habel_fields
+            // 
+            this.btn_habel_fields.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btn_habel_fields.Location = new System.Drawing.Point(3, 295);
+            this.btn_habel_fields.Name = "btn_habel_fields";
+            this.btn_habel_fields.Size = new System.Drawing.Size(336, 51);
+            this.btn_habel_fields.TabIndex = 5;
+            this.btn_habel_fields.Text = "Verfügbare Felder";
+            this.btn_habel_fields.UseVisualStyleBackColor = true;
+            this.btn_habel_fields.Click += new System.EventHandler(this.btn_habel_fields_Click);
             // 
             // dataGridView1
             // 
@@ -230,10 +244,11 @@
             this.col_name,
             this.col_source,
             this.col_value});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView1.Location = new System.Drawing.Point(3, 16);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(336, 232);
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(336, 273);
             this.dataGridView1.TabIndex = 4;
             // 
             // col_name
@@ -266,6 +281,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TemplateEditor";
             this.Text = "TemplateEditor";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.TemplateEditor_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -274,6 +290,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.grp_list.ResumeLayout(false);
@@ -306,5 +323,6 @@
         private System.Windows.Forms.GroupBox grp_prop;
         private System.Windows.Forms.GroupBox grp_dagv;
         private System.Windows.Forms.ToolStripButton btn_load;
+        private System.Windows.Forms.Button btn_habel_fields;
     }
 }

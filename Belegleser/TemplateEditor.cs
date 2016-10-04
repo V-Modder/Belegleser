@@ -198,5 +198,11 @@ namespace Belegleser
                 dataGridView1.Rows.Add(idx.Name, idx.Source, idx.Value);
             }
         }
+
+        private void btn_habel_fields_Click(object sender, EventArgs e)
+        {
+            Form frm = new HabelFields(this.dataGridView1);
+            frm.ShowDialog();
+        }
     }
 }
