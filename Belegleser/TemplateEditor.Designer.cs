@@ -49,6 +49,9 @@
             this.col_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_source = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.col_value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btn_test_rectangle = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
@@ -69,10 +72,14 @@
             this.btn_load,
             this.btn_load_picture,
             this.btn_Save,
+            this.toolStripSeparator1,
             this.btn_plus_rectangle,
-            this.btn_minus_rectangle});
+            this.btn_minus_rectangle,
+            this.toolStripSeparator2,
+            this.btn_test_rectangle});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.toolStrip1.Size = new System.Drawing.Size(1207, 38);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
@@ -270,6 +277,26 @@
             this.col_value.HeaderText = "Wert";
             this.col_value.Name = "col_value";
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 38);
+            // 
+            // btn_test_rectangle
+            // 
+            this.btn_test_rectangle.Image = ((System.Drawing.Image)(resources.GetObject("btn_test_rectangle.Image")));
+            this.btn_test_rectangle.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_test_rectangle.Name = "btn_test_rectangle";
+            this.btn_test_rectangle.Size = new System.Drawing.Size(85, 35);
+            this.btn_test_rectangle.Text = "Bereich testen";
+            this.btn_test_rectangle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btn_test_rectangle.Click += new System.EventHandler(this.btn_test_rectangle_Click);
+            // 
             // TemplateEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -324,5 +351,8 @@
         private System.Windows.Forms.GroupBox grp_dagv;
         private System.Windows.Forms.ToolStripButton btn_load;
         private System.Windows.Forms.Button btn_habel_fields;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton btn_test_rectangle;
     }
 }

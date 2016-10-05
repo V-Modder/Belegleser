@@ -84,6 +84,10 @@ namespace Belegleser
             this.btn_directory = new System.Windows.Forms.Button();
             this.txt_directory = new System.Windows.Forms.TextBox();
             this.lbl_directory = new System.Windows.Forms.Label();
+            this.tabContr_settings = new System.Windows.Forms.TabControl();
+            this.tabPage_generalSettings = new System.Windows.Forms.TabPage();
+            this.tabPage_database = new System.Windows.Forms.TabPage();
+            this.tabPage_pictureQuality = new System.Windows.Forms.TabPage();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -95,6 +99,9 @@ namespace Belegleser
             this.tableLayoutPanel1.SuspendLayout();
             this.grp_box_intervall.SuspendLayout();
             this.grp_box_directory.SuspendLayout();
+            this.tabContr_settings.SuspendLayout();
+            this.tabPage_generalSettings.SuspendLayout();
+            this.tabPage_database.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -299,10 +306,7 @@ namespace Belegleser
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.grp_mysql_habel);
-            this.tabPage2.Controls.Add(this.grp_box_sql);
-            this.tabPage2.Controls.Add(this.grp_box_intervall);
-            this.tabPage2.Controls.Add(this.grp_box_directory);
+            this.tabPage2.Controls.Add(this.tabContr_settings);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -314,7 +318,7 @@ namespace Belegleser
             // grp_mysql_habel
             // 
             this.grp_mysql_habel.Controls.Add(this.tableLayoutPanel2);
-            this.grp_mysql_habel.Location = new System.Drawing.Point(515, 237);
+            this.grp_mysql_habel.Location = new System.Drawing.Point(512, 17);
             this.grp_mysql_habel.Name = "grp_mysql_habel";
             this.grp_mysql_habel.Size = new System.Drawing.Size(460, 188);
             this.grp_mysql_habel.TabIndex = 5;
@@ -440,7 +444,7 @@ namespace Belegleser
             // grp_box_sql
             // 
             this.grp_box_sql.Controls.Add(this.tableLayoutPanel1);
-            this.grp_box_sql.Location = new System.Drawing.Point(9, 237);
+            this.grp_box_sql.Location = new System.Drawing.Point(6, 17);
             this.grp_box_sql.Name = "grp_box_sql";
             this.grp_box_sql.Size = new System.Drawing.Size(460, 188);
             this.grp_box_sql.TabIndex = 2;
@@ -568,9 +572,9 @@ namespace Belegleser
             this.grp_box_intervall.Controls.Add(this.lbl_intervall_expl);
             this.grp_box_intervall.Controls.Add(this.mtxt_intervall);
             this.grp_box_intervall.Controls.Add(this.lbl_intervall);
-            this.grp_box_intervall.Location = new System.Drawing.Point(9, 117);
+            this.grp_box_intervall.Location = new System.Drawing.Point(6, 103);
             this.grp_box_intervall.Name = "grp_box_intervall";
-            this.grp_box_intervall.Size = new System.Drawing.Size(460, 100);
+            this.grp_box_intervall.Size = new System.Drawing.Size(567, 100);
             this.grp_box_intervall.TabIndex = 1;
             this.grp_box_intervall.TabStop = false;
             this.grp_box_intervall.Text = "Intervall";
@@ -611,17 +615,17 @@ namespace Belegleser
             this.grp_box_directory.Controls.Add(this.btn_directory);
             this.grp_box_directory.Controls.Add(this.txt_directory);
             this.grp_box_directory.Controls.Add(this.lbl_directory);
-            this.grp_box_directory.Location = new System.Drawing.Point(9, 20);
+            this.grp_box_directory.Location = new System.Drawing.Point(7, 6);
             this.grp_box_directory.Name = "grp_box_directory";
-            this.grp_box_directory.Size = new System.Drawing.Size(460, 91);
+            this.grp_box_directory.Size = new System.Drawing.Size(566, 91);
             this.grp_box_directory.TabIndex = 0;
             this.grp_box_directory.TabStop = false;
-            this.grp_box_directory.Text = "Scan Ordner";
+            this.grp_box_directory.Text = "Scan Ordner (Polling)";
             // 
             // btn_directory
             // 
             this.btn_directory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_directory.Location = new System.Drawing.Point(339, 37);
+            this.btn_directory.Location = new System.Drawing.Point(473, 36);
             this.btn_directory.Name = "btn_directory";
             this.btn_directory.Size = new System.Drawing.Size(75, 23);
             this.btn_directory.TabIndex = 2;
@@ -634,7 +638,7 @@ namespace Belegleser
             this.txt_directory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_directory.Location = new System.Drawing.Point(107, 37);
             this.txt_directory.Name = "txt_directory";
-            this.txt_directory.Size = new System.Drawing.Size(226, 22);
+            this.txt_directory.Size = new System.Drawing.Size(348, 22);
             this.txt_directory.TabIndex = 1;
             // 
             // lbl_directory
@@ -646,6 +650,52 @@ namespace Belegleser
             this.lbl_directory.Size = new System.Drawing.Size(86, 16);
             this.lbl_directory.TabIndex = 0;
             this.lbl_directory.Text = "Scan Ordner:";
+            // 
+            // tabContr_settings
+            // 
+            this.tabContr_settings.Controls.Add(this.tabPage_generalSettings);
+            this.tabContr_settings.Controls.Add(this.tabPage_database);
+            this.tabContr_settings.Controls.Add(this.tabPage_pictureQuality);
+            this.tabContr_settings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabContr_settings.Location = new System.Drawing.Point(3, 3);
+            this.tabContr_settings.Name = "tabContr_settings";
+            this.tabContr_settings.SelectedIndex = 0;
+            this.tabContr_settings.Size = new System.Drawing.Size(1037, 681);
+            this.tabContr_settings.TabIndex = 6;
+            // 
+            // tabPage_generalSettings
+            // 
+            this.tabPage_generalSettings.Controls.Add(this.grp_box_directory);
+            this.tabPage_generalSettings.Controls.Add(this.grp_box_intervall);
+            this.tabPage_generalSettings.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_generalSettings.Name = "tabPage_generalSettings";
+            this.tabPage_generalSettings.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_generalSettings.Size = new System.Drawing.Size(1029, 655);
+            this.tabPage_generalSettings.TabIndex = 0;
+            this.tabPage_generalSettings.Text = "Allgemeine Einstellungen";
+            this.tabPage_generalSettings.UseVisualStyleBackColor = true;
+            // 
+            // tabPage_database
+            // 
+            this.tabPage_database.Controls.Add(this.grp_box_sql);
+            this.tabPage_database.Controls.Add(this.grp_mysql_habel);
+            this.tabPage_database.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_database.Name = "tabPage_database";
+            this.tabPage_database.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_database.Size = new System.Drawing.Size(1029, 655);
+            this.tabPage_database.TabIndex = 1;
+            this.tabPage_database.Text = "Datenbanken";
+            this.tabPage_database.UseVisualStyleBackColor = true;
+            // 
+            // tabPage_pictureQuality
+            // 
+            this.tabPage_pictureQuality.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_pictureQuality.Name = "tabPage_pictureQuality";
+            this.tabPage_pictureQuality.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_pictureQuality.Size = new System.Drawing.Size(1029, 655);
+            this.tabPage_pictureQuality.TabIndex = 2;
+            this.tabPage_pictureQuality.Text = "Bildqualität";
+            this.tabPage_pictureQuality.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -673,6 +723,9 @@ namespace Belegleser
             this.grp_box_intervall.PerformLayout();
             this.grp_box_directory.ResumeLayout(false);
             this.grp_box_directory.PerformLayout();
+            this.tabContr_settings.ResumeLayout(false);
+            this.tabPage_generalSettings.ResumeLayout(false);
+            this.tabPage_database.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -733,6 +786,10 @@ namespace Belegleser
         private System.Windows.Forms.Label lbl_mysql_habel_database;
         private System.Windows.Forms.Label lbl_mysql_habel_user;
         private System.Windows.Forms.TextBox txt_mysql_habel_host;
+        private System.Windows.Forms.TabControl tabContr_settings;
+        private System.Windows.Forms.TabPage tabPage_generalSettings;
+        private System.Windows.Forms.TabPage tabPage_database;
+        private System.Windows.Forms.TabPage tabPage_pictureQuality;
     }
 }
 

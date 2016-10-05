@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using tessnet2;
 
 namespace Belegleser
 {
@@ -203,6 +205,58 @@ namespace Belegleser
         {
             Form frm = new HabelFields(this.dataGridView1);
             frm.ShowDialog();
+        }
+
+        private void btn_test_rectangle_Click(object sender, EventArgs e)
+        {
+            Tesseract ocr = new Tesseract();
+            Bitmap bmp = new Bitmap(this.pic_background.Image);
+            try
+            {
+                ocr.Init(null, "deu", false); // To use correct tessdata
+            }
+            catch (Exception ee)
+            {
+                throw ee;
+            }
+            int index = listBox1.SelectedIndex;
+            int location_x = rects[index].Properties.Location.X;
+            int location_y = rects[index].Properties.Location.Y;
+            int size_height = rects[index].Properties.Size.Height;
+            int size_width = rects[index].Properties.Size.Width;
+            Rectangle r = new Rectangle(location_x, location_y, size_width, size_height);
+            List<Word> result;
+            result = ocr.DoOCR(bmp, r);
+            MessageBox.Show(getValue(result));
+        }
+
+        
+
+        private string getValue(List<Word> words)
+        {
+            int lines = 0;
+            StringBuilder sb = new StringBuilder();
+            bool isFirst = true;
+            foreach (Word wrd in words)
+            {
+                if (wrd.LineIndex > lines)
+                {
+                    sb.Append("\n");
+                    isFirst = true;
+                    lines++;
+                }
+                if (isFirst)
+                {
+                    isFirst = false;
+                }
+                else
+                {
+                    sb.Append(" ");
+                }
+                sb.Append(wrd.Text);
+            }
+
+            return sb.ToString();
         }
     }
 }
