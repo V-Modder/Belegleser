@@ -33,8 +33,11 @@
             this.btn_load = new System.Windows.Forms.ToolStripButton();
             this.btn_load_picture = new System.Windows.Forms.ToolStripButton();
             this.btn_Save = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btn_plus_rectangle = new System.Windows.Forms.ToolStripButton();
             this.btn_minus_rectangle = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btn_test_rectangle = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pic_background = new System.Windows.Forms.PictureBox();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
@@ -49,9 +52,8 @@
             this.col_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_source = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.col_value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btn_test_rectangle = new System.Windows.Forms.ToolStripButton();
+            this.txt_regex = new System.Windows.Forms.ToolStripTextBox();
+            this.lbl_regex = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
@@ -76,7 +78,9 @@
             this.btn_plus_rectangle,
             this.btn_minus_rectangle,
             this.toolStripSeparator2,
-            this.btn_test_rectangle});
+            this.btn_test_rectangle,
+            this.lbl_regex,
+            this.txt_regex});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -115,6 +119,11 @@
             this.btn_Save.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
+            // 
             // btn_plus_rectangle
             // 
             this.btn_plus_rectangle.Image = global::Belegleser.Properties.Resources.plus;
@@ -134,6 +143,21 @@
             this.btn_minus_rectangle.Text = "Bereich entfernen";
             this.btn_minus_rectangle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_minus_rectangle.Click += new System.EventHandler(this.btn_minus_rectangle_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 38);
+            // 
+            // btn_test_rectangle
+            // 
+            this.btn_test_rectangle.Image = global::Belegleser.Properties.Resources.bereich_testen;
+            this.btn_test_rectangle.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_test_rectangle.Name = "btn_test_rectangle";
+            this.btn_test_rectangle.Size = new System.Drawing.Size(85, 35);
+            this.btn_test_rectangle.Text = "Bereich testen";
+            this.btn_test_rectangle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btn_test_rectangle.Click += new System.EventHandler(this.btn_test_rectangle_Click);
             // 
             // panel1
             // 
@@ -277,25 +301,17 @@
             this.col_value.HeaderText = "Wert";
             this.col_value.Name = "col_value";
             // 
-            // toolStripSeparator1
+            // txt_regex
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
+            this.txt_regex.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_regex.Name = "txt_regex";
+            this.txt_regex.Size = new System.Drawing.Size(200, 38);
             // 
-            // toolStripSeparator2
+            // lbl_regex
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 38);
-            // 
-            // btn_test_rectangle
-            // 
-            this.btn_test_rectangle.Image = ((System.Drawing.Image)(resources.GetObject("btn_test_rectangle.Image")));
-            this.btn_test_rectangle.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_test_rectangle.Name = "btn_test_rectangle";
-            this.btn_test_rectangle.Size = new System.Drawing.Size(85, 35);
-            this.btn_test_rectangle.Text = "Bereich testen";
-            this.btn_test_rectangle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btn_test_rectangle.Click += new System.EventHandler(this.btn_test_rectangle_Click);
+            this.lbl_regex.Name = "lbl_regex";
+            this.lbl_regex.Size = new System.Drawing.Size(41, 35);
+            this.lbl_regex.Text = "Regex:";
             // 
             // TemplateEditor
             // 
@@ -354,5 +370,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btn_test_rectangle;
+        private System.Windows.Forms.ToolStripLabel lbl_regex;
+        private System.Windows.Forms.ToolStripTextBox txt_regex;
     }
 }

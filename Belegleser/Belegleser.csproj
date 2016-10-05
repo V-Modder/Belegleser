@@ -157,6 +157,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Resources\bereich_testen.png" />
     <Content Include="Resources\hardware-scanner.ico" />
     <Content Include="Resources\hardware-scanner.png" />
     <Content Include="Resources\load.png" />

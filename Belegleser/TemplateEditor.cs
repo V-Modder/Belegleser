@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using tessnet2;
@@ -227,7 +228,13 @@ namespace Belegleser
             Rectangle r = new Rectangle(location_x, location_y, size_width, size_height);
             List<Word> result;
             result = ocr.DoOCR(bmp, r);
-            MessageBox.Show(getValue(result));
+            Match mat = Regex.Match(getValue(result), txt_regex.Text);
+            string ergebnis = "";
+            if (mat.Success)
+            {
+                ergebnis = mat.Groups[1].Value;
+            }
+            MessageBox.Show(ergebnis);
         }
 
         
@@ -255,7 +262,6 @@ namespace Belegleser
                 }
                 sb.Append(wrd.Text);
             }
-
             return sb.ToString();
         }
     }
