@@ -38,6 +38,8 @@
             this.btn_minus_rectangle = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btn_test_rectangle = new System.Windows.Forms.ToolStripButton();
+            this.lbl_regex = new System.Windows.Forms.ToolStripLabel();
+            this.txt_regex = new System.Windows.Forms.ToolStripTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pic_background = new System.Windows.Forms.PictureBox();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
@@ -52,8 +54,6 @@
             this.col_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_source = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.col_value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txt_regex = new System.Windows.Forms.ToolStripTextBox();
-            this.lbl_regex = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
@@ -158,6 +158,19 @@
             this.btn_test_rectangle.Text = "Bereich testen";
             this.btn_test_rectangle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_test_rectangle.Click += new System.EventHandler(this.btn_test_rectangle_Click);
+            // 
+            // lbl_regex
+            // 
+            this.lbl_regex.Name = "lbl_regex";
+            this.lbl_regex.Size = new System.Drawing.Size(41, 35);
+            this.lbl_regex.Text = "Regex:";
+            // 
+            // txt_regex
+            // 
+            this.txt_regex.BackColor = System.Drawing.Color.Orange;
+            this.txt_regex.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_regex.Name = "txt_regex";
+            this.txt_regex.Size = new System.Drawing.Size(200, 38);
             // 
             // panel1
             // 
@@ -300,18 +313,6 @@
             // 
             this.col_value.HeaderText = "Wert";
             this.col_value.Name = "col_value";
-            // 
-            // txt_regex
-            // 
-            this.txt_regex.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_regex.Name = "txt_regex";
-            this.txt_regex.Size = new System.Drawing.Size(200, 38);
-            // 
-            // lbl_regex
-            // 
-            this.lbl_regex.Name = "lbl_regex";
-            this.lbl_regex.Size = new System.Drawing.Size(41, 35);
-            this.lbl_regex.Text = "Regex:";
             // 
             // TemplateEditor
             // 

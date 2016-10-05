@@ -95,6 +95,8 @@ namespace Belegleser
             {
                 col.Items.Add(itm.Name);
             }
+            //dataGridView1.InvalidateColumn(1);
+            dataGridView1.Refresh();
         }
 
         private void btn_load_picture_Click(object sender, EventArgs e)
@@ -234,7 +236,11 @@ namespace Belegleser
             {
                 ergebnis = mat.Groups[1].Value;
             }
-            MessageBox.Show(ergebnis);
+            string msgtext = "Der Text Bereich wurde ausgelesen:\n########################\n" + ergebnis + "\n########################";
+            if (MessageBox.Show(msgtext, "Erfolgreich", MessageBoxButtons.OK, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.OK)
+            {
+                Clipboard.SetText(ergebnis);
+            }
         }
 
         

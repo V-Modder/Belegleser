@@ -20,32 +20,6 @@ namespace Belegleser
         /// </remarks>
         public static void Encode(string path, Bitmap bmp)
         {
-
-            //Bitmap myBitmap;
-            //ImageCodecInfo myImageCodecInfo;
-            //EncoderParameter myEncoderParameter;
-            //EncoderParameters myEncoderParameters;
-
-            //// Create a Bitmap object based on a BMP file.
-            //myBitmap = new Bitmap(bmp, new Size(2480, 3507));
-
-            //// Get an ImageCodecInfo object that represents the TIFF codec.
-            //myImageCodecInfo = GetEncoderInfo("image/tiff");
-
-            //// Create an EncoderParameters object.
-            //// An EncoderParameters object has an array of EncoderParameter
-            //// objects. In this case, there is only one
-            //// EncoderParameter object in the array.
-            //myEncoderParameters = new EncoderParameters(2);
-
-            //// Save the bitmap as a TIFF file with LZW compression.
-            //myEncoderParameter = new EncoderParameter(Encoder.Compression, (long)EncoderValue.CompressionLZW);
-            //myEncoderParameters.Param[0] = myEncoderParameter;
-            //myEncoderParameter = new EncoderParameter(Encoder.ColorDepth, 24L);
-            //myEncoderParameter = new EncoderParameter(Encoder.Quality, 100L);
-            //myEncoderParameters.Param[1] = myEncoderParameter;
-            //myBitmap.SetResolution(300, 300);
-            //myBitmap.Save(path, myImageCodecInfo, myEncoderParameters);
             Bitmap tmp = new Bitmap(bmp);
             using (Tiff tif = Tiff.Open(path, "w"))
             {
@@ -76,22 +50,8 @@ namespace Belegleser
                     offset += stride;
                 }
             }
-            //myBitmap.Dispose();
         }
-
-        //TEst
-        private static ImageCodecInfo GetEncoderInfo(String mimeType)
-        {
-            int j;
-            ImageCodecInfo[] encoders;
-            encoders = ImageCodecInfo.GetImageEncoders();
-            for (j = 0; j < encoders.Length; ++j)
-            {
-                if (encoders[j].MimeType == mimeType)
-                    return encoders[j];
-            }
-            return null;
-        }
+       
 
         private static byte[] getImageRasterBytes(Bitmap bmp, PixelFormat format)
         {
