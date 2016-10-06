@@ -20,6 +20,19 @@ namespace Belegleser
             keyValuePair = new Dictionary<string, string>();
         }
 
+        public string getValueByKey(string key)
+        {
+            foreach(KeyValuePair<string, string> val in this.keyValuePair)
+            {
+                if(val.Key.ToLower().Trim().Equals(key.ToLower().Trim()))
+                {
+                    return val.Value;
+                }
+            }
+
+            return "";
+        }
+
         public void addValue(string key, string value)
         {
             if (key.Equals("BelArt"))

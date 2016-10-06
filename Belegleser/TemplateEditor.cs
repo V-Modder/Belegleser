@@ -92,6 +92,8 @@ namespace Belegleser
             DataGridViewComboBoxColumn col = (DataGridViewComboBoxColumn)this.dataGridView1.Columns["col_source"];
             col.Items.Clear();
             col.Items.Add("Statisch");
+            col.Items.Add("MsSQL");
+            col.Items.Add("MySQL");
 
             foreach (ListBoxItem itm in this.listBox1.Items)
             {

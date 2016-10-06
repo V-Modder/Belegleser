@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
+using System.Linq;
 using tessnet2;
 
 namespace Belegleser
@@ -32,13 +33,13 @@ namespace Belegleser
                 sw.Start();
                 foreach (string file in Directory.GetFiles(Config.getInstance().ScanDirectory))
                 {
-                    bool abgemischt = false;
                     if (Regex.Match(file, searchPattern, RegexOptions.IgnoreCase).Success)
                     {
                         IndexCreator idx = null;
+                        bool abgemischt = false;
                         for (int i = 0; i < this.templData.Rows.Count && idx == null; i++)
                         {
-                            if ((bool)this.templData.Rows[i].Cells["active"].Value == true)
+                            if ((bool)this.templData.Rows[i].Cells["active"].Value)
                             {
                                 int rnd = new Random().Next(000000001, 999999999);
                                 Bitmap img = (Bitmap)Bitmap.FromFile(file);
@@ -49,18 +50,11 @@ namespace Belegleser
                                     TiffEncoder.Encode(idx.getFileName(rnd) + ".tiff", img);
                                     img.Dispose();
                                     abgemischt = true;
+                                    break;
                                 }
-                                else
-                                {
-                                    abgemischt = false;
-                                }
-                            }
-                            else
-                            {
-                                return;
                             }
                         }
-                        if (abgemischt == true)
+                        if (abgemischt)
                         {
                             File.Delete(file);
                         }
@@ -140,24 +134,51 @@ namespace Belegleser
                     result = ocr.DoOCR(image, this.getRect(aa));
                     aa.Value = this.getValue(result);
                 }
+
                 foreach (Index idx in tmpl.Index)
                 {
-                    if (!idx.Source.Equals("Statisch") && !idx.Source.Equals("SQL"))
+                    if (!idx.Source.Equals("Statisch") && !(idx.Source.Equals("MsSQL") || idx.Source.Equals("MySQL")))
                     {
                         this.addValues(tmpl, idxCreator, idx);
                     }
                 }
                
-                //foreach (Index idx in this.tmpl.Index)
-                //{
-                //    if (idx.Source.Equals("SQL"))
-                //    {
-                //        idxCreator.addValue(idx.Name, getSQLValue());
-                //    }
-                //}
+                foreach (Index idx in tmpl.Index)
+                {
+                    if (idx.Source.Equals("MsSQL"))
+                    {
+                        idxCreator.addValue(idx.Name, getSQLValue(idx.Value, idxCreator, DBType.MsSQL));
+                    }
+                    else if(idx.Source.Equals("MySQL"))
+                    {
+                        idxCreator.addValue(idx.Name, getSQLValue(idx.Value, idxCreator, DBType.MySQL));
+                    }
+                }
                 return idxCreator;
             }
             return null;
+        }
+
+        private string getSQLValue(string sql, IndexCreator idxCreator, DBType type)
+        {
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            foreach (Match mat in Regex.Matches(sql, @"\§§\w+"))
+            {
+                string paramName = mat.Value.Replace("§§", "@");
+                parameters.Add(paramName, this.getValueFromRect(idxCreator, paramName));
+            }
+
+            return Database.ExecuteQuery(sql.Replace("§§", "@"), parameters, type);
+        }
+
+        private string getValueFromRect(IndexCreator idxCreator, string name)
+        {
+            if(name.StartsWith("@"))
+            {
+                name = name.Substring(1);
+            }
+
+            return idxCreator.getValueByKey(name);
         }
 
         private Area getIdentifyingRect(Template tmpl)

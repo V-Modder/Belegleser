@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="Config.cs" />
     <Compile Include="ControlMoverOrResizer.cs" />
+    <Compile Include="Database.cs" />
     <Compile Include="HabelFields.cs">
       <SubType>Form</SubType>
     </Compile>
