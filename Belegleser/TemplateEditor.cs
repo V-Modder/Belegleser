@@ -31,6 +31,8 @@ namespace Belegleser
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
+            dataGridView1.EndEdit();
+            dataGridView1.Refresh();
             SaveFileDialog ofd = new SaveFileDialog();
             ofd.DefaultExt = "tpl";
             ofd.FileName = "Template_";
@@ -96,6 +98,7 @@ namespace Belegleser
                 col.Items.Add(itm.Name);
             }
             //dataGridView1.InvalidateColumn(1);
+            dataGridView1.EndEdit();
             dataGridView1.Refresh();
         }
 

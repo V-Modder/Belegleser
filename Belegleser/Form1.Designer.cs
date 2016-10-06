@@ -56,16 +56,17 @@ namespace Belegleser
             this.output_directory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.grp_mysql_habel = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.txt_mysql_habel_pass = new System.Windows.Forms.TextBox();
-            this.txt_mysql_habel_user = new System.Windows.Forms.TextBox();
-            this.txt_mysql_habel_database = new System.Windows.Forms.TextBox();
-            this.lbl_mysql_habel_host = new System.Windows.Forms.Label();
-            this.lbl_mysql_habel_pass = new System.Windows.Forms.Label();
-            this.lbl_mysql_habel_database = new System.Windows.Forms.Label();
-            this.lbl_mysql_habel_user = new System.Windows.Forms.Label();
-            this.txt_mysql_habel_host = new System.Windows.Forms.TextBox();
+            this.tabContr_settings = new System.Windows.Forms.TabControl();
+            this.tabPage_generalSettings = new System.Windows.Forms.TabPage();
+            this.grp_box_directory = new System.Windows.Forms.GroupBox();
+            this.btn_directory = new System.Windows.Forms.Button();
+            this.txt_directory = new System.Windows.Forms.TextBox();
+            this.lbl_directory = new System.Windows.Forms.Label();
+            this.grp_box_intervall = new System.Windows.Forms.GroupBox();
+            this.lbl_intervall_expl = new System.Windows.Forms.Label();
+            this.mtxt_intervall = new System.Windows.Forms.MaskedTextBox();
+            this.lbl_intervall = new System.Windows.Forms.Label();
+            this.tabPage_database = new System.Windows.Forms.TabPage();
             this.grp_box_sql = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txt_sql_password = new System.Windows.Forms.TextBox();
@@ -76,32 +77,54 @@ namespace Belegleser
             this.lbl_sql_instanz = new System.Windows.Forms.Label();
             this.lbl_sql_Benutzer = new System.Windows.Forms.Label();
             this.txt_sql_host = new System.Windows.Forms.TextBox();
-            this.grp_box_intervall = new System.Windows.Forms.GroupBox();
-            this.lbl_intervall_expl = new System.Windows.Forms.Label();
-            this.mtxt_intervall = new System.Windows.Forms.MaskedTextBox();
-            this.lbl_intervall = new System.Windows.Forms.Label();
-            this.grp_box_directory = new System.Windows.Forms.GroupBox();
-            this.btn_directory = new System.Windows.Forms.Button();
-            this.txt_directory = new System.Windows.Forms.TextBox();
-            this.lbl_directory = new System.Windows.Forms.Label();
-            this.tabContr_settings = new System.Windows.Forms.TabControl();
-            this.tabPage_generalSettings = new System.Windows.Forms.TabPage();
-            this.tabPage_database = new System.Windows.Forms.TabPage();
+            this.grp_mysql_habel = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.txt_mysql_habel_pass = new System.Windows.Forms.TextBox();
+            this.txt_mysql_habel_user = new System.Windows.Forms.TextBox();
+            this.txt_mysql_habel_database = new System.Windows.Forms.TextBox();
+            this.lbl_mysql_habel_host = new System.Windows.Forms.Label();
+            this.lbl_mysql_habel_pass = new System.Windows.Forms.Label();
+            this.lbl_mysql_habel_database = new System.Windows.Forms.Label();
+            this.lbl_mysql_habel_user = new System.Windows.Forms.Label();
+            this.txt_mysql_habel_host = new System.Windows.Forms.TextBox();
             this.tabPage_pictureQuality = new System.Windows.Forms.TabPage();
+            this.grp_pic_resolution = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.txt_pic_y = new System.Windows.Forms.TextBox();
+            this.lbl_pix_x = new System.Windows.Forms.Label();
+            this.lbl_piy_y = new System.Windows.Forms.Label();
+            this.txt_pic_x = new System.Windows.Forms.TextBox();
+            this.grp_pic_res = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_pic_dpi = new System.Windows.Forms.TextBox();
+            this.grp_pic_compression = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_pic_dpi = new System.Windows.Forms.Label();
+            this.trackBar_pic = new System.Windows.Forms.TrackBar();
+            this.txt_pic_compression = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_templates)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.grp_mysql_habel.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.grp_box_sql.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.grp_box_intervall.SuspendLayout();
-            this.grp_box_directory.SuspendLayout();
             this.tabContr_settings.SuspendLayout();
             this.tabPage_generalSettings.SuspendLayout();
+            this.grp_box_directory.SuspendLayout();
+            this.grp_box_intervall.SuspendLayout();
             this.tabPage_database.SuspendLayout();
+            this.grp_box_sql.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.grp_mysql_habel.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tabPage_pictureQuality.SuspendLayout();
+            this.grp_pic_resolution.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.grp_pic_res.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.grp_pic_compression.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_pic)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -315,131 +338,125 @@ namespace Belegleser
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // grp_mysql_habel
+            // tabContr_settings
             // 
-            this.grp_mysql_habel.Controls.Add(this.tableLayoutPanel2);
-            this.grp_mysql_habel.Location = new System.Drawing.Point(512, 17);
-            this.grp_mysql_habel.Name = "grp_mysql_habel";
-            this.grp_mysql_habel.Size = new System.Drawing.Size(460, 188);
-            this.grp_mysql_habel.TabIndex = 5;
-            this.grp_mysql_habel.TabStop = false;
-            this.grp_mysql_habel.Text = "My -SQL-HABEL";
+            this.tabContr_settings.Controls.Add(this.tabPage_generalSettings);
+            this.tabContr_settings.Controls.Add(this.tabPage_database);
+            this.tabContr_settings.Controls.Add(this.tabPage_pictureQuality);
+            this.tabContr_settings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabContr_settings.Location = new System.Drawing.Point(3, 3);
+            this.tabContr_settings.Name = "tabContr_settings";
+            this.tabContr_settings.SelectedIndex = 0;
+            this.tabContr_settings.Size = new System.Drawing.Size(1037, 681);
+            this.tabContr_settings.TabIndex = 6;
             // 
-            // tableLayoutPanel2
+            // tabPage_generalSettings
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.txt_mysql_habel_pass, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.txt_mysql_habel_user, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.txt_mysql_habel_database, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.lbl_mysql_habel_host, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.lbl_mysql_habel_pass, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.lbl_mysql_habel_database, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.lbl_mysql_habel_user, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.txt_mysql_habel_host, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(18, 35);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(396, 118);
-            this.tableLayoutPanel2.TabIndex = 4;
+            this.tabPage_generalSettings.Controls.Add(this.grp_box_directory);
+            this.tabPage_generalSettings.Controls.Add(this.grp_box_intervall);
+            this.tabPage_generalSettings.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_generalSettings.Name = "tabPage_generalSettings";
+            this.tabPage_generalSettings.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_generalSettings.Size = new System.Drawing.Size(1029, 655);
+            this.tabPage_generalSettings.TabIndex = 0;
+            this.tabPage_generalSettings.Text = "Allgemeine Einstellungen";
+            this.tabPage_generalSettings.UseVisualStyleBackColor = true;
             // 
-            // txt_mysql_habel_pass
+            // grp_box_directory
             // 
-            this.txt_mysql_habel_pass.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_mysql_habel_pass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_mysql_habel_pass.Location = new System.Drawing.Point(201, 93);
-            this.txt_mysql_habel_pass.Name = "txt_mysql_habel_pass";
-            this.txt_mysql_habel_pass.PasswordChar = '•';
-            this.txt_mysql_habel_pass.Size = new System.Drawing.Size(192, 22);
-            this.txt_mysql_habel_pass.TabIndex = 7;
-            this.txt_mysql_habel_pass.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.grp_box_directory.Controls.Add(this.btn_directory);
+            this.grp_box_directory.Controls.Add(this.txt_directory);
+            this.grp_box_directory.Controls.Add(this.lbl_directory);
+            this.grp_box_directory.Location = new System.Drawing.Point(7, 6);
+            this.grp_box_directory.Name = "grp_box_directory";
+            this.grp_box_directory.Size = new System.Drawing.Size(566, 91);
+            this.grp_box_directory.TabIndex = 0;
+            this.grp_box_directory.TabStop = false;
+            this.grp_box_directory.Text = "Scan Ordner (Polling)";
             // 
-            // txt_mysql_habel_user
+            // btn_directory
             // 
-            this.txt_mysql_habel_user.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_mysql_habel_user.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_mysql_habel_user.Location = new System.Drawing.Point(201, 63);
-            this.txt_mysql_habel_user.Name = "txt_mysql_habel_user";
-            this.txt_mysql_habel_user.Size = new System.Drawing.Size(192, 22);
-            this.txt_mysql_habel_user.TabIndex = 6;
-            this.txt_mysql_habel_user.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btn_directory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_directory.Location = new System.Drawing.Point(473, 36);
+            this.btn_directory.Name = "btn_directory";
+            this.btn_directory.Size = new System.Drawing.Size(75, 23);
+            this.btn_directory.TabIndex = 2;
+            this.btn_directory.Text = "---";
+            this.btn_directory.UseVisualStyleBackColor = true;
+            this.btn_directory.Click += new System.EventHandler(this.btn_directory_Click);
             // 
-            // txt_mysql_habel_database
+            // txt_directory
             // 
-            this.txt_mysql_habel_database.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_mysql_habel_database.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_mysql_habel_database.Location = new System.Drawing.Point(201, 33);
-            this.txt_mysql_habel_database.Name = "txt_mysql_habel_database";
-            this.txt_mysql_habel_database.Size = new System.Drawing.Size(192, 22);
-            this.txt_mysql_habel_database.TabIndex = 5;
-            this.txt_mysql_habel_database.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_directory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_directory.Location = new System.Drawing.Point(107, 37);
+            this.txt_directory.Name = "txt_directory";
+            this.txt_directory.Size = new System.Drawing.Size(348, 22);
+            this.txt_directory.TabIndex = 1;
             // 
-            // lbl_mysql_habel_host
+            // lbl_directory
             // 
-            this.lbl_mysql_habel_host.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_mysql_habel_host.AutoSize = true;
-            this.lbl_mysql_habel_host.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_mysql_habel_host.Location = new System.Drawing.Point(3, 0);
-            this.lbl_mysql_habel_host.Name = "lbl_mysql_habel_host";
-            this.lbl_mysql_habel_host.Size = new System.Drawing.Size(192, 30);
-            this.lbl_mysql_habel_host.TabIndex = 0;
-            this.lbl_mysql_habel_host.Text = "Host:";
-            this.lbl_mysql_habel_host.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl_directory.AutoSize = true;
+            this.lbl_directory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_directory.Location = new System.Drawing.Point(15, 40);
+            this.lbl_directory.Name = "lbl_directory";
+            this.lbl_directory.Size = new System.Drawing.Size(86, 16);
+            this.lbl_directory.TabIndex = 0;
+            this.lbl_directory.Text = "Scan Ordner:";
             // 
-            // lbl_mysql_habel_pass
+            // grp_box_intervall
             // 
-            this.lbl_mysql_habel_pass.AutoSize = true;
-            this.lbl_mysql_habel_pass.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_mysql_habel_pass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_mysql_habel_pass.Location = new System.Drawing.Point(3, 90);
-            this.lbl_mysql_habel_pass.Name = "lbl_mysql_habel_pass";
-            this.lbl_mysql_habel_pass.Size = new System.Drawing.Size(192, 30);
-            this.lbl_mysql_habel_pass.TabIndex = 3;
-            this.lbl_mysql_habel_pass.Text = "Passwort:";
-            this.lbl_mysql_habel_pass.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.grp_box_intervall.Controls.Add(this.lbl_intervall_expl);
+            this.grp_box_intervall.Controls.Add(this.mtxt_intervall);
+            this.grp_box_intervall.Controls.Add(this.lbl_intervall);
+            this.grp_box_intervall.Location = new System.Drawing.Point(6, 103);
+            this.grp_box_intervall.Name = "grp_box_intervall";
+            this.grp_box_intervall.Size = new System.Drawing.Size(567, 100);
+            this.grp_box_intervall.TabIndex = 1;
+            this.grp_box_intervall.TabStop = false;
+            this.grp_box_intervall.Text = "Intervall";
             // 
-            // lbl_mysql_habel_database
+            // lbl_intervall_expl
             // 
-            this.lbl_mysql_habel_database.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_mysql_habel_database.AutoSize = true;
-            this.lbl_mysql_habel_database.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_mysql_habel_database.Location = new System.Drawing.Point(3, 30);
-            this.lbl_mysql_habel_database.Name = "lbl_mysql_habel_database";
-            this.lbl_mysql_habel_database.Size = new System.Drawing.Size(192, 30);
-            this.lbl_mysql_habel_database.TabIndex = 1;
-            this.lbl_mysql_habel_database.Text = "Datenbank:";
-            this.lbl_mysql_habel_database.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl_intervall_expl.AutoSize = true;
+            this.lbl_intervall_expl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_intervall_expl.Location = new System.Drawing.Point(339, 45);
+            this.lbl_intervall_expl.Name = "lbl_intervall_expl";
+            this.lbl_intervall_expl.Size = new System.Drawing.Size(55, 16);
+            this.lbl_intervall_expl.TabIndex = 2;
+            this.lbl_intervall_expl.Text = "(hh:mm)";
             // 
-            // lbl_mysql_habel_user
+            // mtxt_intervall
             // 
-            this.lbl_mysql_habel_user.AutoSize = true;
-            this.lbl_mysql_habel_user.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_mysql_habel_user.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_mysql_habel_user.Location = new System.Drawing.Point(3, 60);
-            this.lbl_mysql_habel_user.Name = "lbl_mysql_habel_user";
-            this.lbl_mysql_habel_user.Size = new System.Drawing.Size(192, 30);
-            this.lbl_mysql_habel_user.TabIndex = 2;
-            this.lbl_mysql_habel_user.Text = "Benutzer:";
-            this.lbl_mysql_habel_user.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mtxt_intervall.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtxt_intervall.Location = new System.Drawing.Point(107, 42);
+            this.mtxt_intervall.Mask = "90:00";
+            this.mtxt_intervall.Name = "mtxt_intervall";
+            this.mtxt_intervall.Size = new System.Drawing.Size(226, 22);
+            this.mtxt_intervall.TabIndex = 1;
+            this.mtxt_intervall.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.mtxt_intervall.ValidatingType = typeof(System.DateTime);
             // 
-            // txt_mysql_habel_host
+            // lbl_intervall
             // 
-            this.txt_mysql_habel_host.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_mysql_habel_host.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_mysql_habel_host.Location = new System.Drawing.Point(201, 3);
-            this.txt_mysql_habel_host.Name = "txt_mysql_habel_host";
-            this.txt_mysql_habel_host.Size = new System.Drawing.Size(192, 22);
-            this.txt_mysql_habel_host.TabIndex = 4;
-            this.txt_mysql_habel_host.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.lbl_intervall.AutoSize = true;
+            this.lbl_intervall.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_intervall.Location = new System.Drawing.Point(15, 45);
+            this.lbl_intervall.Name = "lbl_intervall";
+            this.lbl_intervall.Size = new System.Drawing.Size(54, 16);
+            this.lbl_intervall.TabIndex = 0;
+            this.lbl_intervall.Text = "Intervall";
+            // 
+            // tabPage_database
+            // 
+            this.tabPage_database.Controls.Add(this.grp_box_sql);
+            this.tabPage_database.Controls.Add(this.grp_mysql_habel);
+            this.tabPage_database.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_database.Name = "tabPage_database";
+            this.tabPage_database.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_database.Size = new System.Drawing.Size(1029, 655);
+            this.tabPage_database.TabIndex = 1;
+            this.tabPage_database.Text = "Datenbanken";
+            this.tabPage_database.UseVisualStyleBackColor = true;
             // 
             // grp_box_sql
             // 
@@ -567,128 +584,137 @@ namespace Belegleser
             this.txt_sql_host.TabIndex = 4;
             this.txt_sql_host.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // grp_box_intervall
+            // grp_mysql_habel
             // 
-            this.grp_box_intervall.Controls.Add(this.lbl_intervall_expl);
-            this.grp_box_intervall.Controls.Add(this.mtxt_intervall);
-            this.grp_box_intervall.Controls.Add(this.lbl_intervall);
-            this.grp_box_intervall.Location = new System.Drawing.Point(6, 103);
-            this.grp_box_intervall.Name = "grp_box_intervall";
-            this.grp_box_intervall.Size = new System.Drawing.Size(567, 100);
-            this.grp_box_intervall.TabIndex = 1;
-            this.grp_box_intervall.TabStop = false;
-            this.grp_box_intervall.Text = "Intervall";
+            this.grp_mysql_habel.Controls.Add(this.tableLayoutPanel2);
+            this.grp_mysql_habel.Location = new System.Drawing.Point(512, 17);
+            this.grp_mysql_habel.Name = "grp_mysql_habel";
+            this.grp_mysql_habel.Size = new System.Drawing.Size(460, 188);
+            this.grp_mysql_habel.TabIndex = 5;
+            this.grp_mysql_habel.TabStop = false;
+            this.grp_mysql_habel.Text = "My -SQL-HABEL";
             // 
-            // lbl_intervall_expl
+            // tableLayoutPanel2
             // 
-            this.lbl_intervall_expl.AutoSize = true;
-            this.lbl_intervall_expl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_intervall_expl.Location = new System.Drawing.Point(339, 45);
-            this.lbl_intervall_expl.Name = "lbl_intervall_expl";
-            this.lbl_intervall_expl.Size = new System.Drawing.Size(55, 16);
-            this.lbl_intervall_expl.TabIndex = 2;
-            this.lbl_intervall_expl.Text = "(hh:mm)";
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.txt_mysql_habel_pass, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.txt_mysql_habel_user, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.txt_mysql_habel_database, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lbl_mysql_habel_host, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.lbl_mysql_habel_pass, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.lbl_mysql_habel_database, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lbl_mysql_habel_user, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.txt_mysql_habel_host, 1, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(18, 35);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(396, 118);
+            this.tableLayoutPanel2.TabIndex = 4;
             // 
-            // mtxt_intervall
+            // txt_mysql_habel_pass
             // 
-            this.mtxt_intervall.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtxt_intervall.Location = new System.Drawing.Point(107, 42);
-            this.mtxt_intervall.Mask = "90:00";
-            this.mtxt_intervall.Name = "mtxt_intervall";
-            this.mtxt_intervall.Size = new System.Drawing.Size(226, 22);
-            this.mtxt_intervall.TabIndex = 1;
-            this.mtxt_intervall.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.mtxt_intervall.ValidatingType = typeof(System.DateTime);
+            this.txt_mysql_habel_pass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_mysql_habel_pass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_mysql_habel_pass.Location = new System.Drawing.Point(201, 93);
+            this.txt_mysql_habel_pass.Name = "txt_mysql_habel_pass";
+            this.txt_mysql_habel_pass.PasswordChar = '•';
+            this.txt_mysql_habel_pass.Size = new System.Drawing.Size(192, 22);
+            this.txt_mysql_habel_pass.TabIndex = 7;
+            this.txt_mysql_habel_pass.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // lbl_intervall
+            // txt_mysql_habel_user
             // 
-            this.lbl_intervall.AutoSize = true;
-            this.lbl_intervall.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_intervall.Location = new System.Drawing.Point(15, 45);
-            this.lbl_intervall.Name = "lbl_intervall";
-            this.lbl_intervall.Size = new System.Drawing.Size(54, 16);
-            this.lbl_intervall.TabIndex = 0;
-            this.lbl_intervall.Text = "Intervall";
+            this.txt_mysql_habel_user.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_mysql_habel_user.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_mysql_habel_user.Location = new System.Drawing.Point(201, 63);
+            this.txt_mysql_habel_user.Name = "txt_mysql_habel_user";
+            this.txt_mysql_habel_user.Size = new System.Drawing.Size(192, 22);
+            this.txt_mysql_habel_user.TabIndex = 6;
+            this.txt_mysql_habel_user.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // grp_box_directory
+            // txt_mysql_habel_database
             // 
-            this.grp_box_directory.Controls.Add(this.btn_directory);
-            this.grp_box_directory.Controls.Add(this.txt_directory);
-            this.grp_box_directory.Controls.Add(this.lbl_directory);
-            this.grp_box_directory.Location = new System.Drawing.Point(7, 6);
-            this.grp_box_directory.Name = "grp_box_directory";
-            this.grp_box_directory.Size = new System.Drawing.Size(566, 91);
-            this.grp_box_directory.TabIndex = 0;
-            this.grp_box_directory.TabStop = false;
-            this.grp_box_directory.Text = "Scan Ordner (Polling)";
+            this.txt_mysql_habel_database.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_mysql_habel_database.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_mysql_habel_database.Location = new System.Drawing.Point(201, 33);
+            this.txt_mysql_habel_database.Name = "txt_mysql_habel_database";
+            this.txt_mysql_habel_database.Size = new System.Drawing.Size(192, 22);
+            this.txt_mysql_habel_database.TabIndex = 5;
+            this.txt_mysql_habel_database.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // btn_directory
+            // lbl_mysql_habel_host
             // 
-            this.btn_directory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_directory.Location = new System.Drawing.Point(473, 36);
-            this.btn_directory.Name = "btn_directory";
-            this.btn_directory.Size = new System.Drawing.Size(75, 23);
-            this.btn_directory.TabIndex = 2;
-            this.btn_directory.Text = "---";
-            this.btn_directory.UseVisualStyleBackColor = true;
-            this.btn_directory.Click += new System.EventHandler(this.btn_directory_Click);
+            this.lbl_mysql_habel_host.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_mysql_habel_host.AutoSize = true;
+            this.lbl_mysql_habel_host.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_mysql_habel_host.Location = new System.Drawing.Point(3, 0);
+            this.lbl_mysql_habel_host.Name = "lbl_mysql_habel_host";
+            this.lbl_mysql_habel_host.Size = new System.Drawing.Size(192, 30);
+            this.lbl_mysql_habel_host.TabIndex = 0;
+            this.lbl_mysql_habel_host.Text = "Host:";
+            this.lbl_mysql_habel_host.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txt_directory
+            // lbl_mysql_habel_pass
             // 
-            this.txt_directory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_directory.Location = new System.Drawing.Point(107, 37);
-            this.txt_directory.Name = "txt_directory";
-            this.txt_directory.Size = new System.Drawing.Size(348, 22);
-            this.txt_directory.TabIndex = 1;
+            this.lbl_mysql_habel_pass.AutoSize = true;
+            this.lbl_mysql_habel_pass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_mysql_habel_pass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_mysql_habel_pass.Location = new System.Drawing.Point(3, 90);
+            this.lbl_mysql_habel_pass.Name = "lbl_mysql_habel_pass";
+            this.lbl_mysql_habel_pass.Size = new System.Drawing.Size(192, 30);
+            this.lbl_mysql_habel_pass.TabIndex = 3;
+            this.lbl_mysql_habel_pass.Text = "Passwort:";
+            this.lbl_mysql_habel_pass.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lbl_directory
+            // lbl_mysql_habel_database
             // 
-            this.lbl_directory.AutoSize = true;
-            this.lbl_directory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_directory.Location = new System.Drawing.Point(15, 40);
-            this.lbl_directory.Name = "lbl_directory";
-            this.lbl_directory.Size = new System.Drawing.Size(86, 16);
-            this.lbl_directory.TabIndex = 0;
-            this.lbl_directory.Text = "Scan Ordner:";
+            this.lbl_mysql_habel_database.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_mysql_habel_database.AutoSize = true;
+            this.lbl_mysql_habel_database.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_mysql_habel_database.Location = new System.Drawing.Point(3, 30);
+            this.lbl_mysql_habel_database.Name = "lbl_mysql_habel_database";
+            this.lbl_mysql_habel_database.Size = new System.Drawing.Size(192, 30);
+            this.lbl_mysql_habel_database.TabIndex = 1;
+            this.lbl_mysql_habel_database.Text = "Datenbank:";
+            this.lbl_mysql_habel_database.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // tabContr_settings
+            // lbl_mysql_habel_user
             // 
-            this.tabContr_settings.Controls.Add(this.tabPage_generalSettings);
-            this.tabContr_settings.Controls.Add(this.tabPage_database);
-            this.tabContr_settings.Controls.Add(this.tabPage_pictureQuality);
-            this.tabContr_settings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabContr_settings.Location = new System.Drawing.Point(3, 3);
-            this.tabContr_settings.Name = "tabContr_settings";
-            this.tabContr_settings.SelectedIndex = 0;
-            this.tabContr_settings.Size = new System.Drawing.Size(1037, 681);
-            this.tabContr_settings.TabIndex = 6;
+            this.lbl_mysql_habel_user.AutoSize = true;
+            this.lbl_mysql_habel_user.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_mysql_habel_user.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_mysql_habel_user.Location = new System.Drawing.Point(3, 60);
+            this.lbl_mysql_habel_user.Name = "lbl_mysql_habel_user";
+            this.lbl_mysql_habel_user.Size = new System.Drawing.Size(192, 30);
+            this.lbl_mysql_habel_user.TabIndex = 2;
+            this.lbl_mysql_habel_user.Text = "Benutzer:";
+            this.lbl_mysql_habel_user.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // tabPage_generalSettings
+            // txt_mysql_habel_host
             // 
-            this.tabPage_generalSettings.Controls.Add(this.grp_box_directory);
-            this.tabPage_generalSettings.Controls.Add(this.grp_box_intervall);
-            this.tabPage_generalSettings.Location = new System.Drawing.Point(4, 22);
-            this.tabPage_generalSettings.Name = "tabPage_generalSettings";
-            this.tabPage_generalSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_generalSettings.Size = new System.Drawing.Size(1029, 655);
-            this.tabPage_generalSettings.TabIndex = 0;
-            this.tabPage_generalSettings.Text = "Allgemeine Einstellungen";
-            this.tabPage_generalSettings.UseVisualStyleBackColor = true;
-            // 
-            // tabPage_database
-            // 
-            this.tabPage_database.Controls.Add(this.grp_box_sql);
-            this.tabPage_database.Controls.Add(this.grp_mysql_habel);
-            this.tabPage_database.Location = new System.Drawing.Point(4, 22);
-            this.tabPage_database.Name = "tabPage_database";
-            this.tabPage_database.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_database.Size = new System.Drawing.Size(1029, 655);
-            this.tabPage_database.TabIndex = 1;
-            this.tabPage_database.Text = "Datenbanken";
-            this.tabPage_database.UseVisualStyleBackColor = true;
+            this.txt_mysql_habel_host.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_mysql_habel_host.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_mysql_habel_host.Location = new System.Drawing.Point(201, 3);
+            this.txt_mysql_habel_host.Name = "txt_mysql_habel_host";
+            this.txt_mysql_habel_host.Size = new System.Drawing.Size(192, 22);
+            this.txt_mysql_habel_host.TabIndex = 4;
+            this.txt_mysql_habel_host.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tabPage_pictureQuality
             // 
+            this.tabPage_pictureQuality.Controls.Add(this.grp_pic_compression);
+            this.tabPage_pictureQuality.Controls.Add(this.grp_pic_res);
+            this.tabPage_pictureQuality.Controls.Add(this.grp_pic_resolution);
             this.tabPage_pictureQuality.Location = new System.Drawing.Point(4, 22);
             this.tabPage_pictureQuality.Name = "tabPage_pictureQuality";
             this.tabPage_pictureQuality.Padding = new System.Windows.Forms.Padding(3);
@@ -696,6 +722,188 @@ namespace Belegleser
             this.tabPage_pictureQuality.TabIndex = 2;
             this.tabPage_pictureQuality.Text = "Bildqualität";
             this.tabPage_pictureQuality.UseVisualStyleBackColor = true;
+            // 
+            // grp_pic_resolution
+            // 
+            this.grp_pic_resolution.Controls.Add(this.tableLayoutPanel3);
+            this.grp_pic_resolution.Location = new System.Drawing.Point(6, 6);
+            this.grp_pic_resolution.Name = "grp_pic_resolution";
+            this.grp_pic_resolution.Size = new System.Drawing.Size(486, 86);
+            this.grp_pic_resolution.TabIndex = 0;
+            this.grp_pic_resolution.TabStop = false;
+            this.grp_pic_resolution.Text = "Bild Größe";
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.txt_pic_y, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.lbl_pix_x, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.lbl_piy_y, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.txt_pic_x, 1, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(17, 19);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(396, 52);
+            this.tableLayoutPanel3.TabIndex = 5;
+            // 
+            // txt_pic_y
+            // 
+            this.txt_pic_y.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_pic_y.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_pic_y.Location = new System.Drawing.Point(201, 29);
+            this.txt_pic_y.Name = "txt_pic_y";
+            this.txt_pic_y.Size = new System.Drawing.Size(192, 22);
+            this.txt_pic_y.TabIndex = 5;
+            this.txt_pic_y.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lbl_pix_x
+            // 
+            this.lbl_pix_x.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_pix_x.AutoSize = true;
+            this.lbl_pix_x.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_pix_x.Location = new System.Drawing.Point(3, 0);
+            this.lbl_pix_x.Name = "lbl_pix_x";
+            this.lbl_pix_x.Size = new System.Drawing.Size(192, 26);
+            this.lbl_pix_x.TabIndex = 0;
+            this.lbl_pix_x.Text = "Breite:";
+            this.lbl_pix_x.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lbl_piy_y
+            // 
+            this.lbl_piy_y.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_piy_y.AutoSize = true;
+            this.lbl_piy_y.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_piy_y.Location = new System.Drawing.Point(3, 26);
+            this.lbl_piy_y.Name = "lbl_piy_y";
+            this.lbl_piy_y.Size = new System.Drawing.Size(192, 26);
+            this.lbl_piy_y.TabIndex = 1;
+            this.lbl_piy_y.Text = "Höhe:";
+            this.lbl_piy_y.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txt_pic_x
+            // 
+            this.txt_pic_x.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_pic_x.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_pic_x.Location = new System.Drawing.Point(201, 3);
+            this.txt_pic_x.Name = "txt_pic_x";
+            this.txt_pic_x.Size = new System.Drawing.Size(192, 22);
+            this.txt_pic_x.TabIndex = 4;
+            this.txt_pic_x.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // grp_pic_res
+            // 
+            this.grp_pic_res.Controls.Add(this.tableLayoutPanel4);
+            this.grp_pic_res.Location = new System.Drawing.Point(6, 108);
+            this.grp_pic_res.Name = "grp_pic_res";
+            this.grp_pic_res.Size = new System.Drawing.Size(486, 86);
+            this.grp_pic_res.TabIndex = 6;
+            this.grp_pic_res.TabStop = false;
+            this.grp_pic_res.Text = "Bild Auflösung";
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.txt_pic_dpi, 1, 0);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(17, 19);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(396, 28);
+            this.tableLayoutPanel4.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(192, 28);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Auflösung (DPI):";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txt_pic_dpi
+            // 
+            this.txt_pic_dpi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_pic_dpi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_pic_dpi.Location = new System.Drawing.Point(201, 3);
+            this.txt_pic_dpi.Name = "txt_pic_dpi";
+            this.txt_pic_dpi.Size = new System.Drawing.Size(192, 22);
+            this.txt_pic_dpi.TabIndex = 4;
+            this.txt_pic_dpi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // grp_pic_compression
+            // 
+            this.grp_pic_compression.Controls.Add(this.tableLayoutPanel5);
+            this.grp_pic_compression.Location = new System.Drawing.Point(6, 212);
+            this.grp_pic_compression.Name = "grp_pic_compression";
+            this.grp_pic_compression.Size = new System.Drawing.Size(486, 86);
+            this.grp_pic_compression.TabIndex = 7;
+            this.grp_pic_compression.TabStop = false;
+            this.grp_pic_compression.Text = "Bild Auflösung";
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 3;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.10227F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.89773F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel5.Controls.Add(this.lbl_pic_dpi, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.trackBar_pic, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.txt_pic_compression, 2, 0);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(17, 19);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(393, 28);
+            this.tableLayoutPanel5.TabIndex = 5;
+            // 
+            // lbl_pic_dpi
+            // 
+            this.lbl_pic_dpi.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_pic_dpi.AutoSize = true;
+            this.lbl_pic_dpi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_pic_dpi.Location = new System.Drawing.Point(3, 0);
+            this.lbl_pic_dpi.Name = "lbl_pic_dpi";
+            this.lbl_pic_dpi.Size = new System.Drawing.Size(195, 28);
+            this.lbl_pic_dpi.TabIndex = 0;
+            this.lbl_pic_dpi.Text = "JPEG Komprimierung:";
+            this.lbl_pic_dpi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // trackBar_pic
+            // 
+            this.trackBar_pic.Location = new System.Drawing.Point(204, 3);
+            this.trackBar_pic.Name = "trackBar_pic";
+            this.trackBar_pic.Size = new System.Drawing.Size(138, 22);
+            this.trackBar_pic.TabIndex = 1;
+            this.trackBar_pic.TickFrequency = 5;
+            this.trackBar_pic.Scroll += new System.EventHandler(this.trackBar_pic_Scroll);
+            // 
+            // txt_pic_compression
+            // 
+            this.txt_pic_compression.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_pic_compression.Location = new System.Drawing.Point(355, 3);
+            this.txt_pic_compression.Name = "txt_pic_compression";
+            this.txt_pic_compression.Size = new System.Drawing.Size(35, 22);
+            this.txt_pic_compression.TabIndex = 2;
+            this.txt_pic_compression.TextChanged += new System.EventHandler(this.txt_pic_compression_TextChanged);
             // 
             // Form1
             // 
@@ -713,19 +921,30 @@ namespace Belegleser
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtg_templates)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.grp_mysql_habel.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            this.tabContr_settings.ResumeLayout(false);
+            this.tabPage_generalSettings.ResumeLayout(false);
+            this.grp_box_directory.ResumeLayout(false);
+            this.grp_box_directory.PerformLayout();
+            this.grp_box_intervall.ResumeLayout(false);
+            this.grp_box_intervall.PerformLayout();
+            this.tabPage_database.ResumeLayout(false);
             this.grp_box_sql.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.grp_box_intervall.ResumeLayout(false);
-            this.grp_box_intervall.PerformLayout();
-            this.grp_box_directory.ResumeLayout(false);
-            this.grp_box_directory.PerformLayout();
-            this.tabContr_settings.ResumeLayout(false);
-            this.tabPage_generalSettings.ResumeLayout(false);
-            this.tabPage_database.ResumeLayout(false);
+            this.grp_mysql_habel.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.tabPage_pictureQuality.ResumeLayout(false);
+            this.grp_pic_resolution.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            this.grp_pic_res.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
+            this.grp_pic_compression.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_pic)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -790,6 +1009,21 @@ namespace Belegleser
         private System.Windows.Forms.TabPage tabPage_generalSettings;
         private System.Windows.Forms.TabPage tabPage_database;
         private System.Windows.Forms.TabPage tabPage_pictureQuality;
+        private System.Windows.Forms.GroupBox grp_pic_resolution;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TextBox txt_pic_y;
+        private System.Windows.Forms.Label lbl_pix_x;
+        private System.Windows.Forms.Label lbl_piy_y;
+        private System.Windows.Forms.TextBox txt_pic_x;
+        private System.Windows.Forms.GroupBox grp_pic_compression;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Label lbl_pic_dpi;
+        private System.Windows.Forms.TrackBar trackBar_pic;
+        private System.Windows.Forms.GroupBox grp_pic_res;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txt_pic_dpi;
+        private System.Windows.Forms.TextBox txt_pic_compression;
     }
 }
 

@@ -48,6 +48,11 @@ namespace Belegleser
                     this.MySQLDatabase = cfg.MySQLDatabase;
                     this.MySQLUser = cfg.MySQLUser;
                     this.MySQLPassword = cfg.MySQLPassword;
+                    // Bildqualität
+                    this.pic_width = cfg.pic_width;
+                    this.pic_height = cfg.pic_height;
+                    this.pic_dpi = cfg.pic_dpi;
+                    this.pic_quality = cfg.pic_quality;
                 }
             }
             catch (Exception)
@@ -87,6 +92,28 @@ namespace Belegleser
                 this.password = value;
             }
         }
+        // Bildqualität
+        public string pic_width
+        {
+            get;
+            set;
+        }
+        public string pic_height
+        {
+            get;
+            set;
+        }
+        public string pic_quality
+        {
+            get;
+            set;
+        }
+        public string pic_dpi
+        {
+            get;
+            set;
+        }
+
 
         //MySQL
         public string MySQLHost

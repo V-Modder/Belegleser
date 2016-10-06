@@ -32,6 +32,7 @@ namespace Belegleser
                 sw.Start();
                 foreach (string file in Directory.GetFiles(Config.getInstance().ScanDirectory))
                 {
+                    bool abgemischt = false;
                     if (Regex.Match(file, searchPattern, RegexOptions.IgnoreCase).Success)
                     {
                         IndexCreator idx = null;
@@ -41,9 +42,39 @@ namespace Belegleser
                             {
                                 int rnd = new Random().Next(000000001, 999999999);
                                 Bitmap img = (Bitmap)Bitmap.FromFile(file);
-                                idx = this.readFile(img, i);
-                                idx.write(this.templData.Rows[i].Cells["output_directory"].Value.ToString(), rnd);
-                                TiffEncoder.Encode(idx.getFileName(rnd) + ".tiff", img);
+                                if (this.readFile(img, i) != null)
+                                {
+                                    idx = this.readFile(img, i);
+                                    idx.write(this.templData.Rows[i].Cells["output_directory"].Value.ToString(), rnd);
+                                    TiffEncoder.Encode(idx.getFileName(rnd) + ".tiff", img);
+                                    img.Dispose();
+                                    abgemischt = true;
+                                }
+                                else
+                                {
+                                    abgemischt = false;
+                                }
+                            }
+                            else
+                            {
+                                return;
+                            }
+                        }
+                        if (abgemischt == true)
+                        {
+                            File.Delete(file);
+                        }
+                        else
+                        { 
+                            if (Directory.Exists(Path.Combine(Config.getInstance().ScanDirectory,"nicht_abgemischt")))
+                            {
+                                File.Move(file, Path.Combine(Config.getInstance().ScanDirectory,"nicht_abgemischt"));
+                            }
+                            else 
+                            {
+                                Directory.CreateDirectory(Path.Combine(Config.getInstance().ScanDirectory,"nicht_abgemischt"));
+
+                                File.Move(file, Path.Combine(Config.getInstance().ScanDirectory, "nicht_abgemischt") + Path.GetFileName(file));
                             }
                         }
                     }
@@ -52,7 +83,7 @@ namespace Belegleser
                 string interval = Config.getInstance().Interval;
                 int hour = Convert.ToInt32(interval.Substring(0, interval.IndexOf(":")));
                 int minute = Convert.ToInt32(interval.Substring(interval.IndexOf(":") + 1));
-                int sleep = (((hour * 60) + minute) * 60000);
+                int sleep = (((hour * 60) + minute) * 600);
                 sleep -= (int)sw.ElapsedMilliseconds;
                 Thread.Sleep(sleep);
             }

@@ -24,17 +24,17 @@ namespace Belegleser
             using (Tiff tif = Tiff.Open(path, "w"))
             {
                 byte[] raster = getImageRasterBytes(tmp, PixelFormat.Format24bppRgb);
-                tif.SetField(TiffTag.IMAGEWIDTH, 2480);
-                tif.SetField(TiffTag.IMAGELENGTH, 3507);
+                tif.SetField(TiffTag.IMAGEWIDTH, Config.getInstance().pic_width);
+                tif.SetField(TiffTag.IMAGELENGTH, Config.getInstance().pic_height);
                 tif.SetField(TiffTag.COMPRESSION, Compression.JPEG);
                 tif.SetField(TiffTag.PHOTOMETRIC, Photometric.RGB);
 
                 // Compression Level: 100 = No comression, 0 = Maximum 
-                tif.SetField(TiffTag.JPEGQUALITY, 10);
+                tif.SetField(TiffTag.JPEGQUALITY, Config.getInstance().pic_quality);
                 tif.SetField(TiffTag.ROWSPERSTRIP, bmp.Height);
 
-                tif.SetField(TiffTag.XRESOLUTION, 300);
-                tif.SetField(TiffTag.YRESOLUTION, 300);
+                tif.SetField(TiffTag.XRESOLUTION, Config.getInstance().pic_dpi);
+                tif.SetField(TiffTag.YRESOLUTION, Config.getInstance().pic_dpi);
 
                 tif.SetField(TiffTag.BITSPERSAMPLE, 8);
                 tif.SetField(TiffTag.SAMPLESPERPIXEL, 3);

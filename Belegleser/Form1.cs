@@ -104,6 +104,11 @@ namespace Belegleser
             Config.getInstance().MySQLDatabase = txt_mysql_habel_database.Text;
             Config.getInstance().MySQLUser = txt_mysql_habel_user.Text;
             Config.getInstance().MySQLPassword = txt_mysql_habel_pass.Text;
+            //Bildqualität
+            Config.getInstance().pic_width = txt_pic_x.Text;
+            Config.getInstance().pic_height = txt_pic_y.Text;
+            Config.getInstance().pic_dpi = txt_pic_dpi.Text;
+            Config.getInstance().pic_quality = txt_pic_compression.Text;
             Config.getInstance().Save();
         }
 
@@ -121,6 +126,12 @@ namespace Belegleser
             txt_mysql_habel_user.Text = Config.getInstance().MySQLUser;
             txt_mysql_habel_pass.Text = Config.getInstance().MySQLPassword;
             //
+            //Bildqualiät
+            txt_pic_x.Text = Config.getInstance().pic_width;
+            txt_pic_y.Text = Config.getInstance().pic_height;
+            txt_pic_dpi.Text = Config.getInstance().pic_dpi;
+            txt_pic_compression.Text = Config.getInstance().pic_quality;
+            //
             if (Config.getInstance().Templates != null)
             {
                 foreach (SaveTemplateWork tmp in Config.getInstance().Templates)
@@ -128,6 +139,10 @@ namespace Belegleser
                     this.dtg_templates.Rows.Add(tmp.TemplatePath, tmp.OutputPath, tmp.Active);
                 }
             }
+            trackBar_pic.Maximum = 100;
+            trackBar_pic.Minimum = 0;
+            trackBar_pic.LargeChange = 5;
+            trackBar_pic.SmallChange = 5;
         }
 
         private void template_plus_Click(object sender, EventArgs e)
@@ -154,6 +169,8 @@ namespace Belegleser
 
         private void template_save_Click(object sender, EventArgs e)
         {
+            dtg_templates.EndEdit();
+            dtg_templates.Refresh();
             Config cfg = Config.getInstance();
             cfg.Templates = new List<SaveTemplateWork>();
             foreach (DataGridViewRow row in this.dtg_templates.Rows)
@@ -165,6 +182,23 @@ namespace Belegleser
                 cfg.Templates.Add(tmp);
             }
             cfg.Save();
+        }
+
+        private void trackBar_pic_Scroll(object sender, EventArgs e)
+        {
+            txt_pic_compression.Text = trackBar_pic.Value.ToString();
+        }
+
+        private void txt_pic_compression_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_pic_compression.Text != "")
+            {
+                trackBar_pic.Value = Convert.ToInt32(txt_pic_compression.Text);
+            }
+            else
+            {
+                trackBar_pic.Value = 0;
+            }
         }
     }
 }
