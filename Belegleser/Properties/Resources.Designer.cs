@@ -83,6 +83,16 @@ namespace Belegleser.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hardware_scanner_2 {
+            get {
+                object obj = ResourceManager.GetObject("hardware_scanner_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hardware_scanner1 {
             get {
                 object obj = ResourceManager.GetObject("hardware_scanner1", resourceCulture);

@@ -35,7 +35,7 @@ namespace Belegleser
             this.ribbonTab_general = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel_general = new System.Windows.Forms.RibbonPanel();
             this.btn_play = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
+            this.btn_stop = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel_template = new System.Windows.Forms.RibbonPanel();
             this.template_save = new System.Windows.Forms.RibbonButton();
             this.ribbonSeparator1 = new System.Windows.Forms.RibbonSeparator();
@@ -50,6 +50,12 @@ namespace Belegleser
             this.ribbonButton_save = new System.Windows.Forms.RibbonButton();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.grp_box_status = new System.Windows.Forms.GroupBox();
+            this.lbl_status_preview = new System.Windows.Forms.Label();
+            this.pict_box_status = new System.Windows.Forms.PictureBox();
+            this.lbl_status_template = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.progressBar_status = new System.Windows.Forms.ProgressBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtg_templates = new System.Windows.Forms.DataGridView();
             this.Template = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,23 +94,25 @@ namespace Belegleser
             this.lbl_mysql_habel_user = new System.Windows.Forms.Label();
             this.txt_mysql_habel_host = new System.Windows.Forms.TextBox();
             this.tabPage_pictureQuality = new System.Windows.Forms.TabPage();
+            this.grp_pic_compression = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_pic_dpi = new System.Windows.Forms.Label();
+            this.trackBar_pic = new System.Windows.Forms.TrackBar();
+            this.txt_pic_compression = new System.Windows.Forms.TextBox();
+            this.grp_pic_res = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_pic_dpi = new System.Windows.Forms.TextBox();
             this.grp_pic_resolution = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.txt_pic_y = new System.Windows.Forms.TextBox();
             this.lbl_pix_x = new System.Windows.Forms.Label();
             this.lbl_piy_y = new System.Windows.Forms.Label();
             this.txt_pic_x = new System.Windows.Forms.TextBox();
-            this.grp_pic_res = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txt_pic_dpi = new System.Windows.Forms.TextBox();
-            this.grp_pic_compression = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_pic_dpi = new System.Windows.Forms.Label();
-            this.trackBar_pic = new System.Windows.Forms.TrackBar();
-            this.txt_pic_compression = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.grp_box_status.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pict_box_status)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_templates)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -118,13 +126,13 @@ namespace Belegleser
             this.grp_mysql_habel.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabPage_pictureQuality.SuspendLayout();
-            this.grp_pic_resolution.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.grp_pic_res.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
             this.grp_pic_compression.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_pic)).BeginInit();
+            this.grp_pic_res.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.grp_pic_resolution.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -170,7 +178,7 @@ namespace Belegleser
             this.ribbonPanel_general.ButtonMoreEnabled = false;
             this.ribbonPanel_general.ButtonMoreVisible = false;
             this.ribbonPanel_general.Items.Add(this.btn_play);
-            this.ribbonPanel_general.Items.Add(this.ribbonButton1);
+            this.ribbonPanel_general.Items.Add(this.btn_stop);
             this.ribbonPanel_general.Text = "Steuerung";
             // 
             // btn_play
@@ -180,11 +188,11 @@ namespace Belegleser
             this.btn_play.Text = "Start";
             this.btn_play.Click += new System.EventHandler(this.btn_play_Click);
             // 
-            // ribbonButton1
+            // btn_stop
             // 
-            this.ribbonButton1.Image = global::Belegleser.Properties.Resources.stop;
-            this.ribbonButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.SmallImage")));
-            this.ribbonButton1.Text = "Stopp";
+            this.btn_stop.Image = global::Belegleser.Properties.Resources.stop;
+            this.btn_stop.SmallImage = ((System.Drawing.Image)(resources.GetObject("btn_stop.SmallImage")));
+            this.btn_stop.Text = "Stopp";
             // 
             // ribbonPanel_template
             // 
@@ -266,6 +274,7 @@ namespace Belegleser
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.grp_box_status);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -274,6 +283,69 @@ namespace Belegleser
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // grp_box_status
+            // 
+            this.grp_box_status.Controls.Add(this.lbl_status_preview);
+            this.grp_box_status.Controls.Add(this.pict_box_status);
+            this.grp_box_status.Controls.Add(this.lbl_status_template);
+            this.grp_box_status.Controls.Add(this.label2);
+            this.grp_box_status.Controls.Add(this.progressBar_status);
+            this.grp_box_status.Location = new System.Drawing.Point(6, 333);
+            this.grp_box_status.Name = "grp_box_status";
+            this.grp_box_status.Size = new System.Drawing.Size(1031, 328);
+            this.grp_box_status.TabIndex = 3;
+            this.grp_box_status.TabStop = false;
+            this.grp_box_status.Text = "Status";
+            // 
+            // lbl_status_preview
+            // 
+            this.lbl_status_preview.AutoSize = true;
+            this.lbl_status_preview.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_status_preview.Location = new System.Drawing.Point(813, 40);
+            this.lbl_status_preview.Name = "lbl_status_preview";
+            this.lbl_status_preview.Size = new System.Drawing.Size(87, 16);
+            this.lbl_status_preview.TabIndex = 6;
+            this.lbl_status_preview.Text = "Vorschaubild";
+            // 
+            // pict_box_status
+            // 
+            this.pict_box_status.BackgroundImage = global::Belegleser.Properties.Resources.hardware_scanner_2;
+            this.pict_box_status.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pict_box_status.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pict_box_status.InitialImage = global::Belegleser.Properties.Resources.load_graphic;
+            this.pict_box_status.Location = new System.Drawing.Point(816, 66);
+            this.pict_box_status.Name = "pict_box_status";
+            this.pict_box_status.Size = new System.Drawing.Size(196, 244);
+            this.pict_box_status.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pict_box_status.TabIndex = 5;
+            this.pict_box_status.TabStop = false;
+            // 
+            // lbl_status_template
+            // 
+            this.lbl_status_template.AutoSize = true;
+            this.lbl_status_template.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_status_template.Location = new System.Drawing.Point(142, 37);
+            this.lbl_status_template.Name = "lbl_status_template";
+            this.lbl_status_template.Size = new System.Drawing.Size(0, 16);
+            this.lbl_status_template.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(15, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(121, 16);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Verarbeite gerade:";
+            // 
+            // progressBar_status
+            // 
+            this.progressBar_status.Location = new System.Drawing.Point(18, 287);
+            this.progressBar_status.Name = "progressBar_status";
+            this.progressBar_status.Size = new System.Drawing.Size(785, 23);
+            this.progressBar_status.TabIndex = 2;
             // 
             // groupBox1
             // 
@@ -723,6 +795,113 @@ namespace Belegleser
             this.tabPage_pictureQuality.Text = "Bildqualität";
             this.tabPage_pictureQuality.UseVisualStyleBackColor = true;
             // 
+            // grp_pic_compression
+            // 
+            this.grp_pic_compression.Controls.Add(this.tableLayoutPanel5);
+            this.grp_pic_compression.Location = new System.Drawing.Point(6, 212);
+            this.grp_pic_compression.Name = "grp_pic_compression";
+            this.grp_pic_compression.Size = new System.Drawing.Size(486, 86);
+            this.grp_pic_compression.TabIndex = 7;
+            this.grp_pic_compression.TabStop = false;
+            this.grp_pic_compression.Text = "Bild Auflösung";
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 3;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.10227F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.89773F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel5.Controls.Add(this.lbl_pic_dpi, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.trackBar_pic, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.txt_pic_compression, 2, 0);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(17, 19);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(393, 28);
+            this.tableLayoutPanel5.TabIndex = 5;
+            // 
+            // lbl_pic_dpi
+            // 
+            this.lbl_pic_dpi.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_pic_dpi.AutoSize = true;
+            this.lbl_pic_dpi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_pic_dpi.Location = new System.Drawing.Point(3, 0);
+            this.lbl_pic_dpi.Name = "lbl_pic_dpi";
+            this.lbl_pic_dpi.Size = new System.Drawing.Size(192, 28);
+            this.lbl_pic_dpi.TabIndex = 0;
+            this.lbl_pic_dpi.Text = "JPEG Komprimierung:";
+            this.lbl_pic_dpi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // trackBar_pic
+            // 
+            this.trackBar_pic.Location = new System.Drawing.Point(201, 3);
+            this.trackBar_pic.Name = "trackBar_pic";
+            this.trackBar_pic.Size = new System.Drawing.Size(138, 22);
+            this.trackBar_pic.TabIndex = 1;
+            this.trackBar_pic.TickFrequency = 5;
+            this.trackBar_pic.Scroll += new System.EventHandler(this.trackBar_pic_Scroll);
+            // 
+            // txt_pic_compression
+            // 
+            this.txt_pic_compression.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_pic_compression.Location = new System.Drawing.Point(350, 3);
+            this.txt_pic_compression.Name = "txt_pic_compression";
+            this.txt_pic_compression.Size = new System.Drawing.Size(35, 22);
+            this.txt_pic_compression.TabIndex = 2;
+            this.txt_pic_compression.TextChanged += new System.EventHandler(this.txt_pic_compression_TextChanged);
+            // 
+            // grp_pic_res
+            // 
+            this.grp_pic_res.Controls.Add(this.tableLayoutPanel4);
+            this.grp_pic_res.Location = new System.Drawing.Point(6, 108);
+            this.grp_pic_res.Name = "grp_pic_res";
+            this.grp_pic_res.Size = new System.Drawing.Size(486, 86);
+            this.grp_pic_res.TabIndex = 6;
+            this.grp_pic_res.TabStop = false;
+            this.grp_pic_res.Text = "Bild Auflösung";
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.txt_pic_dpi, 1, 0);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(17, 19);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(396, 28);
+            this.tableLayoutPanel4.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(192, 28);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Auflösung (DPI):";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txt_pic_dpi
+            // 
+            this.txt_pic_dpi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_pic_dpi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_pic_dpi.Location = new System.Drawing.Point(201, 3);
+            this.txt_pic_dpi.Name = "txt_pic_dpi";
+            this.txt_pic_dpi.Size = new System.Drawing.Size(192, 22);
+            this.txt_pic_dpi.TabIndex = 4;
+            this.txt_pic_dpi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // grp_pic_resolution
             // 
             this.grp_pic_resolution.Controls.Add(this.tableLayoutPanel3);
@@ -798,113 +977,6 @@ namespace Belegleser
             this.txt_pic_x.TabIndex = 4;
             this.txt_pic_x.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // grp_pic_res
-            // 
-            this.grp_pic_res.Controls.Add(this.tableLayoutPanel4);
-            this.grp_pic_res.Location = new System.Drawing.Point(6, 108);
-            this.grp_pic_res.Name = "grp_pic_res";
-            this.grp_pic_res.Size = new System.Drawing.Size(486, 86);
-            this.grp_pic_res.TabIndex = 6;
-            this.grp_pic_res.TabStop = false;
-            this.grp_pic_res.Text = "Bild Auflösung";
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.txt_pic_dpi, 1, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(17, 19);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(396, 28);
-            this.tableLayoutPanel4.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(192, 28);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Auflösung (DPI):";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txt_pic_dpi
-            // 
-            this.txt_pic_dpi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_pic_dpi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_pic_dpi.Location = new System.Drawing.Point(201, 3);
-            this.txt_pic_dpi.Name = "txt_pic_dpi";
-            this.txt_pic_dpi.Size = new System.Drawing.Size(192, 22);
-            this.txt_pic_dpi.TabIndex = 4;
-            this.txt_pic_dpi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // grp_pic_compression
-            // 
-            this.grp_pic_compression.Controls.Add(this.tableLayoutPanel5);
-            this.grp_pic_compression.Location = new System.Drawing.Point(6, 212);
-            this.grp_pic_compression.Name = "grp_pic_compression";
-            this.grp_pic_compression.Size = new System.Drawing.Size(486, 86);
-            this.grp_pic_compression.TabIndex = 7;
-            this.grp_pic_compression.TabStop = false;
-            this.grp_pic_compression.Text = "Bild Auflösung";
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 3;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.10227F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.89773F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel5.Controls.Add(this.lbl_pic_dpi, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.trackBar_pic, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.txt_pic_compression, 2, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(17, 19);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(393, 28);
-            this.tableLayoutPanel5.TabIndex = 5;
-            // 
-            // lbl_pic_dpi
-            // 
-            this.lbl_pic_dpi.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_pic_dpi.AutoSize = true;
-            this.lbl_pic_dpi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_pic_dpi.Location = new System.Drawing.Point(3, 0);
-            this.lbl_pic_dpi.Name = "lbl_pic_dpi";
-            this.lbl_pic_dpi.Size = new System.Drawing.Size(195, 28);
-            this.lbl_pic_dpi.TabIndex = 0;
-            this.lbl_pic_dpi.Text = "JPEG Komprimierung:";
-            this.lbl_pic_dpi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // trackBar_pic
-            // 
-            this.trackBar_pic.Location = new System.Drawing.Point(204, 3);
-            this.trackBar_pic.Name = "trackBar_pic";
-            this.trackBar_pic.Size = new System.Drawing.Size(138, 22);
-            this.trackBar_pic.TabIndex = 1;
-            this.trackBar_pic.TickFrequency = 5;
-            this.trackBar_pic.Scroll += new System.EventHandler(this.trackBar_pic_Scroll);
-            // 
-            // txt_pic_compression
-            // 
-            this.txt_pic_compression.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_pic_compression.Location = new System.Drawing.Point(355, 3);
-            this.txt_pic_compression.Name = "txt_pic_compression";
-            this.txt_pic_compression.Size = new System.Drawing.Size(35, 22);
-            this.txt_pic_compression.TabIndex = 2;
-            this.txt_pic_compression.TextChanged += new System.EventHandler(this.txt_pic_compression_TextChanged);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -918,6 +990,9 @@ namespace Belegleser
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.grp_box_status.ResumeLayout(false);
+            this.grp_box_status.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pict_box_status)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtg_templates)).EndInit();
             this.tabPage2.ResumeLayout(false);
@@ -935,16 +1010,16 @@ namespace Belegleser
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tabPage_pictureQuality.ResumeLayout(false);
-            this.grp_pic_resolution.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
-            this.grp_pic_res.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
             this.grp_pic_compression.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_pic)).EndInit();
+            this.grp_pic_res.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
+            this.grp_pic_resolution.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -958,7 +1033,7 @@ namespace Belegleser
         private System.Windows.Forms.RibbonButton btn_play;
         private System.Windows.Forms.RibbonTab ribbonTab_properties;
         private System.Windows.Forms.RibbonPanel ribbonPanel2;
-        private System.Windows.Forms.RibbonButton ribbonButton1;
+        private System.Windows.Forms.RibbonButton btn_stop;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -1024,6 +1099,12 @@ namespace Belegleser
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_pic_dpi;
         private System.Windows.Forms.TextBox txt_pic_compression;
+        private System.Windows.Forms.ProgressBar progressBar_status;
+        private System.Windows.Forms.GroupBox grp_box_status;
+        private System.Windows.Forms.Label lbl_status_template;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pict_box_status;
+        private System.Windows.Forms.Label lbl_status_preview;
     }
 }
 

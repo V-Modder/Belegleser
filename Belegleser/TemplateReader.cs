@@ -17,9 +17,15 @@ namespace Belegleser
     {
         private string searchPattern = @"^.*\.(jpg|JPG|jpeg|JPEG)$";
         private DataGridView templData;
+        private ProgressBar progressbar;
+        private Label lbl_template;
+        private PictureBox pict_box_status;
 
-        public TemplateReader(DataGridView data)
+        public TemplateReader(DataGridView data, ProgressBar progressbar, Label lbl_template, PictureBox pict_box_status)
         {
+            this.pict_box_status = pict_box_status;
+            this.lbl_template = lbl_template;
+            this.progressbar = progressbar;
             this.templData = data;
             this.WorkerReportsProgress = true;
             this.DoWork += doWork;
@@ -29,6 +35,15 @@ namespace Belegleser
         {
             while (!this.CancellationPending)
             {
+                this.progressbar.BeginInvoke(new Action(() =>
+                    {
+                    progressbar.Refresh();
+                    progressbar.Value = 0;
+                    string[] ext = { ".jpg", ".JPG", ".jpeg", ".JPEG" };
+                    string[] countfile = Directory.GetFiles(Config.getInstance().ScanDirectory, "*.*")
+                        .Where(f => ext.Contains(new FileInfo(f).Extension.ToLower())).ToArray();
+                    progressbar.Maximum = countfile.Count();
+                }));
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
                 foreach (string file in Directory.GetFiles(Config.getInstance().ScanDirectory))
@@ -41,8 +56,11 @@ namespace Belegleser
                         {
                             if ((bool)this.templData.Rows[i].Cells["active"].Value)
                             {
+                                this.lbl_template.BeginInvoke(new Action(() => { lbl_template.Text = this.templData.Rows[i].Cells[0].Value.ToString(); }));
                                 int rnd = new Random().Next(000000001, 999999999);
                                 Bitmap img = (Bitmap)Bitmap.FromFile(file);
+                                Bitmap img2 = new Bitmap(img);
+                                this.pict_box_status.BeginInvoke(new Action(() => { pict_box_status.BackgroundImage = img2; }));
                                 if (this.readFile(img, i) != null)
                                 {
                                     idx = this.readFile(img, i);
@@ -52,6 +70,7 @@ namespace Belegleser
                                     abgemischt = true;
                                     break;
                                 }
+                                img.Dispose();
                             }
                         }
                         if (abgemischt)
@@ -71,8 +90,13 @@ namespace Belegleser
                                 File.Move(file, Path.Combine(Config.getInstance().ScanDirectory, "nicht_abgemischt") + Path.GetFileName(file));
                             }
                         }
+                        this.progressbar.BeginInvoke(new Action(() => { progressbar.Value += 1; }));
                     }
+
                 }
+                this.progressbar.BeginInvoke(new Action(() => { progressbar.Value = 0; }));
+                this.lbl_template.BeginInvoke(new Action(() => { lbl_template.Text = "";}));
+                this.pict_box_status.BeginInvoke(new Action(() => { pict_box_status.BackgroundImage = Properties.Resources.hardware_scanner_2; }));
                 sw.Stop();
                 string interval = Config.getInstance().Interval;
                 int hour = Convert.ToInt32(interval.Substring(0, interval.IndexOf(":")));

@@ -163,7 +163,7 @@ namespace Belegleser
 
         private void btn_play_Click(object sender, EventArgs e)
         {
-            this.reader = new TemplateReader(this.dtg_templates);
+            this.reader = new TemplateReader(this.dtg_templates, this.progressBar_status, this.lbl_status_template, this.pict_box_status);
             this.reader.RunWorkerAsync();
         }
 
