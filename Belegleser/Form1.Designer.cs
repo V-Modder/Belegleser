@@ -193,6 +193,7 @@ namespace Belegleser
             this.btn_stop.Image = global::Belegleser.Properties.Resources.stop;
             this.btn_stop.SmallImage = ((System.Drawing.Image)(resources.GetObject("btn_stop.SmallImage")));
             this.btn_stop.Text = "Stopp";
+            this.btn_stop.Click += new System.EventHandler(this.btn_stop_Click);
             // 
             // ribbonPanel_template
             // 
@@ -810,7 +811,7 @@ namespace Belegleser
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.10227F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.89773F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tableLayoutPanel5.Controls.Add(this.lbl_pic_dpi, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.trackBar_pic, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.txt_pic_compression, 2, 0);
@@ -830,14 +831,14 @@ namespace Belegleser
             this.lbl_pic_dpi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_pic_dpi.Location = new System.Drawing.Point(3, 0);
             this.lbl_pic_dpi.Name = "lbl_pic_dpi";
-            this.lbl_pic_dpi.Size = new System.Drawing.Size(192, 28);
+            this.lbl_pic_dpi.Size = new System.Drawing.Size(191, 28);
             this.lbl_pic_dpi.TabIndex = 0;
             this.lbl_pic_dpi.Text = "JPEG Komprimierung:";
             this.lbl_pic_dpi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // trackBar_pic
             // 
-            this.trackBar_pic.Location = new System.Drawing.Point(201, 3);
+            this.trackBar_pic.Location = new System.Drawing.Point(200, 3);
             this.trackBar_pic.Name = "trackBar_pic";
             this.trackBar_pic.Size = new System.Drawing.Size(138, 22);
             this.trackBar_pic.TabIndex = 1;
@@ -847,7 +848,7 @@ namespace Belegleser
             // txt_pic_compression
             // 
             this.txt_pic_compression.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_pic_compression.Location = new System.Drawing.Point(350, 3);
+            this.txt_pic_compression.Location = new System.Drawing.Point(348, 3);
             this.txt_pic_compression.Name = "txt_pic_compression";
             this.txt_pic_compression.Size = new System.Drawing.Size(35, 22);
             this.txt_pic_compression.TabIndex = 2;

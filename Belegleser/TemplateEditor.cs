@@ -81,8 +81,8 @@ namespace Belegleser
 
         private void btn_plus_rectangle_Click(object sender, EventArgs e)
         {
-            rectangle++;
-            RectDataSet rec = new RectDataSet(this.listBox1, this.propertyGrid1, this.pic_background, "rechteck_" + rectangle);
+            int rechteck = listBox1.Items.Count + 1;
+            RectDataSet rec = new RectDataSet(this.listBox1, this.propertyGrid1, this.pic_background, "rechteck_" + rechteck);
             this.rects.Add(rec);
             this.updateColumns();
         }
@@ -217,6 +217,16 @@ namespace Belegleser
 
         private void btn_test_rectangle_Click(object sender, EventArgs e)
         {
+            if (this.pic_background.Image == null)
+            {
+                MessageBox.Show("Es wurde kein Bild geladen!\n\nZuerst ein Bild laden.", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (this.listBox1.SelectedIndex == -1)
+            {
+                MessageBox.Show("Es wurde kein Rechteck ausgewählt oder hinzugefügt!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             Tesseract ocr = new Tesseract();
             Bitmap bmp = new Bitmap(this.pic_background.Image);
             try
@@ -244,7 +254,10 @@ namespace Belegleser
             string msgtext = "Der Text Bereich wurde ausgelesen:\n########################\n" + ergebnis + "\n########################";
             if (MessageBox.Show(msgtext, "Erfolgreich", MessageBoxButtons.OK, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.OK)
             {
-                Clipboard.SetText(ergebnis);
+                if (ergebnis != "")
+                {
+                    Clipboard.SetText(ergebnis);
+                }
             }
         }
 
@@ -274,6 +287,30 @@ namespace Belegleser
                 sb.Append(wrd.Text);
             }
             return sb.ToString();
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dataGridView1.ClearSelection();
+            dataGridView1.Rows[e.RowIndex].Selected = true;
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenu_dtg_fields.Show(MousePosition.X, MousePosition.Y);
+            }
+        }
+        private void toolStripMenu_deleteRow_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (DataGridViewRow item in this.dataGridView1.SelectedRows)
+                {
+                    dataGridView1.Rows.RemoveAt(item.Index);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Diese Zeile kann nicht gelöscht werden!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

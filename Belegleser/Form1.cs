@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
@@ -114,6 +115,7 @@ namespace Belegleser
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            btn_stop.Enabled = false;
             txt_directory.Text = Config.getInstance().ScanDirectory;
             txt_sql_host.Text = Config.getInstance().SQLHost;
             txt_sql_instanz.Text = Config.getInstance().SQLInstance;
@@ -163,8 +165,33 @@ namespace Belegleser
 
         private void btn_play_Click(object sender, EventArgs e)
         {
+            btn_stop.Enabled = true;
+            btn_play.Enabled = false;
             this.reader = new TemplateReader(this.dtg_templates, this.progressBar_status, this.lbl_status_template, this.pict_box_status);
+            this.reader.ProgressChanged += Reader_ProgressChanged;
             this.reader.RunWorkerAsync();
+        }
+
+        private void Reader_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            WorkerStatusReport report = (WorkerStatusReport)e.UserState;
+            if(report.Progress != null)
+            {
+                this.progressBar_status.Value = (int)report.Progress;
+            }
+            if(report.Template != null)
+            {
+                this.lbl_status_template.Text = report.Template;
+            }
+            if (report.Image != null)
+            {
+                Image img = this.pict_box_status.BackgroundImage;
+                this.pict_box_status.BackgroundImage = report.Image;
+                if (img != null)
+                {
+                    img.Dispose();
+                }
+            }
         }
 
         private void template_save_Click(object sender, EventArgs e)
@@ -199,6 +226,13 @@ namespace Belegleser
             {
                 trackBar_pic.Value = 0;
             }
+        }
+
+        private void btn_stop_Click(object sender, EventArgs e)
+        {
+            this.reader.CancelAsync();
+            btn_play.Enabled = true;
+            btn_stop.Enabled = false;
         }
     }
 }

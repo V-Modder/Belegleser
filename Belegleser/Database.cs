@@ -23,11 +23,12 @@ namespace Belegleser
                     MySqlConnection con = new MySqlConnection(myConnectionString);
                     con.Open();
                     MySqlCommand com = new MySqlCommand(sql, con);
-                    foreach(KeyValuePair<string, string> param in parameter)
+                    foreach (KeyValuePair<string, string> param in parameter)
                     {
                         com.Parameters.AddWithValue(param.Key, param.Value);
                     }
                     ret = Convert.ToString(com.ExecuteScalar());
+                    
                     con.Close();
                 }
                 else

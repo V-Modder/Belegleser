@@ -54,7 +54,7 @@ namespace Belegleser
             {
                 str.Append(value.Key);
                 str.Append("=");
-                str.Append(value.Value);
+                str.Append(value.Value.TrimStart());
                 str.Append(Environment.NewLine);
             }
 

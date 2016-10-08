@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplateEditor));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btn_load = new System.Windows.Forms.ToolStripButton();
@@ -54,6 +55,10 @@
             this.col_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_source = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.col_value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenu_dtg_fields = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenu_deleteRow = new System.Windows.Forms.ToolStripMenuItem();
+            this.edit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
@@ -66,6 +71,7 @@
             this.grp_prop.SuspendLayout();
             this.grp_dagv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenu_dtg_fields.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -292,8 +298,9 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 16);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(336, 273);
+            this.dataGridView1.Size = new System.Drawing.Size(336, 242);
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             // 
             // col_name
             // 
@@ -313,6 +320,35 @@
             // 
             this.col_value.HeaderText = "Wert";
             this.col_value.Name = "col_value";
+            // 
+            // contextMenu_dtg_fields
+            // 
+            this.contextMenu_dtg_fields.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.edit,
+            this.toolStripSeparator3,
+            this.toolStripMenu_deleteRow});
+            this.contextMenu_dtg_fields.Name = "contextMenu_dtg_fields";
+            this.contextMenu_dtg_fields.Size = new System.Drawing.Size(153, 76);
+            this.contextMenu_dtg_fields.Text = "Index Felder ";
+            // 
+            // toolStripMenu_deleteRow
+            // 
+            this.toolStripMenu_deleteRow.Name = "toolStripMenu_deleteRow";
+            this.toolStripMenu_deleteRow.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenu_deleteRow.Text = "Zeile löschen";
+            this.toolStripMenu_deleteRow.Click += new System.EventHandler(this.toolStripMenu_deleteRow_Click);
+            // 
+            // edit
+            // 
+            this.edit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.edit.Name = "edit";
+            this.edit.Size = new System.Drawing.Size(152, 22);
+            this.edit.Text = "Bearbeiten:";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // TemplateEditor
             // 
@@ -341,6 +377,7 @@
             this.grp_prop.ResumeLayout(false);
             this.grp_dagv.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenu_dtg_fields.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -373,5 +410,9 @@
         private System.Windows.Forms.ToolStripButton btn_test_rectangle;
         private System.Windows.Forms.ToolStripLabel lbl_regex;
         private System.Windows.Forms.ToolStripTextBox txt_regex;
+        private System.Windows.Forms.ContextMenuStrip contextMenu_dtg_fields;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenu_deleteRow;
+        private System.Windows.Forms.ToolStripMenuItem edit;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }

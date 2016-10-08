@@ -123,6 +123,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="TiffEncoder.cs" />
+    <Compile Include="WorkerStatusReport.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -49,6 +49,9 @@ namespace Belegleser
                     tif.WriteScanline(raster, offset, i, 0);
                     offset += stride;
                 }
+
+                tif.Close();
+                tif.Dispose();
             }
         }
        

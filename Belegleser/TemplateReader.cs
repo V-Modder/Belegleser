@@ -29,6 +29,7 @@ namespace Belegleser
             this.templData = data;
             this.WorkerReportsProgress = true;
             this.DoWork += doWork;
+            this.WorkerSupportsCancellation = true;
         }
 
         private void doWork(object sender, DoWorkEventArgs e)
@@ -46,57 +47,56 @@ namespace Belegleser
                 }));
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
+                int fileCounter = 0;
                 foreach (string file in Directory.GetFiles(Config.getInstance().ScanDirectory))
                 {
+                    if(!this.CancellationPending)
+                    {
+                        break;
+                    }
                     if (Regex.Match(file, searchPattern, RegexOptions.IgnoreCase).Success)
                     {
                         IndexCreator idx = null;
                         bool abgemischt = false;
-                        for (int i = 0; i < this.templData.Rows.Count && idx == null; i++)
+                        for (int i = 0; i < this.templData.Rows.Count && idx == null && !this.CancellationPending; i++)
                         {
-                            if ((bool)this.templData.Rows[i].Cells["active"].Value)
+                            bool tmp = this.templateWorker(idx, file, i);
+                            if(tmp)
                             {
-                                this.lbl_template.BeginInvoke(new Action(() => { lbl_template.Text = this.templData.Rows[i].Cells[0].Value.ToString(); }));
-                                int rnd = new Random().Next(000000001, 999999999);
-                                Bitmap img = (Bitmap)Bitmap.FromFile(file);
-                                Bitmap img2 = new Bitmap(img);
-                                this.pict_box_status.BeginInvoke(new Action(() => { pict_box_status.BackgroundImage = img2; }));
-                                if (this.readFile(img, i) != null)
-                                {
-                                    idx = this.readFile(img, i);
-                                    idx.write(this.templData.Rows[i].Cells["output_directory"].Value.ToString(), rnd);
-                                    TiffEncoder.Encode(idx.getFileName(rnd) + ".tiff", img);
-                                    img.Dispose();
-                                    abgemischt = true;
-                                    break;
-                                }
-                                img.Dispose();
+                                abgemischt = true;
+                                break;
                             }
                         }
                         if (abgemischt)
                         {
-                            File.Delete(file);
+                            try
+                            {
+                                File.Delete(file);
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Datei kann nicht gelöscht werden!");
+                            }
                         }
                         else
-                        { 
-                            if (Directory.Exists(Path.Combine(Config.getInstance().ScanDirectory,"nicht_abgemischt")))
-                            {
-                                File.Move(file, Path.Combine(Config.getInstance().ScanDirectory,"nicht_abgemischt"));
-                            }
-                            else 
-                            {
-                                Directory.CreateDirectory(Path.Combine(Config.getInstance().ScanDirectory,"nicht_abgemischt"));
+                        {
+                            continue;
+                            //if (Directory.Exists(Path.Combine(Config.getInstance().ScanDirectory,"nicht_abgemischt")))
+                            //{
+                            //    File.Move(file, Path.Combine(Config.getInstance().ScanDirectory,"nicht_abgemischt"));
+                            //}
+                            //else 
+                            //{
+                            //    Directory.CreateDirectory(Path.Combine(Config.getInstance().ScanDirectory,"nicht_abgemischt"));
 
-                                File.Move(file, Path.Combine(Config.getInstance().ScanDirectory, "nicht_abgemischt") + Path.GetFileName(file));
-                            }
+                            //    File.Move(file, Path.Combine(Config.getInstance().ScanDirectory, "nicht_abgemischt") + Path.GetFileName(file));
+                            //}
                         }
-                        this.progressbar.BeginInvoke(new Action(() => { progressbar.Value += 1; }));
+                        this.ReportProgress(0, new WorkerStatusReport(++fileCounter, null, null));
                     }
-
                 }
-                this.progressbar.BeginInvoke(new Action(() => { progressbar.Value = 0; }));
-                this.lbl_template.BeginInvoke(new Action(() => { lbl_template.Text = "";}));
-                this.pict_box_status.BeginInvoke(new Action(() => { pict_box_status.BackgroundImage = Properties.Resources.hardware_scanner_2; }));
+                GC.Collect();
+                this.ReportProgress(0, new WorkerStatusReport(0, "", Properties.Resources.hardware_scanner_2));
                 sw.Stop();
                 string interval = Config.getInstance().Interval;
                 int hour = Convert.ToInt32(interval.Substring(0, interval.IndexOf(":")));
@@ -107,9 +107,33 @@ namespace Belegleser
             }
         }
 
+        private bool templateWorker(IndexCreator idx, string file, int index)
+        {
+            bool abgemischt = false;
+
+            if ((bool)this.templData.Rows[index].Cells["active"].Value)
+            {
+                this.ReportProgress(0, new WorkerStatusReport(null, this.templData.Rows[index].Cells[0].Value.ToString(), null));
+                int rnd = new Random().Next(000000001, 999999999);
+                Bitmap img = (Bitmap)Bitmap.FromFile(file);
+                Bitmap img2 = new Bitmap(img);
+                this.ReportProgress(0, new WorkerStatusReport(null, null, img2));
+                if (this.readFile(img, index) != null)
+                {
+                    idx = this.readFile(img, index);
+                    idx.write(this.templData.Rows[index].Cells["output_directory"].Value.ToString(), rnd);
+                    TiffEncoder.Encode(idx.getFileName(rnd) + ".tiff", img);
+                    img.Dispose();
+                    abgemischt = true;
+                }
+                img.Dispose();
+            }
+
+            return abgemischt;
+        }
+
         private IndexCreator readFile(Bitmap image, int rowIndex)
         {
-            //Bitmap image = (Bitmap)Bitmap.FromFile(fileName);
             Tesseract ocr = new Tesseract();
             //ocr.SetVariable("tessedit_char_whitelist", "0123456789"); // If digit only
 
@@ -121,8 +145,6 @@ namespace Belegleser
             {
                 throw ee;
             }
-            //ocr.ProgressEvent += Ocr_ProgressEvent;
-            //ocr.OcrDone += Ocr_Done;
             Template tmpl = Template.getFromFile(this.getFileName(rowIndex));
 
             IndexCreator idxCreator = new IndexCreator();
@@ -130,7 +152,14 @@ namespace Belegleser
             {
                 if (idx.Source.Equals("Statisch"))
                 {
-                    idxCreator.addValue(idx.Name, idx.Value);
+                    if (idx.Value.Contains("§§datenow"))
+                    {
+                        idxCreator.addValue(idx.Name, idx.Value.Replace("§§datenow", DateTime.Now.ToShortDateString()));
+                    }
+                    else
+                    {
+                        idxCreator.addValue(idx.Name, idx.Value);
+                    }
                 }
             }
             Area a = this.getIdentifyingRect(tmpl);
@@ -178,9 +207,14 @@ namespace Belegleser
                         idxCreator.addValue(idx.Name, getSQLValue(idx.Value, idxCreator, DBType.MySQL));
                     }
                 }
+                ocr.Dispose();
+                GC.Collect();
                 return idxCreator;
+
             }
+            ocr.Dispose();
             return null;
+            
         }
 
         private string getSQLValue(string sql, IndexCreator idxCreator, DBType type)
@@ -189,7 +223,7 @@ namespace Belegleser
             foreach (Match mat in Regex.Matches(sql, @"\§§\w+"))
             {
                 string paramName = mat.Value.Replace("§§", "@");
-                parameters.Add(paramName, this.getValueFromRect(idxCreator, paramName));
+                parameters.Add(paramName, this.getValueFromRect(idxCreator, paramName).Trim());
             }
 
             return Database.ExecuteQuery(sql.Replace("§§", "@"), parameters, type);
@@ -246,6 +280,13 @@ namespace Belegleser
             }
             idxc.addValue(idx.Name, value);
             return;
+        }
+
+        public void killworker()
+        {
+            this.CancelAsync();
+            this.Dispose();
+            GC.Collect();
         }
 
         private string getValue(List<Word> words)
