@@ -56,9 +56,12 @@
             this.col_source = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.col_value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenu_dtg_fields = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenu_deleteRow = new System.Windows.Forms.ToolStripMenuItem();
             this.edit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenu_deleteRow = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
@@ -90,26 +93,28 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(1207, 38);
+            this.toolStrip1.Size = new System.Drawing.Size(1207, 77);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // btn_load
             // 
-            this.btn_load.Image = global::Belegleser.Properties.Resources.load;
+            this.btn_load.Image = global::Belegleser.Properties.Resources._55x55appbar_folder_open;
+            this.btn_load.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btn_load.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_load.Name = "btn_load";
-            this.btn_load.Size = new System.Drawing.Size(92, 35);
+            this.btn_load.Size = new System.Drawing.Size(92, 74);
             this.btn_load.Text = "Template laden";
             this.btn_load.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_load.Click += new System.EventHandler(this.btn_load_Click);
             // 
             // btn_load_picture
             // 
-            this.btn_load_picture.Image = global::Belegleser.Properties.Resources.load_graphic;
+            this.btn_load_picture.Image = global::Belegleser.Properties.Resources._55x55appbar_image;
+            this.btn_load_picture.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btn_load_picture.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_load_picture.Name = "btn_load_picture";
-            this.btn_load_picture.Size = new System.Drawing.Size(74, 35);
+            this.btn_load_picture.Size = new System.Drawing.Size(74, 74);
             this.btn_load_picture.Text = "Grafik laden";
             this.btn_load_picture.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.btn_load_picture.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -117,10 +122,11 @@
             // 
             // btn_Save
             // 
-            this.btn_Save.Image = global::Belegleser.Properties.Resources.save;
+            this.btn_Save.Image = global::Belegleser.Properties.Resources._55x55appbar_disk;
+            this.btn_Save.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btn_Save.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(63, 35);
+            this.btn_Save.Size = new System.Drawing.Size(63, 74);
             this.btn_Save.Text = "Speichern";
             this.btn_Save.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
@@ -128,24 +134,26 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 77);
             // 
             // btn_plus_rectangle
             // 
-            this.btn_plus_rectangle.Image = global::Belegleser.Properties.Resources.plus;
+            this.btn_plus_rectangle.Image = global::Belegleser.Properties.Resources._55x55appbar_app_plus;
+            this.btn_plus_rectangle.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btn_plus_rectangle.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_plus_rectangle.Name = "btn_plus_rectangle";
-            this.btn_plus_rectangle.Size = new System.Drawing.Size(113, 35);
+            this.btn_plus_rectangle.Size = new System.Drawing.Size(113, 74);
             this.btn_plus_rectangle.Text = "Bereich hinzufügen";
             this.btn_plus_rectangle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_plus_rectangle.Click += new System.EventHandler(this.btn_plus_rectangle_Click);
             // 
             // btn_minus_rectangle
             // 
-            this.btn_minus_rectangle.Image = global::Belegleser.Properties.Resources.minus;
+            this.btn_minus_rectangle.Image = global::Belegleser.Properties.Resources._55x55appbar_app_minus;
+            this.btn_minus_rectangle.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btn_minus_rectangle.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_minus_rectangle.Name = "btn_minus_rectangle";
-            this.btn_minus_rectangle.Size = new System.Drawing.Size(104, 35);
+            this.btn_minus_rectangle.Size = new System.Drawing.Size(104, 74);
             this.btn_minus_rectangle.Text = "Bereich entfernen";
             this.btn_minus_rectangle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_minus_rectangle.Click += new System.EventHandler(this.btn_minus_rectangle_Click);
@@ -153,14 +161,15 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 38);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 77);
             // 
             // btn_test_rectangle
             // 
-            this.btn_test_rectangle.Image = global::Belegleser.Properties.Resources.bereich_testen;
+            this.btn_test_rectangle.Image = global::Belegleser.Properties.Resources._55x55appbar_bug;
+            this.btn_test_rectangle.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btn_test_rectangle.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_test_rectangle.Name = "btn_test_rectangle";
-            this.btn_test_rectangle.Size = new System.Drawing.Size(85, 35);
+            this.btn_test_rectangle.Size = new System.Drawing.Size(85, 74);
             this.btn_test_rectangle.Text = "Bereich testen";
             this.btn_test_rectangle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_test_rectangle.Click += new System.EventHandler(this.btn_test_rectangle_Click);
@@ -168,7 +177,7 @@
             // lbl_regex
             // 
             this.lbl_regex.Name = "lbl_regex";
-            this.lbl_regex.Size = new System.Drawing.Size(41, 35);
+            this.lbl_regex.Size = new System.Drawing.Size(41, 74);
             this.lbl_regex.Text = "Regex:";
             // 
             // txt_regex
@@ -176,7 +185,7 @@
             this.txt_regex.BackColor = System.Drawing.Color.Orange;
             this.txt_regex.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_regex.Name = "txt_regex";
-            this.txt_regex.Size = new System.Drawing.Size(200, 38);
+            this.txt_regex.Size = new System.Drawing.Size(200, 77);
             // 
             // panel1
             // 
@@ -186,7 +195,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(851, 850);
+            this.panel1.Size = new System.Drawing.Size(851, 811);
             this.panel1.TabIndex = 1;
             // 
             // pic_background
@@ -219,7 +228,7 @@
             // 
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 38);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 77);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -230,7 +239,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1207, 852);
+            this.splitContainer1.Size = new System.Drawing.Size(1207, 813);
             this.splitContainer1.SplitterDistance = 350;
             this.splitContainer1.TabIndex = 4;
             // 
@@ -242,7 +251,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(348, 850);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(348, 811);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
             // grp_list
@@ -328,27 +337,54 @@
             this.toolStripSeparator3,
             this.toolStripMenu_deleteRow});
             this.contextMenu_dtg_fields.Name = "contextMenu_dtg_fields";
-            this.contextMenu_dtg_fields.Size = new System.Drawing.Size(153, 76);
+            this.contextMenu_dtg_fields.Size = new System.Drawing.Size(144, 54);
             this.contextMenu_dtg_fields.Text = "Index Felder ";
-            // 
-            // toolStripMenu_deleteRow
-            // 
-            this.toolStripMenu_deleteRow.Name = "toolStripMenu_deleteRow";
-            this.toolStripMenu_deleteRow.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenu_deleteRow.Text = "Zeile löschen";
-            this.toolStripMenu_deleteRow.Click += new System.EventHandler(this.toolStripMenu_deleteRow_Click);
             // 
             // edit
             // 
             this.edit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.edit.Name = "edit";
-            this.edit.Size = new System.Drawing.Size(152, 22);
+            this.edit.Size = new System.Drawing.Size(143, 22);
             this.edit.Text = "Bearbeiten:";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(140, 6);
+            // 
+            // toolStripMenu_deleteRow
+            // 
+            this.toolStripMenu_deleteRow.Name = "toolStripMenu_deleteRow";
+            this.toolStripMenu_deleteRow.Size = new System.Drawing.Size(143, 22);
+            this.toolStripMenu_deleteRow.Text = "Zeile löschen";
+            this.toolStripMenu_deleteRow.Click += new System.EventHandler(this.toolStripMenu_deleteRow_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "toolStripButton2";
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton3.Text = "toolStripButton3";
             // 
             // TemplateEditor
             // 
@@ -414,5 +450,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenu_deleteRow;
         private System.Windows.Forms.ToolStripMenuItem edit;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
     }
 }

@@ -97,6 +97,11 @@
     <Compile Include="Index.cs" />
     <Compile Include="IndexCreator.cs" />
     <Compile Include="ListBoxItem.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Rechteckeigenschaften.cs" />
     <Compile Include="Area.cs" />
     <Compile Include="RectDataSet.cs" />
@@ -132,14 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="TemplateEditor.resx">
       <DependentUpon>TemplateEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +159,19 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Resources\appbar.control.play.png" />
+    <None Include="Resources\55x55appbar.cell.insert.below.png" />
+    <None Include="Resources\55x55appbar.cell.row.delete.png" />
+    <None Include="Resources\55x55appbar.app.minus.png" />
+    <None Include="Resources\55x55appbar.app.plus.png" />
+    <None Include="Resources\55x55appbar.bug.png" />
+    <Content Include="Resources\55x55appbar.control.play.png" />
+    <Content Include="Resources\55x55appbar.control.stop.png" />
+    <None Include="Resources\55x55appbar.disk.png" />
+    <None Include="Resources\55x55appbar.page.edit.png" />
+    <None Include="Resources\55x55appbar.disk.download.png" />
+    <None Include="Resources\55x55appbar.folder.open.png" />
+    <None Include="Resources\55x55appbar.image.png" />
     <Content Include="Resources\bereich_testen.png" />
     <Content Include="Resources\hardware-scanner-2.png" />
     <Content Include="Resources\hardware-scanner.ico" />
