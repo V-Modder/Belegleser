@@ -109,6 +109,7 @@ namespace Belegleser
             this.lbl_pix_x = new System.Windows.Forms.Label();
             this.lbl_piy_y = new System.Windows.Forms.Label();
             this.txt_pic_x = new System.Windows.Forms.TextBox();
+            this.btn_move_up = new System.Windows.Forms.RibbonButton();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grp_box_status.SuspendLayout();
@@ -202,6 +203,7 @@ namespace Belegleser
             this.ribbonPanel_template.Items.Add(this.ribbonSeparator3);
             this.ribbonPanel_template.Items.Add(this.template_plus);
             this.ribbonPanel_template.Items.Add(this.ribbonButton3);
+            this.ribbonPanel_template.Items.Add(this.btn_move_up);
             this.ribbonPanel_template.Text = "Template";
             // 
             // template_save
@@ -811,7 +813,7 @@ namespace Belegleser
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.10227F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.89773F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 54F));
             this.tableLayoutPanel5.Controls.Add(this.lbl_pic_dpi, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.trackBar_pic, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.txt_pic_compression, 2, 0);
@@ -831,14 +833,14 @@ namespace Belegleser
             this.lbl_pic_dpi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_pic_dpi.Location = new System.Drawing.Point(3, 0);
             this.lbl_pic_dpi.Name = "lbl_pic_dpi";
-            this.lbl_pic_dpi.Size = new System.Drawing.Size(188, 28);
+            this.lbl_pic_dpi.Size = new System.Drawing.Size(187, 28);
             this.lbl_pic_dpi.TabIndex = 0;
             this.lbl_pic_dpi.Text = "JPEG Komprimierung:";
             this.lbl_pic_dpi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // trackBar_pic
             // 
-            this.trackBar_pic.Location = new System.Drawing.Point(197, 3);
+            this.trackBar_pic.Location = new System.Drawing.Point(196, 3);
             this.trackBar_pic.Name = "trackBar_pic";
             this.trackBar_pic.Size = new System.Drawing.Size(138, 22);
             this.trackBar_pic.TabIndex = 1;
@@ -848,7 +850,7 @@ namespace Belegleser
             // txt_pic_compression
             // 
             this.txt_pic_compression.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_pic_compression.Location = new System.Drawing.Point(342, 3);
+            this.txt_pic_compression.Location = new System.Drawing.Point(341, 3);
             this.txt_pic_compression.Name = "txt_pic_compression";
             this.txt_pic_compression.Size = new System.Drawing.Size(35, 22);
             this.txt_pic_compression.TabIndex = 2;
@@ -978,6 +980,13 @@ namespace Belegleser
             this.txt_pic_x.TabIndex = 4;
             this.txt_pic_x.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // btn_move_up
+            // 
+            this.btn_move_up.Image = ((System.Drawing.Image)(resources.GetObject("btn_move_up.Image")));
+            this.btn_move_up.SmallImage = ((System.Drawing.Image)(resources.GetObject("btn_move_up.SmallImage")));
+            this.btn_move_up.Text = "Nach oben";
+            this.btn_move_up.Click += new System.EventHandler(this.btn_move_up_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1106,6 +1115,7 @@ namespace Belegleser
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pict_box_status;
         private System.Windows.Forms.Label lbl_status_preview;
+        private System.Windows.Forms.RibbonButton btn_move_up;
     }
 }
 

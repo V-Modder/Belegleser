@@ -234,5 +234,28 @@ namespace Belegleser
             btn_play.Enabled = true;
             btn_stop.Enabled = false;
         }
+
+        private void btn_move_up_Click(object sender, EventArgs e)
+        {
+            if (dtg_templates.SelectedCells.Count > 0)
+            {
+                int idx = dtg_templates.SelectedCells[0].OwningRow.Index;
+
+                if (idx > 0)
+                {
+                    int col = dtg_templates.SelectedCells[0].OwningColumn.Index;
+
+                    DataGridViewRowCollection rows = dtg_templates.Rows;
+                    DataGridViewRow row = rows[idx];
+
+                    rows.Remove(row);
+                    rows.Insert(idx - 1, row);
+
+                    dtg_templates.ClearSelection();
+
+                    dtg_templates.Rows[idx - 1].Cells[col].Selected = true;
+                }
+            }
+        }
     }
 }
