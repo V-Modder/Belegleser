@@ -22,6 +22,13 @@ namespace Belegleser
         public Form1()
         {
             InitializeComponent();
+            // initialize the imagelist
+            ImageList imageList1 = new ImageList();
+            imageList1.ImageSize = new Size(40, 40);
+            imageList1.Images.Add("cog", Properties.Resources._55x55appbar_cog);
+            imageList1.Images.Add("sql", Properties.Resources._55x55appbar_database_sql);
+            imageList1.Images.Add("picture", Properties.Resources._55x55appbar_image);
+            tabContr_settings.ImageList = imageList1;
         }
 
 
@@ -257,5 +264,40 @@ namespace Belegleser
                 }
             }
         }
+
+        private void btn_move_down_Click(object sender, EventArgs e)
+        {
+            if (dtg_templates.SelectedCells.Count > 0 && dtg_templates.Rows.Count > 1 && (dtg_templates.CurrentRow.Index + 1) != dtg_templates.Rows.Count)
+            {
+                int idx = dtg_templates.SelectedCells[0].OwningRow.Index;
+
+                if (idx < dtg_templates.Rows.Count)
+                {
+                    int col = dtg_templates.SelectedCells[0].OwningColumn.Index;
+
+                    DataGridViewRowCollection rows = dtg_templates.Rows;
+                    DataGridViewRow row = rows[idx];
+
+                    rows.Remove(row);
+                    rows.Insert(idx + 1, row);
+
+                    dtg_templates.ClearSelection();
+
+                    dtg_templates.Rows[idx + 1].Cells[col].Selected = true;
+                }
+            }
+        }
+
+        private void btn_ribbonOrb_exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+       
     }
 }
