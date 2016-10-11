@@ -50,10 +50,10 @@ namespace Belegleser
                 int fileCounter = 0;
                 foreach (string file in Directory.GetFiles(Config.getInstance().ScanDirectory))
                 {
-                    if(!this.CancellationPending)
-                    {
-                        break;
-                    }
+                    //if(!this.CancellationPending)
+                    //{
+                    //    break;
+                    //}
                     if (Regex.Match(file, searchPattern, RegexOptions.IgnoreCase).Success)
                     {
                         IndexCreator idx = null;
