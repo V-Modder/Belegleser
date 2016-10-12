@@ -71,7 +71,7 @@ namespace Belegleser
                         {
                             try
                             {
-                                File.Delete(file);
+                                //File.Delete(file);
                             }
                             catch
                             {

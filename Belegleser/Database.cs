@@ -28,7 +28,10 @@ namespace Belegleser
                         com.Parameters.AddWithValue(param.Key, param.Value);
                     }
                     ret = Convert.ToString(com.ExecuteScalar());
-                    
+                    if (ret == "")
+                    {
+                        ret = "leer";
+                    }
                     con.Close();
                 }
                 else
@@ -45,6 +48,10 @@ namespace Belegleser
                         com.Parameters.AddWithValue(param.Key, param.Value);
                     }
                     ret = Convert.ToString(com.ExecuteScalar());
+                    if (ret == "")
+                    {
+                        ret = "leer";
+                    }
                     con.Close();
                 }
             }
