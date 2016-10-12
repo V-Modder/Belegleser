@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
 namespace Belegleser
 {
-    public partial class Form1 : RibbonForm
+    public partial class Form1 : Form
     {
         Template tmpl;
         public string scan_directory;
@@ -18,6 +19,9 @@ namespace Belegleser
         public string intervall;
 
         TemplateReader reader;
+
+        private Point m_ClickPos;
+        private Point m_WindowPos;
 
         public Form1()
         {
@@ -152,6 +156,8 @@ namespace Belegleser
             trackBar_pic.Minimum = 0;
             trackBar_pic.LargeChange = 5;
             trackBar_pic.SmallChange = 5;
+
+            
         }
 
         private void template_plus_Click(object sender, EventArgs e)
@@ -298,6 +304,78 @@ namespace Belegleser
             Application.Exit();
         }
 
+        private void ribbon1_MouseDown(object sender, MouseEventArgs e)
+        {
+            base.OnMouseDown(e);
+            m_ClickPos = PointToScreen(e.Location);
+            m_WindowPos = new Point(this.Location.X, this.Location.Y);
+        }
+
+        private void ribbon1_MouseMove(object sender, MouseEventArgs e)
+        {
+            base.OnMouseMove(e);
+
+            if (e.Button == MouseButtons.Left)
+            {
+                if (this.WindowState == FormWindowState.Maximized)
+                {
+                    this.WindowState = FormWindowState.Normal;
+                }
+                Point diffPos = PointToScreen(e.Location);
+                diffPos = new Point(m_ClickPos.X - diffPos.X, m_ClickPos.Y - diffPos.Y);
+                this.Location = new Point(m_WindowPos.X - diffPos.X, m_WindowPos.Y - diffPos.Y);
+            }
+        }
+
+        private void pict_box_exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        //Non Client area Buttons zustände
+        private void pict_box_resize_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void pict_box_exit_MouseHover(object sender, EventArgs e)
+        {
+            pict_box_exit.BackColor = Color.FromArgb(240, 206, 40);
+        }
+
+        private void pict_box_exit_MouseLeave(object sender, EventArgs e)
+        {
+            pict_box_exit.BackColor = Color.FromArgb(190, 208, 232);
+        }
+
+        private void pict_box_resize_MouseHover(object sender, EventArgs e)
+        {
+            pict_box_resize.BackColor = Color.FromArgb(240, 206, 40);
+        }
+
+        private void pict_box_resize_MouseLeave(object sender, EventArgs e)
+        {
+            pict_box_resize.BackColor = Color.FromArgb(190, 208, 232);
+        }
+
+        private void ribbon1_DoubleClick(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
        
     }
 }

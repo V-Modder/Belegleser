@@ -33,6 +33,7 @@ namespace Belegleser
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.btn_ribbonOrb_exit = new System.Windows.Forms.RibbonOrbOptionButton();
+            this.ribbonButton4 = new System.Windows.Forms.RibbonButton();
             this.ribbonTab_general = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel_general = new System.Windows.Forms.RibbonPanel();
             this.btn_play = new System.Windows.Forms.RibbonButton();
@@ -113,7 +114,9 @@ namespace Belegleser
             this.lbl_pix_x = new System.Windows.Forms.Label();
             this.lbl_piy_y = new System.Windows.Forms.Label();
             this.txt_pic_x = new System.Windows.Forms.TextBox();
-            this.ribbonButton4 = new System.Windows.Forms.RibbonButton();
+            this.lbl_name = new System.Windows.Forms.Label();
+            this.pict_box_resize = new System.Windows.Forms.PictureBox();
+            this.pict_box_exit = new System.Windows.Forms.PictureBox();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grp_box_status.SuspendLayout();
@@ -138,6 +141,8 @@ namespace Belegleser
             this.tableLayoutPanel4.SuspendLayout();
             this.grp_pic_resolution.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pict_box_resize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pict_box_exit)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -148,6 +153,7 @@ namespace Belegleser
             // 
             // ribbon1
             // 
+            this.ribbon1.BorderMode = System.Windows.Forms.RibbonWindowMode.InsideWindow;
             this.ribbon1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ribbon1.Location = new System.Drawing.Point(0, 0);
             this.ribbon1.Minimized = false;
@@ -175,6 +181,9 @@ namespace Belegleser
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbon1.Text = "ribbon1";
             this.ribbon1.ThemeColor = System.Windows.Forms.RibbonTheme.Blue;
+            this.ribbon1.DoubleClick += new System.EventHandler(this.ribbon1_DoubleClick);
+            this.ribbon1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ribbon1_MouseDown);
+            this.ribbon1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ribbon1_MouseMove);
             // 
             // btn_ribbonOrb_exit
             // 
@@ -183,6 +192,13 @@ namespace Belegleser
             this.btn_ribbonOrb_exit.SmallImage = global::Belegleser.Properties.Resources._20x2055x55appbar_door_leave;
             this.btn_ribbonOrb_exit.Text = "Beenden";
             this.btn_ribbonOrb_exit.Click += new System.EventHandler(this.btn_ribbonOrb_exit_Click);
+            // 
+            // ribbonButton4
+            // 
+            this.ribbonButton4.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
+            this.ribbonButton4.Image = global::Belegleser.Properties.Resources._55x55appbar_app_plus;
+            this.ribbonButton4.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton4.SmallImage")));
+            this.ribbonButton4.Value = "test";
             // 
             // ribbonTab_general
             // 
@@ -470,10 +486,10 @@ namespace Belegleser
             this.tabPage_generalSettings.Controls.Add(this.grp_box_directory);
             this.tabPage_generalSettings.Controls.Add(this.grp_box_intervall);
             this.tabPage_generalSettings.ImageKey = "cog";
-            this.tabPage_generalSettings.Location = new System.Drawing.Point(4, 25);
+            this.tabPage_generalSettings.Location = new System.Drawing.Point(4, 24);
             this.tabPage_generalSettings.Name = "tabPage_generalSettings";
             this.tabPage_generalSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_generalSettings.Size = new System.Drawing.Size(1029, 652);
+            this.tabPage_generalSettings.Size = new System.Drawing.Size(1029, 653);
             this.tabPage_generalSettings.TabIndex = 0;
             this.tabPage_generalSettings.Text = "Allgemeine Einstellungen";
             this.tabPage_generalSettings.UseVisualStyleBackColor = true;
@@ -567,10 +583,10 @@ namespace Belegleser
             this.tabPage_database.Controls.Add(this.grp_box_sql);
             this.tabPage_database.Controls.Add(this.grp_mysql_habel);
             this.tabPage_database.ImageKey = "sql";
-            this.tabPage_database.Location = new System.Drawing.Point(4, 25);
+            this.tabPage_database.Location = new System.Drawing.Point(4, 24);
             this.tabPage_database.Name = "tabPage_database";
             this.tabPage_database.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_database.Size = new System.Drawing.Size(1029, 652);
+            this.tabPage_database.Size = new System.Drawing.Size(1029, 653);
             this.tabPage_database.TabIndex = 1;
             this.tabPage_database.Text = "Datenbanken";
             this.tabPage_database.UseVisualStyleBackColor = true;
@@ -856,7 +872,7 @@ namespace Belegleser
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.10227F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.89773F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
             this.tableLayoutPanel5.Controls.Add(this.lbl_pic_dpi, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.trackBar_pic, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.txt_pic_compression, 2, 0);
@@ -876,16 +892,16 @@ namespace Belegleser
             this.lbl_pic_dpi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_pic_dpi.Location = new System.Drawing.Point(3, 0);
             this.lbl_pic_dpi.Name = "lbl_pic_dpi";
-            this.lbl_pic_dpi.Size = new System.Drawing.Size(180, 28);
+            this.lbl_pic_dpi.Size = new System.Drawing.Size(175, 28);
             this.lbl_pic_dpi.TabIndex = 0;
             this.lbl_pic_dpi.Text = "JPEG Komprimierung:";
             this.lbl_pic_dpi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // trackBar_pic
             // 
-            this.trackBar_pic.Location = new System.Drawing.Point(189, 3);
+            this.trackBar_pic.Location = new System.Drawing.Point(184, 3);
             this.trackBar_pic.Name = "trackBar_pic";
-            this.trackBar_pic.Size = new System.Drawing.Size(134, 22);
+            this.trackBar_pic.Size = new System.Drawing.Size(129, 22);
             this.trackBar_pic.TabIndex = 1;
             this.trackBar_pic.TickFrequency = 5;
             this.trackBar_pic.Scroll += new System.EventHandler(this.trackBar_pic_Scroll);
@@ -893,7 +909,7 @@ namespace Belegleser
             // txt_pic_compression
             // 
             this.txt_pic_compression.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_pic_compression.Location = new System.Drawing.Point(329, 3);
+            this.txt_pic_compression.Location = new System.Drawing.Point(319, 3);
             this.txt_pic_compression.Name = "txt_pic_compression";
             this.txt_pic_compression.Size = new System.Drawing.Size(35, 22);
             this.txt_pic_compression.TabIndex = 2;
@@ -1023,20 +1039,65 @@ namespace Belegleser
             this.txt_pic_x.TabIndex = 4;
             this.txt_pic_x.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // ribbonButton4
+            // lbl_name
             // 
-            this.ribbonButton4.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
-            this.ribbonButton4.Image = global::Belegleser.Properties.Resources._55x55appbar_app_plus;
-            this.ribbonButton4.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton4.SmallImage")));
-            this.ribbonButton4.Value = "test";
+            this.lbl_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_name.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.lbl_name.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_name.Location = new System.Drawing.Point(489, 2);
+            this.lbl_name.Name = "lbl_name";
+            this.lbl_name.Size = new System.Drawing.Size(98, 18);
+            this.lbl_name.TabIndex = 2;
+            this.lbl_name.Text = "BelegLeser";
+            this.lbl_name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_name.DoubleClick += new System.EventHandler(this.ribbon1_DoubleClick);
+            this.lbl_name.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ribbon1_MouseDown);
+            this.lbl_name.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ribbon1_MouseMove);
+            // 
+            // pict_box_resize
+            // 
+            this.pict_box_resize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pict_box_resize.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.pict_box_resize.Image = ((System.Drawing.Image)(resources.GetObject("pict_box_resize.Image")));
+            this.pict_box_resize.Location = new System.Drawing.Point(981, 0);
+            this.pict_box_resize.Margin = new System.Windows.Forms.Padding(0);
+            this.pict_box_resize.Name = "pict_box_resize";
+            this.pict_box_resize.Size = new System.Drawing.Size(35, 35);
+            this.pict_box_resize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pict_box_resize.TabIndex = 3;
+            this.pict_box_resize.TabStop = false;
+            this.pict_box_resize.Click += new System.EventHandler(this.pict_box_resize_Click);
+            this.pict_box_resize.MouseLeave += new System.EventHandler(this.pict_box_resize_MouseLeave);
+            this.pict_box_resize.MouseHover += new System.EventHandler(this.pict_box_resize_MouseHover);
+            // 
+            // pict_box_exit
+            // 
+            this.pict_box_exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pict_box_exit.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.pict_box_exit.Image = ((System.Drawing.Image)(resources.GetObject("pict_box_exit.Image")));
+            this.pict_box_exit.Location = new System.Drawing.Point(1016, 0);
+            this.pict_box_exit.Margin = new System.Windows.Forms.Padding(0);
+            this.pict_box_exit.Name = "pict_box_exit";
+            this.pict_box_exit.Size = new System.Drawing.Size(35, 35);
+            this.pict_box_exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pict_box_exit.TabIndex = 4;
+            this.pict_box_exit.TabStop = false;
+            this.pict_box_exit.Click += new System.EventHandler(this.pict_box_exit_Click);
+            this.pict_box_exit.MouseLeave += new System.EventHandler(this.pict_box_exit_MouseLeave);
+            this.pict_box_exit.MouseHover += new System.EventHandler(this.pict_box_exit_MouseHover);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1051, 856);
+            this.Controls.Add(this.pict_box_exit);
+            this.Controls.Add(this.pict_box_resize);
+            this.Controls.Add(this.lbl_name);
             this.Controls.Add(this.ribbon1);
             this.Controls.Add(this.tabControl);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Belegleser";
@@ -1074,6 +1135,8 @@ namespace Belegleser
             this.grp_pic_resolution.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pict_box_resize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pict_box_exit)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1164,6 +1227,9 @@ namespace Belegleser
         private System.Windows.Forms.RibbonButton btn_move_down;
         private System.Windows.Forms.RibbonOrbOptionButton btn_ribbonOrb_exit;
         private System.Windows.Forms.RibbonButton ribbonButton4;
+        private System.Windows.Forms.Label lbl_name;
+        private System.Windows.Forms.PictureBox pict_box_resize;
+        private System.Windows.Forms.PictureBox pict_box_exit;
     }
 }
 

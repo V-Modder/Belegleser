@@ -50,10 +50,11 @@ namespace Belegleser
                 int fileCounter = 0;
                 foreach (string file in Directory.GetFiles(Config.getInstance().ScanDirectory))
                 {
-                    //if(!this.CancellationPending)
-                    //{
-                    //    break;
-                    //}
+                    if (this.CancellationPending)
+                    {
+                        e.Cancel = true;
+                        break;
+                    }
                     if (Regex.Match(file, searchPattern, RegexOptions.IgnoreCase).Success)
                     {
                         IndexCreator idx = null;
@@ -101,7 +102,7 @@ namespace Belegleser
                 string interval = Config.getInstance().Interval;
                 int hour = Convert.ToInt32(interval.Substring(0, interval.IndexOf(":")));
                 int minute = Convert.ToInt32(interval.Substring(interval.IndexOf(":") + 1));
-                int sleep = (((hour * 60) + minute) * 600);
+                int sleep = (((hour * 60) + minute) * 60000);
                 sleep -= (int)sw.ElapsedMilliseconds;
                 Thread.Sleep(sleep);
             }
@@ -156,6 +157,10 @@ namespace Belegleser
                     {
                         idxCreator.addValue(idx.Name, idx.Value.Replace("§§datenow", DateTime.Now.ToShortDateString()));
                     }
+                    //else if (idx.Value == "")
+                    //{
+                    //    //Throw ne exeption when value == ""
+                    //}
                     else
                     {
                         idxCreator.addValue(idx.Name, idx.Value);

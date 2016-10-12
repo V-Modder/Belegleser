@@ -180,6 +180,10 @@
     <None Include="Resources\20x2055x55appbar.door.leave.png" />
     <None Include="Resources\20x2055x55appbar.database.sql.png" />
     <None Include="Resources\55x55appbar.cog.png" />
+    <None Include="Resources\55x55appbar.app.png" />
+    <None Include="Resources\55x55appbar.app.remove.png" />
+    <None Include="Resources\20x2055x55appbar.app.png" />
+    <None Include="Resources\20x2055x55appbar.app.remove.png" />
     <Content Include="Resources\55x55appbar.control.play.png" />
     <Content Include="Resources\55x55appbar.control.stop.png" />
     <None Include="Resources\55x55appbar.disk.png" />
