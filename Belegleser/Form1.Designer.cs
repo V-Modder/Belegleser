@@ -180,7 +180,7 @@ namespace Belegleser
             this.ribbon1.Tabs.Add(this.ribbonTab_properties);
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbon1.Text = "ribbon1";
-            this.ribbon1.ThemeColor = System.Windows.Forms.RibbonTheme.Blue;
+            this.ribbon1.ThemeColor = System.Windows.Forms.RibbonTheme.Purple;
             this.ribbon1.DoubleClick += new System.EventHandler(this.ribbon1_DoubleClick);
             this.ribbon1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ribbon1_MouseDown);
             this.ribbon1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ribbon1_MouseMove);
@@ -872,7 +872,7 @@ namespace Belegleser
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.10227F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.89773F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
             this.tableLayoutPanel5.Controls.Add(this.lbl_pic_dpi, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.trackBar_pic, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.txt_pic_compression, 2, 0);
@@ -892,16 +892,16 @@ namespace Belegleser
             this.lbl_pic_dpi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_pic_dpi.Location = new System.Drawing.Point(3, 0);
             this.lbl_pic_dpi.Name = "lbl_pic_dpi";
-            this.lbl_pic_dpi.Size = new System.Drawing.Size(175, 28);
+            this.lbl_pic_dpi.Size = new System.Drawing.Size(170, 28);
             this.lbl_pic_dpi.TabIndex = 0;
             this.lbl_pic_dpi.Text = "JPEG Komprimierung:";
             this.lbl_pic_dpi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // trackBar_pic
             // 
-            this.trackBar_pic.Location = new System.Drawing.Point(184, 3);
+            this.trackBar_pic.Location = new System.Drawing.Point(179, 3);
             this.trackBar_pic.Name = "trackBar_pic";
-            this.trackBar_pic.Size = new System.Drawing.Size(129, 22);
+            this.trackBar_pic.Size = new System.Drawing.Size(126, 22);
             this.trackBar_pic.TabIndex = 1;
             this.trackBar_pic.TickFrequency = 5;
             this.trackBar_pic.Scroll += new System.EventHandler(this.trackBar_pic_Scroll);
@@ -909,7 +909,7 @@ namespace Belegleser
             // txt_pic_compression
             // 
             this.txt_pic_compression.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_pic_compression.Location = new System.Drawing.Point(319, 3);
+            this.txt_pic_compression.Location = new System.Drawing.Point(311, 3);
             this.txt_pic_compression.Name = "txt_pic_compression";
             this.txt_pic_compression.Size = new System.Drawing.Size(35, 22);
             this.txt_pic_compression.TabIndex = 2;
@@ -1059,33 +1059,33 @@ namespace Belegleser
             // 
             this.pict_box_resize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pict_box_resize.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.pict_box_resize.Image = ((System.Drawing.Image)(resources.GetObject("pict_box_resize.Image")));
-            this.pict_box_resize.Location = new System.Drawing.Point(981, 0);
+            this.pict_box_resize.Image = global::Belegleser.Properties.Resources._55x55appbar_app;
+            this.pict_box_resize.Location = new System.Drawing.Point(968, 0);
             this.pict_box_resize.Margin = new System.Windows.Forms.Padding(0);
             this.pict_box_resize.Name = "pict_box_resize";
-            this.pict_box_resize.Size = new System.Drawing.Size(35, 35);
+            this.pict_box_resize.Size = new System.Drawing.Size(38, 30);
             this.pict_box_resize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pict_box_resize.TabIndex = 3;
             this.pict_box_resize.TabStop = false;
             this.pict_box_resize.Click += new System.EventHandler(this.pict_box_resize_Click);
+            this.pict_box_resize.MouseEnter += new System.EventHandler(this.pict_box_resize_MouseHover);
             this.pict_box_resize.MouseLeave += new System.EventHandler(this.pict_box_resize_MouseLeave);
-            this.pict_box_resize.MouseHover += new System.EventHandler(this.pict_box_resize_MouseHover);
             // 
             // pict_box_exit
             // 
             this.pict_box_exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pict_box_exit.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.pict_box_exit.Image = ((System.Drawing.Image)(resources.GetObject("pict_box_exit.Image")));
-            this.pict_box_exit.Location = new System.Drawing.Point(1016, 0);
+            this.pict_box_exit.Image = global::Belegleser.Properties.Resources._55x55_exit;
+            this.pict_box_exit.Location = new System.Drawing.Point(1006, 0);
             this.pict_box_exit.Margin = new System.Windows.Forms.Padding(0);
             this.pict_box_exit.Name = "pict_box_exit";
-            this.pict_box_exit.Size = new System.Drawing.Size(35, 35);
-            this.pict_box_exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pict_box_exit.Size = new System.Drawing.Size(45, 30);
+            this.pict_box_exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pict_box_exit.TabIndex = 4;
             this.pict_box_exit.TabStop = false;
             this.pict_box_exit.Click += new System.EventHandler(this.pict_box_exit_Click);
+            this.pict_box_exit.MouseEnter += new System.EventHandler(this.pict_box_exit_MouseHover);
             this.pict_box_exit.MouseLeave += new System.EventHandler(this.pict_box_exit_MouseLeave);
-            this.pict_box_exit.MouseHover += new System.EventHandler(this.pict_box_exit_MouseHover);
             // 
             // Form1
             // 

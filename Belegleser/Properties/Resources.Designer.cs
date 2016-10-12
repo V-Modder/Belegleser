@@ -63,6 +63,16 @@ namespace Belegleser.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _20x20_resize {
+            get {
+                object obj = ResourceManager.GetObject("_20x20_resize", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _20x2055x55appbar_database_sql {
             get {
                 object obj = ResourceManager.GetObject("_20x2055x55appbar_database_sql", resourceCulture);
@@ -86,6 +96,36 @@ namespace Belegleser.Properties {
         internal static System.Drawing.Bitmap _25x2555x55appbar_door_leave {
             get {
                 object obj = ResourceManager.GetObject("_25x2555x55appbar_door_leave", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _55x55_exit {
+            get {
+                object obj = ResourceManager.GetObject("_55x55_exit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _55x55_exit_white {
+            get {
+                object obj = ResourceManager.GetObject("_55x55_exit_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _55x55_resizetonormal {
+            get {
+                object obj = ResourceManager.GetObject("_55x55_resizetonormal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

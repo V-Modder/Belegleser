@@ -59,39 +59,41 @@ namespace Belegleser
                     {
                         IndexCreator idx = null;
                         bool abgemischt = false;
-                        for (int i = 0; i < this.templData.Rows.Count && idx == null && !this.CancellationPending; i++)
+                        try
                         {
-                            bool tmp = this.templateWorker(idx, file, i);
-                            if(tmp)
+                            for (int i = 0; i < this.templData.Rows.Count && idx == null && !this.CancellationPending; i++)
                             {
-                                abgemischt = true;
-                                break;
+                                bool tmp = this.templateWorker(idx, file, i);
+                                if (tmp)
+                                {
+                                    abgemischt = true;
+                                    break;
+                                }
+                            }
+                            if (abgemischt)
+                            {
+                                try
+                                {
+                                    //File.Delete(file);
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Datei kann nicht gelöscht werden!");
+                                }
                             }
                         }
-                        if (abgemischt)
+                        catch (InvalidDataException)
                         {
-                            try
+                            if (Directory.Exists(Path.Combine(Config.getInstance().ScanDirectory, "nicht_abgemischt")))
                             {
-                                //File.Delete(file);
+                                File.Move(file, Path.Combine(Config.getInstance().ScanDirectory, "nicht_abgemischt\\") + Path.GetFileName(file));
                             }
-                            catch
+                            else
                             {
-                                MessageBox.Show("Datei kann nicht gelöscht werden!");
-                            }
-                        }
-                        else
-                        {
-                            continue;
-                            //if (Directory.Exists(Path.Combine(Config.getInstance().ScanDirectory,"nicht_abgemischt")))
-                            //{
-                            //    File.Move(file, Path.Combine(Config.getInstance().ScanDirectory,"nicht_abgemischt"));
-                            //}
-                            //else 
-                            //{
-                            //    Directory.CreateDirectory(Path.Combine(Config.getInstance().ScanDirectory,"nicht_abgemischt"));
+                                Directory.CreateDirectory(Path.Combine(Config.getInstance().ScanDirectory, "nicht_abgemischt"));
 
-                            //    File.Move(file, Path.Combine(Config.getInstance().ScanDirectory, "nicht_abgemischt") + Path.GetFileName(file));
-                            //}
+                                File.Move(file, Path.Combine(Config.getInstance().ScanDirectory, "nicht_abgemischt\\") + Path.GetFileName(file));
+                            }
                         }
                         this.ReportProgress(0, new WorkerStatusReport(++fileCounter, null, null));
                     }
@@ -119,15 +121,29 @@ namespace Belegleser
                 Bitmap img = (Bitmap)Bitmap.FromFile(file);
                 Bitmap img2 = new Bitmap(img);
                 this.ReportProgress(0, new WorkerStatusReport(null, null, img2));
-                if (this.readFile(img, index) != null)
+                try
                 {
-                    idx = this.readFile(img, index);
-                    idx.write(this.templData.Rows[index].Cells["output_directory"].Value.ToString(), rnd);
-                    TiffEncoder.Encode(idx.getFileName(rnd) + ".tiff", img);
-                    img.Dispose();
-                    abgemischt = true;
+                    if (this.readFile(img, index) != null)
+                    {
+                        idx = this.readFile(img, index);
+                        idx.write(this.templData.Rows[index].Cells["output_directory"].Value.ToString(), rnd);
+                        TiffEncoder.Encode(idx.getFileName(rnd) + ".tiff", img);
+                        img.Dispose();
+                        abgemischt = true;
+                    }
                 }
-                img.Dispose();
+                catch (InvalidDataException e)
+                {
+                    throw e;
+                }
+                finally
+                {
+                    img.Dispose();
+                    img2.Dispose();
+                    GC.Collect();
+                }
+                //img.Dispose();
+                
             }
 
             return abgemischt;
@@ -157,10 +173,7 @@ namespace Belegleser
                     {
                         idxCreator.addValue(idx.Name, idx.Value.Replace("§§datenow", DateTime.Now.ToShortDateString()));
                     }
-                    //else if (idx.Value == "")
-                    //{
-                    //    //Throw ne exeption when value == ""
-                    //}
+                   
                     else
                     {
                         idxCreator.addValue(idx.Name, idx.Value);
@@ -211,6 +224,14 @@ namespace Belegleser
                     {
                         idxCreator.addValue(idx.Name, getSQLValue(idx.Value, idxCreator, DBType.MySQL));
                     }
+                    //Überprüfen ob alle Felder gefunden wurden
+                    if (idx.Value == "")
+                    {
+                        ocr.Dispose();
+                        GC.Collect();
+                        throw new InvalidDataException("Wert ist leer bzw. nicht gefunden: " + idx.Name);
+                    }
+
                 }
                 ocr.Dispose();
                 GC.Collect();

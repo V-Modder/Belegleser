@@ -105,6 +105,7 @@
     <Compile Include="Rechteckeigenschaften.cs" />
     <Compile Include="Area.cs" />
     <Compile Include="RectDataSet.cs" />
+    <Compile Include="RribbonTheme.cs" />
     <Compile Include="SaveTemplateWork.cs" />
     <Compile Include="SizeablePictureBox.cs">
       <SubType>Component</SubType>
@@ -184,6 +185,7 @@
     <None Include="Resources\55x55appbar.app.remove.png" />
     <None Include="Resources\20x2055x55appbar.app.png" />
     <None Include="Resources\20x2055x55appbar.app.remove.png" />
+    <None Include="Resources\20x20_resize.png" />
     <Content Include="Resources\55x55appbar.control.play.png" />
     <Content Include="Resources\55x55appbar.control.stop.png" />
     <None Include="Resources\55x55appbar.disk.png" />
@@ -194,6 +196,9 @@
     <None Include="Resources\55x55appbar.door.leave.png" />
     <None Include="Resources\55x55appbar.database.sql.png" />
     <None Include="Resources\55x55appbar.door.leave_white.png" />
+    <None Include="Resources\55x55_resizetonormal.png" />
+    <None Include="Resources\55x55_exit.png" />
+    <None Include="Resources\55x55_exit_white.png" />
     <Content Include="Resources\bereich_testen.png" />
     <Content Include="Resources\hardware-scanner-2.png" />
     <Content Include="Resources\hardware-scanner.ico" />

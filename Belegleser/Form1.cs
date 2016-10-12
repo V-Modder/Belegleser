@@ -26,13 +26,13 @@ namespace Belegleser
         public Form1()
         {
             InitializeComponent();
-            // initialize the imagelist
             ImageList imageList1 = new ImageList();
             imageList1.ImageSize = new Size(40, 40);
             imageList1.Images.Add("cog", Properties.Resources._55x55appbar_cog);
             imageList1.Images.Add("sql", Properties.Resources._55x55appbar_database_sql);
             imageList1.Images.Add("picture", Properties.Resources._55x55appbar_image);
             tabContr_settings.ImageList = imageList1;
+            //ChangeTheme();
         }
 
 
@@ -347,17 +347,19 @@ namespace Belegleser
 
         private void pict_box_exit_MouseHover(object sender, EventArgs e)
         {
-            pict_box_exit.BackColor = Color.FromArgb(240, 206, 40);
+            pict_box_exit.Image = Properties.Resources._55x55_exit_white;
+            pict_box_exit.BackColor = Color.FromArgb(232, 17, 35);
         }
 
         private void pict_box_exit_MouseLeave(object sender, EventArgs e)
         {
+            pict_box_exit.Image = Properties.Resources._55x55_exit;
             pict_box_exit.BackColor = Color.FromArgb(190, 208, 232);
         }
 
         private void pict_box_resize_MouseHover(object sender, EventArgs e)
         {
-            pict_box_resize.BackColor = Color.FromArgb(240, 206, 40);
+            pict_box_resize.BackColor = Color.FromArgb(174, 174, 174);
         }
 
         private void pict_box_resize_MouseLeave(object sender, EventArgs e)
@@ -376,6 +378,13 @@ namespace Belegleser
                 this.WindowState = FormWindowState.Normal;
             }
         }
-       
+
+        private void ChangeTheme()
+        {
+            Theme.ColorTable = new RribbonTheme();
+            ribbon1.Refresh();
+            this.Refresh();
+        }
+
     }
 }
