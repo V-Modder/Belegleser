@@ -314,14 +314,14 @@ namespace Belegleser
         private void ribbon1_MouseMove(object sender, MouseEventArgs e)
         {
             base.OnMouseMove(e);
-
-            if (e.Button == MouseButtons.Left)
+            var relativePoint = this.PointToClient(Cursor.Position);
+            if (e.Button == MouseButtons.Left && relativePoint.Y < 25)
             {
+                Point diffPos = PointToScreen(e.Location);
                 if (this.WindowState == FormWindowState.Maximized)
                 {
                     this.WindowState = FormWindowState.Normal;
                 }
-                Point diffPos = PointToScreen(e.Location);
                 diffPos = new Point(m_ClickPos.X - diffPos.X, m_ClickPos.Y - diffPos.Y);
                 this.Location = new Point(m_WindowPos.X - diffPos.X, m_WindowPos.Y - diffPos.Y);
             }

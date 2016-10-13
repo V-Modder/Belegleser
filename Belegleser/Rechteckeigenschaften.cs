@@ -76,5 +76,18 @@ namespace Belegleser
             get { return this.identifiyingWord; }
             set { this.identifiyingWord = value; }
         }
+
+        bool isDigitonly;
+        [Browsable(true)]
+        [ReadOnly(false)]                          // but just read only
+        [Description("Sind nur Zahlen vorhanden?")]             // sample hint1
+        [Category("Rechteck")]                   // Category that I want
+        [DisplayName("Nur Zahlen")]
+        public bool IsDigitonly
+        {
+            get { return this.isDigitonly; }
+            set { this.isDigitonly = value; }
+        }
+
     }
 }

@@ -142,8 +142,6 @@ namespace Belegleser
                     img2.Dispose();
                     GC.Collect();
                 }
-                //img.Dispose();
-                
             }
 
             return abgemischt;
@@ -201,6 +199,15 @@ namespace Belegleser
                     {
                         continue;
                     }
+
+                    //if (aa.IsDigitonly == true)
+                    //{
+                    //    ocr.SetVariable("tessedit_char_whitelist", "0123456789"); // If digit only
+                    //}
+                    //else
+                    //{
+                    //    ocr.SetVariable("tessedit_char_whitelist", "0123456789,/ABCDEFGHJKLMNPQRSTUVWXYÄÖÜ");
+                    //}
                     result = null;
                     result = ocr.DoOCR(image, this.getRect(aa));
                     aa.Value = this.getValue(result);

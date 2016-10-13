@@ -51,6 +51,7 @@ namespace Belegleser
                 rect.Color = set.Properties.Color.ToArgb();
                 rect.IsIdentifying = set.Properties.IsIdentifiying;
                 rect.IdentifyingWord = set.Properties.IdentifiyingWord;
+                rect.IsDigitonly = set.Properties.IsDigitonly;
                 tmpl.Reactangles.Add(rect);
             }
             tmpl.Index = new List<Index>();
@@ -198,6 +199,7 @@ namespace Belegleser
                 rec.Grid_PropertyValueChanged(this.propertyGrid1, new PropertyValueChangedEventArgs(null, null));
                 rec.Properties.IsIdentifiying = a.IsIdentifying;
                 rec.Properties.IdentifiyingWord = a.IdentifyingWord;
+                rec.Properties.IsDigitonly = a.IsDigitonly;
                 this.rects.Add(rec);
             }
 
@@ -242,6 +244,15 @@ namespace Belegleser
             int location_y = rects[index].Properties.Location.Y;
             int size_height = rects[index].Properties.Size.Height;
             int size_width = rects[index].Properties.Size.Width;
+            bool isDigitonly = rects[index].Properties.IsDigitonly;
+            if (isDigitonly == true)
+            {
+                ocr.SetVariable("tessedit_char_whitelist", "0123456789"); // If digit only
+            }
+            else
+            {
+                ocr.SetVariable("tessedit_char_whitelist", "0123456789,/ABCDEFGHJKLMNPQRSTUVWXYÄÖÜ");
+            }
             Rectangle r = new Rectangle(location_x, location_y, size_width, size_height);
             List<Word> result;
             result = ocr.DoOCR(bmp, r);
@@ -259,6 +270,10 @@ namespace Belegleser
                     Clipboard.SetText(ergebnis);
                 }
             }
+            ocr.Clear();
+            bmp.Dispose();
+            GC.Collect();
+            ocr.Dispose();
         }
 
         

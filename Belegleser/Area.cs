@@ -51,5 +51,10 @@ namespace Belegleser
         {
             get; set;
         }
+
+        public bool IsDigitonly
+        {
+            get; set;
+        }
     }
 }
