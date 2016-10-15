@@ -97,6 +97,7 @@
     <Compile Include="Index.cs" />
     <Compile Include="IndexCreator.cs" />
     <Compile Include="ListBoxItem.cs" />
+    <Compile Include="OcrTessarect.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

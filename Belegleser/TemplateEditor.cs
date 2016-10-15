@@ -229,34 +229,34 @@ namespace Belegleser
                 MessageBox.Show("Es wurde kein Rechteck ausgewählt oder hinzugefügt!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            Tesseract ocr = new Tesseract();
             Bitmap bmp = new Bitmap(this.pic_background.Image);
-            try
-            {
-                ocr.Init(null, "deu", false); // To use correct tessdata
-            }
-            catch (Exception ee)
-            {
-                throw ee;
-            }
+            //try
+            //{
+            //    ocr.Init(null, "deu", false); // To use correct tessdata
+            //}
+            //catch (Exception ee)
+            //{
+            //    throw ee;
+            //}
             int index = listBox1.SelectedIndex;
             int location_x = rects[index].Properties.Location.X;
             int location_y = rects[index].Properties.Location.Y;
             int size_height = rects[index].Properties.Size.Height;
             int size_width = rects[index].Properties.Size.Width;
             bool isDigitonly = rects[index].Properties.IsDigitonly;
-            if (isDigitonly == true)
-            {
-                ocr.SetVariable("tessedit_char_whitelist", "0123456789"); // If digit only
-            }
-            else
-            {
-                ocr.SetVariable("tessedit_char_whitelist", "0123456789,/ABCDEFGHJKLMNPQRSTUVWXYÄÖÜ");
-            }
+            //if (isDigitonly == true)
+            //{
+            //    ocr.SetVariable("tessedit_char_whitelist", "0123456789"); // If digit only
+            //}
+            //else
+            //{
+            //    ocr.SetVariable("tessedit_char_whitelist", "0123456789,/ABCDEFGHJKLMNPQRSTUVWXYÄÖÜ");
+            //}
+            OcrTessarect ocr = new OcrTessarect(isDigitonly);
             Rectangle r = new Rectangle(location_x, location_y, size_width, size_height);
-            List<Word> result;
-            result = ocr.DoOCR(bmp, r);
-            Match mat = Regex.Match(getValue(result), txt_regex.Text);
+            string result;
+            result = ocr.readFile(bmp, r);
+            Match mat = Regex.Match(result, txt_regex.Text);
             string ergebnis = "";
             if (mat.Success)
             {
@@ -270,39 +270,15 @@ namespace Belegleser
                     Clipboard.SetText(ergebnis);
                 }
             }
-            ocr.Clear();
+            //ocr.Clear();
             bmp.Dispose();
             GC.Collect();
-            ocr.Dispose();
+            //ocr.Dispose();
         }
 
         
 
-        private string getValue(List<Word> words)
-        {
-            int lines = 0;
-            StringBuilder sb = new StringBuilder();
-            bool isFirst = true;
-            foreach (Word wrd in words)
-            {
-                if (wrd.LineIndex > lines)
-                {
-                    sb.Append("\n");
-                    isFirst = true;
-                    lines++;
-                }
-                if (isFirst)
-                {
-                    isFirst = false;
-                }
-                else
-                {
-                    sb.Append(" ");
-                }
-                sb.Append(wrd.Text);
-            }
-            return sb.ToString();
-        }
+       
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {

@@ -23,6 +23,17 @@ namespace Belegleser
         private Point m_ClickPos;
         private Point m_WindowPos;
 
+        //const and dll functions for moving form
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd,
+            int Msg, int wParam, int lParam);
+
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
         public Form1()
         {
             InitializeComponent();
@@ -156,8 +167,6 @@ namespace Belegleser
             trackBar_pic.Minimum = 0;
             trackBar_pic.LargeChange = 5;
             trackBar_pic.SmallChange = 5;
-
-            
         }
 
         private void template_plus_Click(object sender, EventArgs e)
@@ -203,6 +212,7 @@ namespace Belegleser
                 if (img != null)
                 {
                     img.Dispose();
+                    img = null;
                 }
             }
         }
@@ -315,15 +325,17 @@ namespace Belegleser
         {
             base.OnMouseMove(e);
             var relativePoint = this.PointToClient(Cursor.Position);
-            if (e.Button == MouseButtons.Left && relativePoint.Y < 25)
+            if (e.Button == MouseButtons.Left && relativePoint.Y < 35)
             {
-                Point diffPos = PointToScreen(e.Location);
                 if (this.WindowState == FormWindowState.Maximized)
                 {
+                    double x = (double)this.m_ClickPos.X / (double)this.Width;
                     this.WindowState = FormWindowState.Normal;
+                    double xx = Convert.ToInt32(Math.Round((this.Width * x), 0));
+                    this.Location = new Point(this.m_ClickPos.X - Convert.ToInt32(Math.Round((this.Width * x), 0)), m_ClickPos.Y);
                 }
-                diffPos = new Point(m_ClickPos.X - diffPos.X, m_ClickPos.Y - diffPos.Y);
-                this.Location = new Point(m_WindowPos.X - diffPos.X, m_WindowPos.Y - diffPos.Y);
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
 
@@ -341,6 +353,8 @@ namespace Belegleser
             }
             else
             {
+                Screen scr = Screen.FromControl(this);
+                this.MaximumSize = new Size(scr.WorkingArea.Width, scr.WorkingArea.Height);
                 this.WindowState = FormWindowState.Maximized;
             }
         }
@@ -369,14 +383,7 @@ namespace Belegleser
 
         private void ribbon1_DoubleClick(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
+            this.pict_box_resize_Click(sender, e);
         }
 
         private void ChangeTheme()

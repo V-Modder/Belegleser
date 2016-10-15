@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Belegleser
 {
@@ -16,6 +18,7 @@ namespace Belegleser
         public SplashScreen()
         {
             InitializeComponent();
+            lbl_files.Text = "DLL's werden überprüft...";
         }
 
         private void SplashScreen_Load(object sender, EventArgs e)
@@ -27,10 +30,39 @@ namespace Belegleser
             {
                 this.Opacity = cont;
                 this.Refresh();
-                System.Threading.Thread.Sleep(30);
+                Thread.Sleep(30);
             }
-                
-            
+            string error = "";
+            //Überprüfen ob alle Dll's vorhanden sind
+            List<string> checkfiles = new List<string>();
+                checkfiles.Add("tessnet2_32.dll");
+                checkfiles.Add("System.Windows.Forms.Ribbon35.dll");
+                checkfiles.Add("MySql.Data.dll");
+                checkfiles.Add("BitMiracle.LibTiff.NET.dll");
+                checkfiles.Add("BitMiracle.LibTiff.NET.xml");
+            Thread.Sleep(500);
+            lbl_files.Text = "Sprachdateien werden überprüft...";
+            //Tessdata Lang
+                checkfiles.Add(@"tessdata\deu.DangAmbigs");
+                checkfiles.Add(@"tessdata\deu.freq-dawg");
+                checkfiles.Add(@"tessdata\deu.inttemp");
+                checkfiles.Add(@"tessdata\deu.normproto");
+                checkfiles.Add(@"tessdata\deu.pffmtable");
+                checkfiles.Add(@"tessdata\deu.unicharset");
+                checkfiles.Add(@"tessdata\deu.user-words");
+                checkfiles.Add(@"tessdata\deu.word-dawg");
+            foreach (string file in checkfiles)
+            {
+                if (!File.Exists(file))
+                {
+                    error += file.ToString() + Environment.NewLine;
+                }
+            }
+            if (error.Length > 0)
+            {
+                MessageBox.Show("Es wurden benötigte Dateien nicht gefunden:\n\n" + error, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
             tmr_screen.Start();
         }
 

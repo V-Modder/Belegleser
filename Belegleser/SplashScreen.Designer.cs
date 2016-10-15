@@ -36,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pict_exit = new System.Windows.Forms.PictureBox();
             this.lbl_ver = new System.Windows.Forms.Label();
+            this.lbl_files = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pict_exit)).BeginInit();
             this.SuspendLayout();
@@ -101,6 +102,17 @@
             this.lbl_ver.TabIndex = 5;
             this.lbl_ver.Text = ".";
             // 
+            // lbl_files
+            // 
+            this.lbl_files.AutoSize = true;
+            this.lbl_files.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_files.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl_files.Location = new System.Drawing.Point(51, 187);
+            this.lbl_files.Name = "lbl_files";
+            this.lbl_files.Size = new System.Drawing.Size(66, 16);
+            this.lbl_files.TabIndex = 6;
+            this.lbl_files.Text = "lbl_datein";
+            // 
             // SplashScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -108,6 +120,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(500, 295);
             this.ControlBox = false;
+            this.Controls.Add(this.lbl_files);
             this.Controls.Add(this.lbl_ver);
             this.Controls.Add(this.pict_exit);
             this.Controls.Add(this.label2);
@@ -137,5 +150,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pict_exit;
         private System.Windows.Forms.Label lbl_ver;
+        private System.Windows.Forms.Label lbl_files;
     }
 }

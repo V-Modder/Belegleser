@@ -14,10 +14,11 @@ namespace Belegleser
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            #if DEBUG
+#if DEBUG
             Application.Run(new Form1());
-            #endif
-            #if !DEBUG
+            //Application.Run(new SplashScreen());
+#endif
+#if !DEBUG
             Application.Run(new SplashScreen());
             #endif
         }

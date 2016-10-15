@@ -63,12 +63,20 @@ namespace Belegleser
                         {
                             for (int i = 0; i < this.templData.Rows.Count && idx == null && !this.CancellationPending; i++)
                             {
-                                bool tmp = this.templateWorker(idx, file, i);
-                                if (tmp)
+                                bool tmp = false;
+                                try
                                 {
-                                    abgemischt = true;
-                                    break;
+                                    tmp = this.templateWorker(idx, file, i);
                                 }
+                                catch (ArgumentException)
+                                {
+                                    tmp = false;
+                                }
+                                    if (tmp)
+                                    {
+                                        abgemischt = true;
+                                        break;
+                                    }
                             }
                             if (abgemischt)
                             {
@@ -81,6 +89,10 @@ namespace Belegleser
                                     MessageBox.Show("Datei kann nicht gelöscht werden!");
                                 }
                             }
+                        }
+                        catch (ArgumentException)
+                        {
+                            continue;
                         }
                         catch (InvalidDataException)
                         {
@@ -128,7 +140,6 @@ namespace Belegleser
                         idx = this.readFile(img, index);
                         idx.write(this.templData.Rows[index].Cells["output_directory"].Value.ToString(), rnd);
                         TiffEncoder.Encode(idx.getFileName(rnd) + ".tiff", img);
-                        img.Dispose();
                         abgemischt = true;
                     }
                 }
@@ -136,10 +147,15 @@ namespace Belegleser
                 {
                     throw e;
                 }
+                catch (ArgumentException ee)
+                {
+                    throw ee;
+                }
                 finally
                 {
                     img.Dispose();
-                    img2.Dispose();
+                    img = null;
+                    //img2.Dispose();
                     GC.Collect();
                 }
             }
@@ -149,19 +165,7 @@ namespace Belegleser
 
         private IndexCreator readFile(Bitmap image, int rowIndex)
         {
-            Tesseract ocr = new Tesseract();
-            //ocr.SetVariable("tessedit_char_whitelist", "0123456789"); // If digit only
-
-            try
-            {
-                ocr.Init(null, "deu", false); // To use correct tessdata
-            }
-            catch (Exception ee)
-            {
-                throw ee;
-            }
             Template tmpl = Template.getFromFile(this.getFileName(rowIndex));
-
             IndexCreator idxCreator = new IndexCreator();
             foreach (Index idx in tmpl.Index)
             {
@@ -180,17 +184,11 @@ namespace Belegleser
             }
             Area a = this.getIdentifyingRect(tmpl);
             Rectangle r = new Rectangle(a.X, a.Y, a.Width, a.Height);
-            List<Word> result;
-            result = ocr.DoOCR(image, r);
+            string result;
+            OcrTessarect ocr = new OcrTessarect(false);
+            result = ocr.readFile(image, r);
             bool found = false;
-            foreach (Word word in result)
-            {
-                if (word.Text.Contains(a.IdentifyingWord))
-                {
-                    found = true;
-                    break;
-                }
-            }
+            found = result.Contains(a.IdentifyingWord);
             if (found)
             {
                 foreach (Area aa in tmpl.Reactangles)
@@ -199,18 +197,11 @@ namespace Belegleser
                     {
                         continue;
                     }
-
-                    //if (aa.IsDigitonly == true)
-                    //{
-                    //    ocr.SetVariable("tessedit_char_whitelist", "0123456789"); // If digit only
-                    //}
-                    //else
-                    //{
-                    //    ocr.SetVariable("tessedit_char_whitelist", "0123456789,/ABCDEFGHJKLMNPQRSTUVWXYÄÖÜ");
-                    //}
+                    ocr.Dispose();
+                    ocr = new OcrTessarect(aa.IsDigitonly);
                     result = null;
-                    result = ocr.DoOCR(image, this.getRect(aa));
-                    aa.Value = this.getValue(result);
+                    result = ocr.readFile(image, this.getRect(aa));
+                    aa.Value = result;
                 }
 
                 foreach (Index idx in tmpl.Index)
@@ -234,18 +225,18 @@ namespace Belegleser
                     //Überprüfen ob alle Felder gefunden wurden
                     if (idx.Value == "")
                     {
-                        ocr.Dispose();
+                        //ocr.Dispose();
                         GC.Collect();
                         throw new InvalidDataException("Wert ist leer bzw. nicht gefunden: " + idx.Name);
                     }
 
                 }
-                ocr.Dispose();
+                //ocr.Dispose();
                 GC.Collect();
                 return idxCreator;
 
             }
-            ocr.Dispose();
+            //ocr.Dispose();
             return null;
             
         }
@@ -321,33 +312,5 @@ namespace Belegleser
             this.Dispose();
             GC.Collect();
         }
-
-        private string getValue(List<Word> words)
-        {
-            int lines = 0;
-            StringBuilder sb = new StringBuilder();
-            bool isFirst = true;
-            foreach (Word wrd in words)
-            {
-                if (wrd.LineIndex > lines)
-                {
-                    sb.Append("\n");
-                    isFirst = true;
-                    lines++;
-                }
-                if(isFirst)
-                {
-                    isFirst = false;
-                }
-                else
-                {
-                    sb.Append(" ");
-                }
-                sb.Append(wrd.Text);
-            }
-
-            return sb.ToString();
-        }
-
     }
 }
