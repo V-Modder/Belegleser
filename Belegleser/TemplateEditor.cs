@@ -175,6 +175,7 @@ namespace Belegleser
 
         private void btn_load_Click(object sender, EventArgs e)
         {
+            
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.DefaultExt = "tpl";
             ofd.FileName = "Template_";
@@ -182,6 +183,7 @@ namespace Belegleser
             {
                 return;
             }
+            clear();
             XmlSerializer serializer = new XmlSerializer(typeof(Template));
             Template tmpl = null;
             using (StreamReader writer = new StreamReader(ofd.FileName))
@@ -209,6 +211,17 @@ namespace Belegleser
             {
                 dataGridView1.Rows.Add(idx.Name, idx.Source, idx.Value);
             }
+        }
+
+        private void clear()
+        {
+            while (this.listBox1.Items.Count > 0)
+            {
+                this.listBox1.SelectedIndex = 0;
+                btn_minus_rectangle_Click(null, null);
+            }
+            this.rectangle = 0;
+            this.dataGridView1.Rows.Clear();
         }
 
         private void btn_habel_fields_Click(object sender, EventArgs e)

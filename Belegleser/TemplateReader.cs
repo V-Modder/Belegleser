@@ -301,10 +301,23 @@ namespace Belegleser
                 }
             }
             string value = "";
+            bool trim = false;
+            if (idx.Value.Contains("§§trim"))
+            {
+                idx.Value = idx.Value.Replace("§§trim", "");
+                trim = true;
+            }
             Match mat = Regex.Match(input, idx.Value);
             if (mat.Success)
             {
-                value = mat.Groups[1].Value;
+                if (trim == true)
+                {
+                    value = mat.Groups[1].Value.Replace(" ", "");
+                }
+                else
+                {
+                    value = mat.Groups[1].Value;
+                }
             }
             idxc.addValue(idx.Name, value);
             return;
