@@ -44,7 +44,36 @@ namespace Belegleser
             {
                 this.belNr = value;
             }
-            this.keyValuePair.Add(key, value);
+            string convertedValue = this.makeDate(value);
+            if (convertedValue != null)
+            {
+                this.keyValuePair.Add(key, convertedValue);
+            }
+            else
+            {
+                this.keyValuePair.Add(key, value);
+            }
+        }
+
+        private string makeDate(string date)
+        {
+            try
+            {
+                DateTime datenew = DateTime.Parse(date);
+                return datenew.ToShortDateString();
+            }
+            catch(Exception e)
+            {
+                if (date.Contains("Ü"))
+                {
+                    string secondTry = this.makeDate(date.Replace("Ü", "0"));
+                    if (secondTry != null)
+                    {
+                        return secondTry;
+                    }
+                }
+                return null;
+            }            
         }
 
         public override string ToString()
@@ -52,6 +81,13 @@ namespace Belegleser
             StringBuilder str = new StringBuilder();
             foreach (KeyValuePair<string, string> value in this.keyValuePair)
             {
+                if (value.Key == "BelDat")
+                {
+                    if (makeDate(value.Value) == null)
+                    {
+                        throw new FormatException("Ungültiges Datumsformat : dd.mm.yyyy");
+                    }
+                }
                 str.Append(value.Key);
                 str.Append("=");
                 str.Append(value.Value.TrimStart());
@@ -66,7 +102,15 @@ namespace Belegleser
             this.fileName = fileName;
             using (StreamWriter sw = new StreamWriter(this.getFileName(id) + ".idx"))
             {
-                sw.Write(this.ToString());
+                try
+                {
+                    sw.Write(this.ToString());
+                }
+                catch (FormatException fe)
+                {
+                    sw.Close();
+                    throw fe;
+                }
             }
         }
 

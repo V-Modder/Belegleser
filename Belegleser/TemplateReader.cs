@@ -72,11 +72,11 @@ namespace Belegleser
                                 {
                                     tmp = false;
                                 }
-                                    if (tmp)
-                                    {
-                                        abgemischt = true;
-                                        break;
-                                    }
+                                if (tmp)
+                                {
+                                    abgemischt = true;
+                                    break;
+                                }
                             }
                             if (abgemischt)
                             {
@@ -94,7 +94,7 @@ namespace Belegleser
                         {
                             continue;
                         }
-                        catch (InvalidDataException)
+                        catch (Exception)
                         {
                             if (Directory.Exists(Path.Combine(Config.getInstance().ScanDirectory, "nicht_abgemischt")))
                             {
@@ -135,9 +135,10 @@ namespace Belegleser
                 this.ReportProgress(0, new WorkerStatusReport(null, null, img2));
                 try
                 {
-                    if (this.readFile(img, index) != null)
+                    IndexCreator tmp = this.readFile(img, index);
+                    if (tmp != null)
                     {
-                        idx = this.readFile(img, index);
+                        idx = tmp;
                         idx.write(this.templData.Rows[index].Cells["output_directory"].Value.ToString(), rnd);
                         TiffEncoder.Encode(idx.getFileName(rnd) + ".tiff", img);
                         abgemischt = true;
@@ -151,11 +152,14 @@ namespace Belegleser
                 {
                     throw ee;
                 }
+                catch (FormatException fe)
+                {
+                    throw fe;
+                }
                 finally
                 {
                     img.Dispose();
                     img = null;
-                    //img2.Dispose();
                     GC.Collect();
                 }
             }

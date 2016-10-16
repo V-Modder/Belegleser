@@ -30,7 +30,7 @@ namespace Belegleser
             {
                 this.Opacity = cont;
                 this.Refresh();
-                Thread.Sleep(30);
+                Thread.Sleep(40);
             }
             string error = "";
             //Überprüfen ob alle Dll's vorhanden sind
