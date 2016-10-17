@@ -302,6 +302,9 @@ namespace Belegleser
             }
             string value = "";
             bool trim = false;
+            bool replace = false;
+            string oldchar = "";
+            string newchar = "";
             if (idx.Value.Contains("§§trim"))
             {
                 idx.Value = idx.Value.Replace("§§trim", "");
@@ -309,10 +312,20 @@ namespace Belegleser
             }
             if (idx.Value.Contains("§§replace"))
             {
-                int d = idx.Value.LastIndexOf(")");
-                string oldchar = idx.Value.Substring(idx.Value.IndexOf("§§replace(") + 10, (idx.Value.IndexOf("§§replace(") + 10) - idx.Value.IndexOf("|") + 2);
-                string newchar = idx.Value.Substring(idx.Value.IndexOf("|"), (idx.Value.IndexOf("|") + 1) - idx.Value.LastIndexOf(")"));
-                //idx.Value = idx
+                //Old char
+                int start = idx.Value.IndexOf("§§replace(") + 10;
+                int endefirstchar = idx.Value.LastIndexOf("|");
+                int firstlength = endefirstchar - start;
+                //new Char
+                int startsecond = idx.Value.IndexOf("|") + 1;
+                int endesecond = idx.Value.LastIndexOf(")");
+                int secondlength = endesecond - startsecond;
+                
+                oldchar = idx.Value.Substring(start, firstlength);
+                newchar = idx.Value.Substring(startsecond, secondlength);
+
+                idx.Value = idx.Value.Substring(0, start -10);
+                replace = true;
             }
             Match mat = Regex.Match(input, idx.Value);
             if (mat.Success)
@@ -320,6 +333,10 @@ namespace Belegleser
                 if (trim == true)
                 {
                     value = mat.Groups[1].Value.Replace(" ", "");
+                }
+                else if (replace == true)
+                {
+                    value = mat.Groups[1].Value.Replace(oldchar, newchar);
                 }
                 else
                 {
