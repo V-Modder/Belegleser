@@ -307,6 +307,13 @@ namespace Belegleser
                 idx.Value = idx.Value.Replace("§§trim", "");
                 trim = true;
             }
+            if (idx.Value.Contains("§§replace"))
+            {
+                int d = idx.Value.LastIndexOf(")");
+                string oldchar = idx.Value.Substring(idx.Value.IndexOf("§§replace(") + 10, (idx.Value.IndexOf("§§replace(") + 10) - idx.Value.IndexOf("|") + 2);
+                string newchar = idx.Value.Substring(idx.Value.IndexOf("|"), (idx.Value.IndexOf("|") + 1) - idx.Value.LastIndexOf(")"));
+                //idx.Value = idx
+            }
             Match mat = Regex.Match(input, idx.Value);
             if (mat.Success)
             {
