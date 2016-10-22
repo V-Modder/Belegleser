@@ -64,11 +64,19 @@ namespace Belegleser
                     idx.Source = row.Cells["col_source"].Value.ToString();
                     if (row.Cells["col_value"].Value != null)
                     {
-                        idx.Value = row.Cells["col_value"].Value.ToString();
+                        idx.regexValue = row.Cells["col_value"].Value.ToString();
                     }
                     else
                     {
-                        idx.Value = "";
+                        idx.regexValue = "";
+                    }
+                    if (row.Cells["col_dotliquid"].Value != null)
+                    {
+                        idx.dotLiquidValue = row.Cells["col_dotliquid"].Value.ToString();
+                    }
+                    else
+                    {
+                        idx.dotLiquidValue = "";
                     }
                     tmpl.Index.Add(idx);
                 }
@@ -209,7 +217,7 @@ namespace Belegleser
 
             foreach (Index idx in tmpl.Index)
             {
-                dataGridView1.Rows.Add(idx.Name, idx.Source, idx.Value);
+                dataGridView1.Rows.Add(idx.Name, idx.Source, idx.regexValue, idx.dotLiquidValue);
             }
         }
 
@@ -289,17 +297,21 @@ namespace Belegleser
             //ocr.Dispose();
         }
 
-        
 
-       
+
+        int Columnindex = 0;
+        int RowIndex = 0;
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             dataGridView1.ClearSelection();
             dataGridView1.Rows[e.RowIndex].Selected = true;
+            dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected = true;
             if (e.Button == MouseButtons.Right)
             {
                 contextMenu_dtg_fields.Show(MousePosition.X, MousePosition.Y);
+                Columnindex = e.ColumnIndex;
+                this.RowIndex = e.RowIndex;
             }
         }
         private void toolStripMenu_deleteRow_Click(object sender, EventArgs e)
@@ -314,6 +326,21 @@ namespace Belegleser
             catch
             {
                 MessageBox.Show("Diese Zeile kann nicht gelöscht werden!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void toolStripMenu_editRow_Click(object sender, EventArgs e)
+        {
+            string currentCell = dataGridView1.Columns[this.Columnindex].Name;
+            if (currentCell == "col_value" || currentCell == "col_dotliquid")
+            {
+                if (dataGridView1.Rows[this.RowIndex].Cells[this.Columnindex].Value == null)
+                {
+                    dataGridView1.Rows[this.RowIndex].Cells[this.Columnindex].Value = "";
+                }
+                CellEdit frm = new CellEdit(this.RowIndex, this.Columnindex, dataGridView1.Rows[this.RowIndex].Cells[this.Columnindex].Value.ToString());
+                frm.ShowDialog();
+                this.dataGridView1.Rows[frm.CurrentRow].Cells[frm.CurrentCell].Value = frm.Value;
             }
         }
     }

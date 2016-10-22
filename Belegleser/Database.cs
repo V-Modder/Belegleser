@@ -30,7 +30,7 @@ namespace Belegleser
                     ret = Convert.ToString(com.ExecuteScalar());
                     if (ret == "")
                     {
-                        ret = "leer";
+                        ret = "***leer***";
                     }
                     con.Close();
                 }
@@ -50,7 +50,7 @@ namespace Belegleser
                     ret = Convert.ToString(com.ExecuteScalar());
                     if (ret == "")
                     {
-                        ret = "leer";
+                        ret = "***leer***";
                     }
                     con.Close();
                 }

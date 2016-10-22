@@ -16,7 +16,12 @@ namespace Belegleser
             get; set;
         }
 
-        public string Value
+        public string regexValue
+        {
+            get; set;
+        }
+
+        public string dotLiquidValue
         {
             get; set;
         }

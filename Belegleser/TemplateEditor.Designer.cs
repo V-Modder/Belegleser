@@ -55,6 +55,7 @@
             this.col_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_source = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.col_value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_dotliquid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenu_dtg_fields = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.edit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -62,6 +63,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripMenu_editRow = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
@@ -302,7 +304,8 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_name,
             this.col_source,
-            this.col_value});
+            this.col_value,
+            this.col_dotliquid});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView1.Location = new System.Drawing.Point(3, 16);
             this.dataGridView1.Name = "dataGridView1";
@@ -330,32 +333,38 @@
             this.col_value.HeaderText = "Wert";
             this.col_value.Name = "col_value";
             // 
+            // col_dotliquid
+            // 
+            this.col_dotliquid.HeaderText = "Dotliquid";
+            this.col_dotliquid.Name = "col_dotliquid";
+            // 
             // contextMenu_dtg_fields
             // 
             this.contextMenu_dtg_fields.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.edit,
             this.toolStripSeparator3,
-            this.toolStripMenu_deleteRow});
+            this.toolStripMenu_deleteRow,
+            this.toolStripMenu_editRow});
             this.contextMenu_dtg_fields.Name = "contextMenu_dtg_fields";
-            this.contextMenu_dtg_fields.Size = new System.Drawing.Size(144, 54);
+            this.contextMenu_dtg_fields.Size = new System.Drawing.Size(159, 98);
             this.contextMenu_dtg_fields.Text = "Index Felder ";
             // 
             // edit
             // 
             this.edit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.edit.Name = "edit";
-            this.edit.Size = new System.Drawing.Size(143, 22);
+            this.edit.Size = new System.Drawing.Size(158, 22);
             this.edit.Text = "Bearbeiten:";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(140, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(155, 6);
             // 
             // toolStripMenu_deleteRow
             // 
             this.toolStripMenu_deleteRow.Name = "toolStripMenu_deleteRow";
-            this.toolStripMenu_deleteRow.Size = new System.Drawing.Size(143, 22);
+            this.toolStripMenu_deleteRow.Size = new System.Drawing.Size(158, 22);
             this.toolStripMenu_deleteRow.Text = "Zeile löschen";
             this.toolStripMenu_deleteRow.Click += new System.EventHandler(this.toolStripMenu_deleteRow_Click);
             // 
@@ -385,6 +394,13 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "toolStripButton3";
+            // 
+            // toolStripMenu_editRow
+            // 
+            this.toolStripMenu_editRow.Name = "toolStripMenu_editRow";
+            this.toolStripMenu_editRow.Size = new System.Drawing.Size(158, 22);
+            this.toolStripMenu_editRow.Text = "Zeile bearbeiten";
+            this.toolStripMenu_editRow.Click += new System.EventHandler(this.toolStripMenu_editRow_Click);
             // 
             // TemplateEditor
             // 
@@ -433,9 +449,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_name;
-        private System.Windows.Forms.DataGridViewComboBoxColumn col_source;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_value;
         private System.Windows.Forms.GroupBox grp_list;
         private System.Windows.Forms.GroupBox grp_prop;
         private System.Windows.Forms.GroupBox grp_dagv;
@@ -453,5 +466,10 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_name;
+        private System.Windows.Forms.DataGridViewComboBoxColumn col_source;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_value;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_dotliquid;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenu_editRow;
     }
 }

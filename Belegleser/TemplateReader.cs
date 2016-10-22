@@ -175,15 +175,16 @@ namespace Belegleser
             {
                 if (idx.Source.Equals("Statisch"))
                 {
-                    if (idx.Value.Contains("§§datenow"))
-                    {
-                        idxCreator.addValue(idx.Name, idx.Value.Replace("§§datenow", DateTime.Now.ToShortDateString()));
-                    }
+                    
+                    //if (idx.regexValue.Contains("§§datenow"))
+                    //{
+                    //    idxCreator.addValue(idx.Name, idx.regexValue.Replace("§§datenow", DateTime.Now.ToShortDateString()));
+                    //}
                    
-                    else
-                    {
-                        idxCreator.addValue(idx.Name, idx.Value);
-                    }
+                    //else
+                    //{
+                        idxCreator.addValue(idx.Name, MakeDotLiquid.Work(idx.regexValue, idx.dotLiquidValue));
+                    //}
                 }
             }
             Area a = this.getIdentifyingRect(tmpl);
@@ -220,14 +221,14 @@ namespace Belegleser
                 {
                     if (idx.Source.Equals("MsSQL"))
                     {
-                        idxCreator.addValue(idx.Name, getSQLValue(idx.Value, idxCreator, DBType.MsSQL));
+                        idxCreator.addValue(idx.Name, getSQLValue(idx.regexValue, idxCreator, DBType.MsSQL));
                     }
                     else if(idx.Source.Equals("MySQL"))
                     {
-                        idxCreator.addValue(idx.Name, getSQLValue(idx.Value, idxCreator, DBType.MySQL));
+                        idxCreator.addValue(idx.Name, getSQLValue(idx.regexValue, idxCreator, DBType.MySQL));
                     }
                     //Überprüfen ob alle Felder gefunden wurden
-                    if (idx.Value == "")
+                    if (idx.regexValue == "")
                     {
                         //ocr.Dispose();
                         GC.Collect();
@@ -301,47 +302,50 @@ namespace Belegleser
                 }
             }
             string value = "";
-            bool trim = false;
-            bool replace = false;
-            string oldchar = "";
-            string newchar = "";
-            if (idx.Value.Contains("§§trim"))
-            {
-                idx.Value = idx.Value.Replace("§§trim", "");
-                trim = true;
-            }
-            if (idx.Value.Contains("§§replace"))
-            {
-                //Old char
-                int start = idx.Value.IndexOf("§§replace(") + 10;
-                int endefirstchar = idx.Value.LastIndexOf("|");
-                int firstlength = endefirstchar - start;
-                //new Char
-                int startsecond = idx.Value.IndexOf("|") + 1;
-                int endesecond = idx.Value.LastIndexOf(")");
-                int secondlength = endesecond - startsecond;
+            //bool trim = false;
+            //bool replace = false;
+            //string oldchar = "";
+            //string newchar = "";
+            //if (idx.Value.Contains("§§trim"))
+            //{
+            //    idx.Value = idx.Value.Replace("§§trim", "");
+            //    trim = true;
+            //}
+            //if (idx.Value.Contains("§§replace"))
+            //{
+            //    //Old char
+            //    int start = idx.Value.IndexOf("§§replace(") + 10;
+            //    int endefirstchar = idx.Value.LastIndexOf("|");
+            //    int firstlength = endefirstchar - start;
+            //    //new Char
+            //    int startsecond = idx.Value.IndexOf("|") + 1;
+            //    int endesecond = idx.Value.LastIndexOf(")");
+            //    int secondlength = endesecond - startsecond;
                 
-                oldchar = idx.Value.Substring(start, firstlength);
-                newchar = idx.Value.Substring(startsecond, secondlength);
+            //    oldchar = idx.Value.Substring(start, firstlength);
+            //    newchar = idx.Value.Substring(startsecond, secondlength);
 
-                idx.Value = idx.Value.Substring(0, start -10);
-                replace = true;
-            }
-            Match mat = Regex.Match(input, idx.Value);
+            //    idx.Value = idx.Value.Substring(0, start -10);
+            //    replace = true;
+            //}
+            Match mat = Regex.Match(input, idx.regexValue);
             if (mat.Success)
             {
-                if (trim == true)
-                {
-                    value = mat.Groups[1].Value.Replace(" ", "");
-                }
-                else if (replace == true)
-                {
-                    value = mat.Groups[1].Value.Replace(oldchar, newchar);
-                }
-                else
-                {
-                    value = mat.Groups[1].Value;
-                }
+                //DotLiquid.Template template = DotLiquid.Template.Parse(mat.Groups[1].Value);  // "hi {{name}}" Parses and compiles the template
+                value = MakeDotLiquid.Work(mat.Groups[1].Value, idx.dotLiquidValue);
+                //this.textBox2.Text = template.Render(); // Renders the output => "hi tobi"
+                //if (trim == true)
+                //{
+                //    value = template.Render().Replace(" ", "");
+                //}
+                //else if (replace == true)
+                //{
+                //    value = template.Render();
+                //}
+                //else
+                //{
+                //    value = template.Render(); ;
+                //}
             }
             idxc.addValue(idx.Name, value);
             return;
