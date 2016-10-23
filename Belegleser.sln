@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Belegleser", "Belegleser\Belegleser.csproj", "{C51A21F8-F7A7-4C97-A84E-74A03899446D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastColoredTextBox", "FastColoredTextBox\FastColoredTextBox.csproj", "{6DD14A85-CCFC-4774-BD26-0F5772512319}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,14 @@ Global
 		{C51A21F8-F7A7-4C97-A84E-74A03899446D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C51A21F8-F7A7-4C97-A84E-74A03899446D}.Release|x86.ActiveCfg = Release|x86
 		{C51A21F8-F7A7-4C97-A84E-74A03899446D}.Release|x86.Build.0 = Release|x86
+		{6DD14A85-CCFC-4774-BD26-0F5772512319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DD14A85-CCFC-4774-BD26-0F5772512319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DD14A85-CCFC-4774-BD26-0F5772512319}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6DD14A85-CCFC-4774-BD26-0F5772512319}.Debug|x86.Build.0 = Debug|Any CPU
+		{6DD14A85-CCFC-4774-BD26-0F5772512319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DD14A85-CCFC-4774-BD26-0F5772512319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DD14A85-CCFC-4774-BD26-0F5772512319}.Release|x86.ActiveCfg = Release|Any CPU
+		{6DD14A85-CCFC-4774-BD26-0F5772512319}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
