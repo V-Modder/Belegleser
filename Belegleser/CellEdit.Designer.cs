@@ -28,19 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txt_celledit = new System.Windows.Forms.TextBox();
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CellEdit));
             this.grp_box_edit = new System.Windows.Forms.GroupBox();
+            this.txt_celledit = new FastColoredTextBoxNS.FastColoredTextBox();
             this.grp_box_edit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_celledit)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txt_celledit
-            // 
-            this.txt_celledit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_celledit.Location = new System.Drawing.Point(3, 16);
-            this.txt_celledit.Multiline = true;
-            this.txt_celledit.Name = "txt_celledit";
-            this.txt_celledit.Size = new System.Drawing.Size(668, 252);
-            this.txt_celledit.TabIndex = 0;
             // 
             // grp_box_edit
             // 
@@ -55,6 +49,37 @@
             this.grp_box_edit.TabStop = false;
             this.grp_box_edit.Text = "Zelle editieren";
             // 
+            // txt_celledit
+            // 
+            this.txt_celledit.AutoCompleteBracketsList = new char[] {
+        '(',
+        ')',
+        '{',
+        '}',
+        '[',
+        ']',
+        '\"',
+        '\"',
+        '\'',
+        '\''};
+            this.txt_celledit.AutoScrollMinSize = new System.Drawing.Size(179, 14);
+            this.txt_celledit.BackBrush = null;
+            this.txt_celledit.CharHeight = 14;
+            this.txt_celledit.CharWidth = 8;
+            this.txt_celledit.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_celledit.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txt_celledit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_celledit.IsReplaceMode = false;
+            this.txt_celledit.Location = new System.Drawing.Point(3, 16);
+            this.txt_celledit.Name = "txt_celledit";
+            this.txt_celledit.Paddings = new System.Windows.Forms.Padding(0);
+            this.txt_celledit.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.txt_celledit.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("txt_celledit.ServiceColors")));
+            this.txt_celledit.Size = new System.Drawing.Size(668, 252);
+            this.txt_celledit.TabIndex = 0;
+            this.txt_celledit.Text = "fastColoredTextBox1";
+            this.txt_celledit.Zoom = 100;
+            // 
             // CellEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -62,20 +87,22 @@
             this.ClientSize = new System.Drawing.Size(698, 295);
             this.Controls.Add(this.grp_box_edit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.HelpButton = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CellEdit";
             this.Text = "CellEdit";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.CellEdit_HelpButtonClicked);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CellEdit_FormClosing);
+            this.Load += new System.EventHandler(this.CellEdit_Load);
             this.grp_box_edit.ResumeLayout(false);
-            this.grp_box_edit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_celledit)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txt_celledit;
         private System.Windows.Forms.GroupBox grp_box_edit;
+        private FastColoredTextBoxNS.FastColoredTextBox txt_celledit;
     }
 }

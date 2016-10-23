@@ -304,14 +304,17 @@ namespace Belegleser
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            dataGridView1.ClearSelection();
-            dataGridView1.Rows[e.RowIndex].Selected = true;
-            dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected = true;
-            if (e.Button == MouseButtons.Right)
+            if (!dataGridView1.Rows[e.RowIndex].IsNewRow)
             {
-                contextMenu_dtg_fields.Show(MousePosition.X, MousePosition.Y);
-                Columnindex = e.ColumnIndex;
-                this.RowIndex = e.RowIndex;
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[e.RowIndex].Selected = true;
+                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected = true;
+                if (e.Button == MouseButtons.Right)
+                {
+                    contextMenu_dtg_fields.Show(MousePosition.X, MousePosition.Y);
+                    Columnindex = e.ColumnIndex;
+                    this.RowIndex = e.RowIndex;
+                }
             }
         }
         private void toolStripMenu_deleteRow_Click(object sender, EventArgs e)
