@@ -60,10 +60,10 @@
             this.edit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenu_deleteRow = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenu_editRow = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripMenu_editRow = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
@@ -368,6 +368,13 @@
             this.toolStripMenu_deleteRow.Text = "Zeile löschen";
             this.toolStripMenu_deleteRow.Click += new System.EventHandler(this.toolStripMenu_deleteRow_Click);
             // 
+            // toolStripMenu_editRow
+            // 
+            this.toolStripMenu_editRow.Name = "toolStripMenu_editRow";
+            this.toolStripMenu_editRow.Size = new System.Drawing.Size(158, 22);
+            this.toolStripMenu_editRow.Text = "Zelle bearbeiten";
+            this.toolStripMenu_editRow.Click += new System.EventHandler(this.toolStripMenu_editRow_Click);
+            // 
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -394,13 +401,6 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "toolStripButton3";
-            // 
-            // toolStripMenu_editRow
-            // 
-            this.toolStripMenu_editRow.Name = "toolStripMenu_editRow";
-            this.toolStripMenu_editRow.Size = new System.Drawing.Size(158, 22);
-            this.toolStripMenu_editRow.Text = "Zeile bearbeiten";
-            this.toolStripMenu_editRow.Click += new System.EventHandler(this.toolStripMenu_editRow_Click);
             // 
             // TemplateEditor
             // 
