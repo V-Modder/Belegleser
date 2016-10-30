@@ -43,6 +43,7 @@ namespace Belegleser
                 checkfiles.Add("MySql.Data.dll");
                 checkfiles.Add("BitMiracle.LibTiff.NET.dll");
                 checkfiles.Add("BitMiracle.LibTiff.NET.xml");
+                checkfiles.Add("DotLiquid.dll");
             Thread.Sleep(500);
             lbl_files.Text = "Sprachdateien werden überprüft...";
             //Tessdata Lang

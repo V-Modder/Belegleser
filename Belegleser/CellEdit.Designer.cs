@@ -69,6 +69,7 @@
             this.txt_celledit.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txt_celledit.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txt_celledit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_celledit.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.txt_celledit.IsReplaceMode = false;
             this.txt_celledit.Location = new System.Drawing.Point(3, 16);
             this.txt_celledit.Name = "txt_celledit";
@@ -91,7 +92,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CellEdit";
-            this.Text = "CellEdit";
+            this.ShowIcon = false;
+            this.Text = "Zelle bearbeiten";
             this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.CellEdit_HelpButtonClicked);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CellEdit_FormClosing);
             this.Load += new System.EventHandler(this.CellEdit_Load);
