@@ -135,6 +135,7 @@
             this.Text = "SplashScreen";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.SplashScreen_Load);
+            this.Shown += new System.EventHandler(this.SplashScreen_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pict_exit)).EndInit();
             this.ResumeLayout(false);

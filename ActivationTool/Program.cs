@@ -1,26 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace Belegleser
+namespace Belegleser.ActivationTool
 {
     static class Program
     {
         /// <summary>
-        /// Der Haupteinstiegspunkt für die Anwendung.
+        /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-//#if DEBUG
-         //   Application.Run(new Form1());
-            //Application.Run(new SplashScreen());
-//#endif
-//#if !DEBUG
-            Application.Run(new SplashScreen());
-//          #endif
+            Application.Run(new frmMain());
         }
     }
 }

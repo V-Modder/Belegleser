@@ -100,16 +100,25 @@ namespace Belegleser
         public void write(string fileName, int id)
         {
             this.fileName = fileName;
+            string content = "";
+            try
+            {
+                content = this.ToString();
+            }
+            catch (FormatException e)
+            {
+                throw e;
+            }
             using (StreamWriter sw = new StreamWriter(this.getFileName(id) + ".idx"))
             {
                 try
                 {
-                    sw.Write(this.ToString());
+                    sw.Write(content);
                 }
-                catch (FormatException fe)
+                catch (Exception e)
                 {
                     sw.Close();
-                    throw fe;
+                    throw e;
                 }
             }
         }

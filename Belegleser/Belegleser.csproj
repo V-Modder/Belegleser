@@ -98,6 +98,12 @@
     <Compile Include="Config.cs" />
     <Compile Include="ControlMoverOrResizer.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="frmActivation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmActivation.designer.cs">
+      <DependentUpon>frmActivation.cs</DependentUpon>
+    </Compile>
     <Compile Include="HabelFields.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmActivation.resx">
+      <DependentUpon>frmActivation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HabelFields.resx">
       <DependentUpon>HabelFields.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +178,7 @@
     <EmbeddedResource Include="TemplateEditor.resx">
       <DependentUpon>TemplateEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LicenseVerify.cer" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -184,9 +194,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ActivationControls4Win\ActivationControls4Win.csproj">
+      <Project>{ddf06eac-02df-4bda-a883-98b856bc1765}</Project>
+      <Name>ActivationControls4Win</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FastColoredTextBox\FastColoredTextBox.csproj">
       <Project>{6DD14A85-CCFC-4774-BD26-0F5772512319}</Project>
       <Name>FastColoredTextBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\License\License.csproj">
+      <Project>{9f0bd6df-f288-451b-828e-6431e5441db8}</Project>
+      <Name>License</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QLicense\QLicense.csproj">
+      <Project>{1980e43f-c5e4-4a2b-95a6-1aebdc7ee2b7}</Project>
+      <Name>QLicense</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
