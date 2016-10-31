@@ -67,6 +67,10 @@
       <HintPath>.\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="QLicense, Version=1.1.0.0, Culture=neutral, PublicKeyToken=262f79a9a8023ad7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\QLicense\obj\Debug\QLicense.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -206,10 +210,6 @@
     <ProjectReference Include="..\License\License.csproj">
       <Project>{9f0bd6df-f288-451b-828e-6431e5441db8}</Project>
       <Name>License</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\QLicense\QLicense.csproj">
-      <Project>{1980e43f-c5e4-4a2b-95a6-1aebdc7ee2b7}</Project>
-      <Name>QLicense</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

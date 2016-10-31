@@ -30,6 +30,7 @@ namespace Belegleser.License
             //Here, there is no extra validation, just return license is valid
             validationMsg = string.Empty;
             return LicenseStatus.VALID;
+            
         }
     }
 }

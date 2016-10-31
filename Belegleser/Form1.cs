@@ -5,6 +5,8 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using QLicense;
+using Belegleser.License;
 
 namespace Belegleser
 {
@@ -17,6 +19,8 @@ namespace Belegleser
         public string sql_user;
         public string sql_password;
         public string intervall;
+
+        MyLicense license = null;
 
         TemplateReader reader;
 
@@ -34,8 +38,9 @@ namespace Belegleser
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        public Form1()
+        public Form1(MyLicense license)
         {
+            this.license = license;
             InitializeComponent();
             ImageList imageList1 = new ImageList();
             imageList1.ImageSize = new Size(40, 40);
@@ -391,6 +396,12 @@ namespace Belegleser
             Theme.ColorTable = new RribbonTheme();
             ribbon1.Refresh();
             this.Refresh();
+        }
+
+        private void ribbonOrbRecentItem1_Click(object sender, EventArgs e)
+        {
+            this.tabControl.SelectedIndex = 2;
+            licenseInfoControl1.ShowLicenseInfo(license);
         }
 
     }

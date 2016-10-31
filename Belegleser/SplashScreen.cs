@@ -26,6 +26,7 @@ namespace Belegleser
 
         private void SplashScreen_Load(object sender, EventArgs e)
         {
+            
             this.BackColor = Color.FromArgb(29, 31, 28);
             lbl_ver.Text = "Version: " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
             this.Opacity = 0;
@@ -77,7 +78,7 @@ namespace Belegleser
             MyLicense license = License();
             if (license != null)
             {
-                Form frm = new Form1();
+                Form frm = new Form1(license);
                 frm.Show();
             }
             

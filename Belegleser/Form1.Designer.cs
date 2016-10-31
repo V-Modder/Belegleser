@@ -117,6 +117,9 @@ namespace Belegleser
             this.lbl_name = new System.Windows.Forms.Label();
             this.pict_box_resize = new System.Windows.Forms.PictureBox();
             this.pict_box_exit = new System.Windows.Forms.PictureBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.licenseInfoControl1 = new QLicense.Windows.Controls.LicenseInfoControl();
+            this.ribbonOrbRecentItem1 = new System.Windows.Forms.RibbonOrbRecentItem();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grp_box_status.SuspendLayout();
@@ -143,6 +146,7 @@ namespace Belegleser
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pict_box_resize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pict_box_exit)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -165,7 +169,8 @@ namespace Belegleser
             this.ribbon1.OrbDropDown.Location = new System.Drawing.Point(0, 0);
             this.ribbon1.OrbDropDown.Name = "";
             this.ribbon1.OrbDropDown.OptionItems.Add(this.btn_ribbonOrb_exit);
-            this.ribbon1.OrbDropDown.Size = new System.Drawing.Size(527, 72);
+            this.ribbon1.OrbDropDown.RecentItems.Add(this.ribbonOrbRecentItem1);
+            this.ribbon1.OrbDropDown.Size = new System.Drawing.Size(527, 92);
             this.ribbon1.OrbDropDown.TabIndex = 0;
             this.ribbon1.OrbImage = global::Belegleser.Properties.Resources.hardware_scanner1;
             this.ribbon1.OrbText = "";
@@ -324,6 +329,7 @@ namespace Belegleser
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Location = new System.Drawing.Point(0, 141);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -872,7 +878,7 @@ namespace Belegleser
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.10227F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.89773F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
             this.tableLayoutPanel5.Controls.Add(this.lbl_pic_dpi, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.trackBar_pic, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.txt_pic_compression, 2, 0);
@@ -892,14 +898,14 @@ namespace Belegleser
             this.lbl_pic_dpi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_pic_dpi.Location = new System.Drawing.Point(3, 0);
             this.lbl_pic_dpi.Name = "lbl_pic_dpi";
-            this.lbl_pic_dpi.Size = new System.Drawing.Size(170, 28);
+            this.lbl_pic_dpi.Size = new System.Drawing.Size(169, 28);
             this.lbl_pic_dpi.TabIndex = 0;
             this.lbl_pic_dpi.Text = "JPEG Komprimierung:";
             this.lbl_pic_dpi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // trackBar_pic
             // 
-            this.trackBar_pic.Location = new System.Drawing.Point(179, 3);
+            this.trackBar_pic.Location = new System.Drawing.Point(178, 3);
             this.trackBar_pic.Name = "trackBar_pic";
             this.trackBar_pic.Size = new System.Drawing.Size(126, 22);
             this.trackBar_pic.TabIndex = 1;
@@ -909,7 +915,7 @@ namespace Belegleser
             // txt_pic_compression
             // 
             this.txt_pic_compression.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_pic_compression.Location = new System.Drawing.Point(311, 3);
+            this.txt_pic_compression.Location = new System.Drawing.Point(310, 3);
             this.txt_pic_compression.Name = "txt_pic_compression";
             this.txt_pic_compression.Size = new System.Drawing.Size(35, 22);
             this.txt_pic_compression.TabIndex = 2;
@@ -1087,6 +1093,32 @@ namespace Belegleser
             this.pict_box_exit.MouseEnter += new System.EventHandler(this.pict_box_exit_MouseHover);
             this.pict_box_exit.MouseLeave += new System.EventHandler(this.pict_box_exit_MouseLeave);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.licenseInfoControl1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1043, 687);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // licenseInfoControl1
+            // 
+            this.licenseInfoControl1.DateFormat = null;
+            this.licenseInfoControl1.DateTimeFormat = null;
+            this.licenseInfoControl1.Location = new System.Drawing.Point(8, 5);
+            this.licenseInfoControl1.Name = "licenseInfoControl1";
+            this.licenseInfoControl1.Size = new System.Drawing.Size(575, 364);
+            this.licenseInfoControl1.TabIndex = 0;
+            // 
+            // ribbonOrbRecentItem1
+            // 
+            this.ribbonOrbRecentItem1.Image = ((System.Drawing.Image)(resources.GetObject("ribbonOrbRecentItem1.Image")));
+            this.ribbonOrbRecentItem1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonOrbRecentItem1.SmallImage")));
+            this.ribbonOrbRecentItem1.Text = "ribbonOrbRecentItem1";
+            this.ribbonOrbRecentItem1.Click += new System.EventHandler(this.ribbonOrbRecentItem1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1137,6 +1169,7 @@ namespace Belegleser
             this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pict_box_resize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pict_box_exit)).EndInit();
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1230,6 +1263,9 @@ namespace Belegleser
         private System.Windows.Forms.Label lbl_name;
         private System.Windows.Forms.PictureBox pict_box_resize;
         private System.Windows.Forms.PictureBox pict_box_exit;
+        private System.Windows.Forms.RibbonOrbRecentItem ribbonOrbRecentItem1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private QLicense.Windows.Controls.LicenseInfoControl licenseInfoControl1;
     }
 }
 
