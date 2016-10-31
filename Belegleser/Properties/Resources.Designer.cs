@@ -93,6 +93,16 @@ namespace Belegleser.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _20x2055x55appbar_information_circle {
+            get {
+                object obj = ResourceManager.GetObject("_20x2055x55appbar_information_circle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _25x2555x55appbar_door_leave {
             get {
                 object obj = ResourceManager.GetObject("_25x2555x55appbar_door_leave", resourceCulture);
@@ -316,6 +326,16 @@ namespace Belegleser.Properties {
         internal static System.Drawing.Bitmap _55x55appbar_image {
             get {
                 object obj = ResourceManager.GetObject("_55x55appbar_image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _55x55appbar_information_circle {
+            get {
+                object obj = ResourceManager.GetObject("_55x55appbar_information_circle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

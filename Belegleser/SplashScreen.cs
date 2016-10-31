@@ -45,6 +45,8 @@ namespace Belegleser
                 checkfiles.Add("BitMiracle.LibTiff.NET.dll");
                 checkfiles.Add("BitMiracle.LibTiff.NET.xml");
                 checkfiles.Add("DotLiquid.dll");
+                checkfiles.Add("DemoLicense.dll");
+                checkfiles.Add("QLicense.dll");
             Thread.Sleep(500);
             lbl_files.Text = "Sprachdateien werden überprüft...";
             //Tessdata Lang

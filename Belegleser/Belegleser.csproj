@@ -230,6 +230,7 @@
     <None Include="Resources\20x2055x55appbar.app.png" />
     <None Include="Resources\20x2055x55appbar.app.remove.png" />
     <None Include="Resources\20x20_resize.png" />
+    <None Include="Resources\20x2055x55appbar.information.circle.png" />
     <Content Include="Resources\55x55appbar.control.play.png" />
     <Content Include="Resources\55x55appbar.control.stop.png" />
     <None Include="Resources\55x55appbar.disk.png" />
@@ -243,6 +244,7 @@
     <None Include="Resources\55x55_resizetonormal.png" />
     <None Include="Resources\55x55_exit.png" />
     <None Include="Resources\55x55_exit_white.png" />
+    <None Include="Resources\55x55appbar.information.circle.png" />
     <Content Include="Resources\bereich_testen.png" />
     <Content Include="Resources\hardware-scanner-2.png" />
     <Content Include="Resources\hardware-scanner.ico" />
