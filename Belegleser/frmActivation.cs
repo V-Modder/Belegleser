@@ -15,7 +15,7 @@ namespace DemoWinFormApp
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure to cancel?", string.Empty, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            if (MessageBox.Show("Wollen Sie wirklich abbrechen?", string.Empty, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
                 this.Close();
             }
@@ -39,7 +39,7 @@ namespace DemoWinFormApp
                 //If license if valid, save the license string into a local file
                 File.WriteAllText(Path.Combine(Application.StartupPath, "license.lic"), licActCtrl.LicenseBASE64String);
 
-                MessageBox.Show("License accepted, the application will be close. Please restart it later", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Lizenz akzeptiert, Die Anwendung wird neugestartet", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 this.Close();
             }

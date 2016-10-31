@@ -71,7 +71,7 @@ namespace QLicense.Windows.Controls
                 }
                 else
                 {
-                    MessageBox.Show("License UID is blank or invalid", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Lizenz UID ist leer oder ungültig", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }

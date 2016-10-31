@@ -163,7 +163,7 @@
     <value>3</value>
   </data>
   <data name="grpbxLicense.Text" xml:space="preserve">
-    <value>License</value>
+    <value>Lizenz</value>
   </data>
   <data name="&gt;&gt;grpbxLicense.Name" xml:space="preserve">
     <value>grpbxLicense</value>
@@ -187,13 +187,13 @@
     <value>6, 25</value>
   </data>
   <data name="lblUIDTip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 13</value>
+    <value>256, 13</value>
   </data>
   <data name="lblUIDTip.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="lblUIDTip.Text" xml:space="preserve">
-    <value>Provide the below UID when purchasing the license</value>
+    <value>Geben Sie die folgende UID beim Kauf der Lizenz an</value>
   </data>
   <data name="&gt;&gt;lblUIDTip.Name" xml:space="preserve">
     <value>lblUIDTip</value>
@@ -214,16 +214,16 @@
     <value>True</value>
   </data>
   <data name="lnkCopy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>309, 64</value>
+    <value>274, 64</value>
   </data>
   <data name="lnkCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 13</value>
+    <value>114, 13</value>
   </data>
   <data name="lnkCopy.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="lnkCopy.Text" xml:space="preserve">
-    <value>Copy to Clipboard</value>
+    <value>In die Zwischenablage</value>
   </data>
   <data name="&gt;&gt;lnkCopy.Name" xml:space="preserve">
     <value>lnkCopy</value>
@@ -277,7 +277,7 @@
     <value>2</value>
   </data>
   <data name="grpbxUID.Text" xml:space="preserve">
-    <value>License UID</value>
+    <value>Lizenz UID</value>
   </data>
   <data name="&gt;&gt;grpbxUID.Name" xml:space="preserve">
     <value>grpbxUID</value>

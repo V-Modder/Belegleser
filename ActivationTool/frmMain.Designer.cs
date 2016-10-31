@@ -48,7 +48,7 @@
             this.grpbxLicSettings.Size = new System.Drawing.Size(334, 444);
             this.grpbxLicSettings.TabIndex = 6;
             this.grpbxLicSettings.TabStop = false;
-            this.grpbxLicSettings.Text = "License Settings";
+            this.grpbxLicSettings.Text = "Lizenz Einstellungen";
             // 
             // licSettings
             // 
@@ -79,7 +79,7 @@
             this.MinimizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Demo Activation Tool";
+            this.Text = "BelegLeser Activation Tool";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.grpbxLicSettings.ResumeLayout(false);
             this.ResumeLayout(false);

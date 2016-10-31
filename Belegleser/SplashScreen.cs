@@ -132,7 +132,7 @@ namespace Belegleser
             else
             {
                 _status = LicenseStatus.INVALID;
-                _msg = "Your copy of this application is not activated";
+                _msg = "Ihre Version ist nicht lizensiert";
             }
 
             switch (_status)

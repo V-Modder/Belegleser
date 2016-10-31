@@ -36,8 +36,8 @@
             // 
             // grpbxLicInfo
             // 
-            resources.ApplyResources(this.grpbxLicInfo, "grpbxLicInfo");
             this.grpbxLicInfo.Controls.Add(this.txtLicInfo);
+            resources.ApplyResources(this.grpbxLicInfo, "grpbxLicInfo");
             this.grpbxLicInfo.Name = "grpbxLicInfo";
             this.grpbxLicInfo.TabStop = false;
             // 

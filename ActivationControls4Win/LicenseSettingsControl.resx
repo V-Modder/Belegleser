@@ -130,13 +130,13 @@
     <value>118, 24</value>
   </data>
   <data name="rdoVolumeLicense.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 17</value>
+    <value>93, 17</value>
   </data>
   <data name="rdoVolumeLicense.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="rdoVolumeLicense.Text" xml:space="preserve">
-    <value>Volume License</value>
+    <value>Volume Lizenz</value>
   </data>
   <data name="&gt;&gt;rdoVolumeLicense.Name" xml:space="preserve">
     <value>rdoVolumeLicense</value>
@@ -157,13 +157,13 @@
     <value>6, 24</value>
   </data>
   <data name="rdoSingleLicense.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 17</value>
+    <value>87, 17</value>
   </data>
   <data name="rdoSingleLicense.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="rdoSingleLicense.Text" xml:space="preserve">
-    <value>Single License</value>
+    <value>Single Lizenz</value>
   </data>
   <data name="&gt;&gt;rdoSingleLicense.Name" xml:space="preserve">
     <value>rdoSingleLicense</value>
@@ -187,7 +187,7 @@
     <value>10</value>
   </data>
   <data name="grpbxLicenseType.Text" xml:space="preserve">
-    <value>License Type</value>
+    <value>Lizenz Typ</value>
   </data>
   <data name="&gt;&gt;grpbxLicenseType.Name" xml:space="preserve">
     <value>grpbxLicenseType</value>
@@ -244,7 +244,7 @@
     <value>11</value>
   </data>
   <data name="grpbxUniqueID.Text" xml:space="preserve">
-    <value>License UID</value>
+    <value>Lizenz UID</value>
   </data>
   <data name="&gt;&gt;grpbxUniqueID.Name" xml:space="preserve">
     <value>grpbxUniqueID</value>
@@ -295,7 +295,7 @@
     <value>12</value>
   </data>
   <data name="grpbxLicenseInfo.Text" xml:space="preserve">
-    <value>License Information</value>
+    <value>Lizenz Informationen</value>
   </data>
   <data name="&gt;&gt;grpbxLicenseInfo.Name" xml:space="preserve">
     <value>grpbxLicenseInfo</value>
@@ -322,7 +322,7 @@
     <value>13</value>
   </data>
   <data name="btnGenLicense.Text" xml:space="preserve">
-    <value>Generate &amp;License</value>
+    <value>&amp;Lizenz generieren</value>
   </data>
   <data name="&gt;&gt;btnGenLicense.Name" xml:space="preserve">
     <value>btnGenLicense</value>
@@ -336,9 +336,9 @@
   <data name="&gt;&gt;btnGenLicense.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>

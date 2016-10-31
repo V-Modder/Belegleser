@@ -1,4 +1,5 @@
-﻿namespace DemoWinFormApp
+﻿using QLicense;
+namespace DemoWinFormApp
 {
     partial class frmActivation
     {
@@ -49,7 +50,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "&Cancel";
+            this.btnCancel.Text = "&Abbrechen";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -72,14 +73,15 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.licActCtrl);
             this.Name = "frmActivation";
-            this.Text = "frmActivation";
+            this.Text = "Aktivieren";
             this.Load += new System.EventHandler(this.frmActivation_Load);
             this.ResumeLayout(false);
+            this.ShowIcon = false;
 
         }
 
         #endregion
-
+        
         private QLicense.Windows.Controls.LicenseActivateControl licActCtrl;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;

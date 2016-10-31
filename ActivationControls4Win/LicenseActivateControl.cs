@@ -37,7 +37,7 @@ namespace QLicense.Windows.Controls
         {
             if (string.IsNullOrWhiteSpace(txtLicense.Text))
             {
-                MessageBox.Show("Please input license", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bitte gültigen Lizenz Code eingeben", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -50,7 +50,7 @@ namespace QLicense.Windows.Controls
                 case LicenseStatus.VALID:                   
                     if (ShowMessageAfterValidation)
                     {
-                        MessageBox.Show(_msg, "License is valid", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Lizenz ist gültig", _msg + "Erfolgreich", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
                     return true;
@@ -60,7 +60,7 @@ namespace QLicense.Windows.Controls
                 case LicenseStatus.UNDEFINED:
                     if (ShowMessageAfterValidation)
                     {
-                        MessageBox.Show(_msg, "License is INVALID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Lizenz ist ungültig", _msg + "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                     return false;
