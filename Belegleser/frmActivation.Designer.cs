@@ -29,6 +29,7 @@ namespace DemoWinFormApp
         /// </summary>
         private void InitializeComponent()
         {
+            
             this.licActCtrl = new QLicense.Windows.Controls.LicenseActivateControl();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
@@ -76,8 +77,8 @@ namespace DemoWinFormApp
             this.Text = "Aktivieren";
             this.Load += new System.EventHandler(this.frmActivation_Load);
             this.ResumeLayout(false);
-            this.ShowIcon = false;
-
+            this.ShowIcon = true;
+            this.Icon = Belegleser.Properties.Resources.hardware_scanner;
         }
 
         #endregion
